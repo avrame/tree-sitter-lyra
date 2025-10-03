@@ -1,0 +1,57 @@
+======
+Arrays
+======
+
+let list: []Int64 = [1, 2, 3]
+
+------------------------------
+
+(source_file
+  (identifier)
+  (type_notation
+  (type_operator)
+    (array_type
+      (integer_type)))
+  (assignment_operator)
+  (array_literal
+  (integer)
+  (integer)
+  (integer)))
+
+=======
+Structs
+=======
+
+struct Point { x: Float, y: Float }
+
+------------------------------
+
+(source_file
+  (struct_type
+    (struct_name)
+    (field_name)
+    (field_type
+      (float_type))
+    (field_name)
+    (field_type
+      (float_type))))
+
+===========================
+Struct with no comma Errors
+:error
+===========================
+
+struct Point { x: Float y: Float }
+
+----------------------------------
+
+===================
+Empty Struct Errors
+:error
+===================
+
+struct Point {}
+
+----------------------------------
+
+==================================

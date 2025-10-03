@@ -1,0 +1,30 @@
+====================
+Simple Math Operator
+====================
+
+4 + 5
+
+---
+
+(source_file
+  (addition
+    (integer)
+    (addition_operator)
+    (integer)))
+
+======================
+Test Simple Precedence
+======================
+
+4 + 5 * 2
+
+---
+
+(source_file
+  (addition
+    (integer)
+    (addition_operator)
+    (multiplication
+      (integer)
+      (multiplication_operator)
+      (integer))))

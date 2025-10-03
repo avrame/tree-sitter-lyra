@@ -1,0 +1,28 @@
+====================
+Typeless Assignment
+====================
+
+let answer = 42
+
+---
+
+(source_file
+  (identifier)
+  (assignment_operator)
+  (integer))
+
+====================
+Assignment with Type
+====================
+
+let answer: Int = 42
+
+---
+
+(source_file
+  (identifier)
+  (type_notation
+    (type_operator)
+    (integer_type))
+  (assignment_operator)
+  (integer))

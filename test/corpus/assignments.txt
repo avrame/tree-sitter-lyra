@@ -15,7 +15,7 @@ let answer = 42
 Assignment with Type
 ====================
 
-let answer: Int = 42
+let answer: int = 42
 
 ---
 
@@ -23,5 +23,5 @@ let answer: Int = 42
   (let_assignment
     (let_identifier)
     (type_notation
-      (integer_type))
+      (signed_integer_type))
     (integer)))

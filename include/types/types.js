@@ -7,15 +7,11 @@ module.exports = {
     
     user_defined_type: $ => /[A-Z][a-zA-Z0-9]*/,
 
-    _primitive_type: $ => choice($.integer_type, $.float_type, $.string_type, $.boolean_type),
+    _primitive_type: $ => choice($._integer_type, $.float_type, $.string_type, $.boolean_type),
 
-    integer_type: $ => choice('Int', 'Int32', 'Int64'),
+    string_type: $ => 'string',
 
-    float_type: $ => choice('Float', 'Float32', 'Float64'),
-
-    string_type: $ => 'String',
-
-    boolean_type: $ => 'Bool',
+    boolean_type: $ => 'bool',
 
     array_type: $ => seq('[]', $.type),
 

@@ -13,6 +13,8 @@ const numbers = require('./include/literals/numbers');
 const expressions = require('./include/expressions/expressions');
 const math_expressions = require('./include/expressions/math_expressions');
 const types = require('./include/types/types');
+const number_types = require('./include/types/numbers');
+const data_types = require('./include/types/data_types');
 const struct_types = require('./include/types/structs');
 const statements = require('./include/statements/statements');
 
@@ -31,6 +33,8 @@ module.exports = grammar({
     ...expressions,
     ...math_expressions,
     ...types,
+    ...number_types,
+    ...data_types,
     ...struct_types,
     ...statements,
   }

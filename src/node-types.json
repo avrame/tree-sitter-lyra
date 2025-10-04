@@ -62,11 +62,15 @@
         "named": true
       },
       {
-        "type": "integer_type",
+        "type": "signed_integer_type",
         "named": true
       },
       {
         "type": "string_type",
+        "named": true
+      },
+      {
+        "type": "unsigned_integer_type",
         "named": true
       },
       {
@@ -167,15 +171,48 @@
       "required": true,
       "types": [
         {
-          "type": "data_type_name",
+          "type": "data_type_constructor",
           "named": true
         },
         {
-          "type": "data_type_type",
+          "type": "data_type_name",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "data_type_constructor",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "data_type_constructor_name",
+          "named": true
+        },
+        {
+          "type": "struct_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "data_type_constructor_name",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "data_type_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "division",
@@ -228,11 +265,6 @@
   },
   {
     "type": "integer",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "integer_type",
     "named": true,
     "fields": {}
   },
@@ -353,6 +385,11 @@
     }
   },
   {
+    "type": "signed_integer_type",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -415,6 +452,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "struct_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "struct_type",
@@ -507,6 +549,16 @@
     }
   },
   {
+    "type": "unsigned_integer_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "user_defined_type",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "*",
     "named": false
   },
@@ -539,30 +591,6 @@
     "named": false
   },
   {
-    "type": "Float",
-    "named": false
-  },
-  {
-    "type": "Float32",
-    "named": false
-  },
-  {
-    "type": "Float64",
-    "named": false
-  },
-  {
-    "type": "Int",
-    "named": false
-  },
-  {
-    "type": "Int32",
-    "named": false
-  },
-  {
-    "type": "Int64",
-    "named": false
-  },
-  {
     "type": "[",
     "named": false
   },
@@ -583,12 +611,40 @@
     "named": false
   },
   {
-    "type": "data_type_name",
-    "named": true
+    "type": "f16",
+    "named": false
+  },
+  {
+    "type": "f32",
+    "named": false
+  },
+  {
+    "type": "f64",
+    "named": false
   },
   {
     "type": "field_name",
     "named": true
+  },
+  {
+    "type": "i16",
+    "named": false
+  },
+  {
+    "type": "i32",
+    "named": false
+  },
+  {
+    "type": "i64",
+    "named": false
+  },
+  {
+    "type": "i8",
+    "named": false
+  },
+  {
+    "type": "int",
+    "named": false
   },
   {
     "type": "let",
@@ -615,15 +671,31 @@
     "named": false
   },
   {
-    "type": "struct_name",
-    "named": true
+    "type": "u16",
+    "named": false
   },
   {
-    "type": "user_defined_type",
-    "named": true
+    "type": "u32",
+    "named": false
+  },
+  {
+    "type": "u64",
+    "named": false
+  },
+  {
+    "type": "u8",
+    "named": false
+  },
+  {
+    "type": "uint",
+    "named": false
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {

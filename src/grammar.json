@@ -60,44 +60,6 @@
         ]
       }
     },
-    "_number": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "integer"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "float"
-        }
-      ]
-    },
-    "integer": {
-      "type": "PATTERN",
-      "value": "[0-9]+"
-    },
-    "float": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "integer"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "dot"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "integer"
-        }
-      ]
-    },
-    "dot": {
-      "type": "PATTERN",
-      "value": "\\."
-    },
     "string": {
       "type": "PATTERN",
       "value": "\"[^\"]*\""
@@ -151,12 +113,25 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "FIELD",
+          "name": "struct_name",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            "named": true,
+            "value": "struct_name"
+          }
+        },
+        {
           "type": "STRING",
           "value": "{"
         },
         {
           "type": "SYMBOL",
-          "name": "_struct_member"
+          "name": "_struct_field"
         },
         {
           "type": "REPEAT",
@@ -169,7 +144,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_struct_member"
+                "name": "_struct_field"
               }
             ]
           }
@@ -192,7 +167,7 @@
         }
       ]
     },
-    "_struct_member": {
+    "_struct_field": {
       "type": "SEQ",
       "members": [
         {
@@ -214,16 +189,54 @@
         },
         {
           "type": "FIELD",
-          "name": "field_type",
+          "name": "field_value",
           "content": {
             "type": "ALIAS",
             "content": {
               "type": "SYMBOL",
-              "name": "type"
+              "name": "expression"
             },
             "named": true,
-            "value": "field_type"
+            "value": "field_value"
           }
+        }
+      ]
+    },
+    "_number": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "float"
+        }
+      ]
+    },
+    "_digits_and_underscore": {
+      "type": "PATTERN",
+      "value": "[0-9_]+"
+    },
+    "integer": {
+      "type": "SYMBOL",
+      "name": "_digits_and_underscore"
+    },
+    "float": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_digits_and_underscore"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_digits_and_underscore"
         }
       ]
     },
@@ -526,6 +539,37 @@
         }
       ]
     },
+    "data_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "data"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "user_defined_type"
+          },
+          "named": true,
+          "value": "data_type_name"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "type"
+          },
+          "named": true,
+          "value": "data_type_type"
+        }
+      ]
+    },
     "struct_type": {
       "type": "SEQ",
       "members": [
@@ -588,34 +632,38 @@
         }
       ]
     },
-    "data_type": {
+    "_struct_member": {
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "data"
-        },
-        {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "field_name",
           "content": {
-            "type": "SYMBOL",
-            "name": "user_defined_type"
-          },
-          "named": true,
-          "value": "data_type_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            "named": true,
+            "value": "field_name"
+          }
         },
         {
           "type": "STRING",
-          "value": "="
+          "value": ":"
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "field_type",
           "content": {
-            "type": "SYMBOL",
-            "name": "type"
-          },
-          "named": true,
-          "value": "data_type_type"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "type"
+            },
+            "named": true,
+            "value": "field_type"
+          }
         }
       ]
     },
@@ -624,7 +672,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_assignment"
+          "name": "let_assignment"
         },
         {
           "type": "SYMBOL",
@@ -632,7 +680,7 @@
         }
       ]
     },
-    "_assignment": {
+    "let_assignment": {
       "type": "SEQ",
       "members": [
         {
@@ -640,8 +688,13 @@
           "value": "let"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "let_identifier"
         },
         {
           "type": "CHOICE",
@@ -656,18 +709,14 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "assignment_operator"
+          "type": "STRING",
+          "value": "="
         },
         {
           "type": "SYMBOL",
           "name": "expression"
         }
       ]
-    },
-    "assignment_operator": {
-      "type": "STRING",
-      "value": "="
     },
     "identifier": {
       "type": "PATTERN",

@@ -1,0 +1,26 @@
+=========================
+Integers allow underscores
+=========================
+
+let one_million = 1_000_000
+
+---------------------------
+
+(source_file
+  (let_assignment
+    (let_identifier)
+    (integer)))
+
+=========================
+Floats allow underscores
+=========================
+
+let float_num = 1_234.567_890
+
+---------------------------
+
+(source_file
+  (let_assignment
+    (let_identifier)
+    (float)))
+

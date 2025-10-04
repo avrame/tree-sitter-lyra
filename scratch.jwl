@@ -1,1 +1,9 @@
-struct Point { x: Float, y: Float }
+struct Point {
+  x: Float,
+  y: Float,
+}
+
+let origin = Point {
+  x: 0.0,
+  y: 0.0
+}

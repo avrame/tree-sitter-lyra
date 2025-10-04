@@ -1,0 +1,17 @@
+module.exports = {
+  struct_type: $ => seq(
+    'struct',
+    field('struct_name', alias($.user_defined_type, $.struct_name)),
+    '{',
+        $._struct_member,
+        repeat(seq(',', $._struct_member)),
+        optional(','),
+    '}'
+  ),
+
+  _struct_member: $ => seq(
+    field('field_name', alias($.identifier, $.field_name)),
+    ':',
+    field('field_type', alias($.type, $.field_type))
+  ),
+}

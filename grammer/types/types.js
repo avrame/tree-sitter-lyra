@@ -21,22 +21,6 @@ module.exports = {
 
     array_type: $ => seq('[]', $.type),
 
-    struct_type: $ => seq(
-        'struct',
-        field('struct_name', alias($.user_defined_type, $.struct_name)),
-        '{',
-            $._struct_member,
-            repeat(seq(',', $._struct_member)),
-            optional(','),
-        '}'
-    ),
-
-    _struct_member: $ => seq(
-        field('field_name', alias($.identifier, $.field_name)),
-        ':',
-        field('field_type', alias($.type, $.field_type))
-    ),
-
     data_type: $ => seq('data', alias($.user_defined_type, $.data_type_name), '=', alias($.type, $.data_type_type)),
 
 }

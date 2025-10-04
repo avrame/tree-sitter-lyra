@@ -163,11 +163,6 @@
     }
   },
   {
-    "type": "assignment_operator",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "data_type",
     "named": true,
     "fields": {},
@@ -232,21 +227,7 @@
   {
     "type": "float",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dot",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "float_type",
@@ -254,9 +235,37 @@
     "fields": {}
   },
   {
+    "type": "integer",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "integer_type",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "let_assignment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "let_identifier",
+          "named": true
+        },
+        {
+          "type": "type_notation",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "multiplication",
@@ -374,15 +383,11 @@
       "required": false,
       "types": [
         {
-          "type": "assignment_operator",
-          "named": true
-        },
-        {
           "type": "expression",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "let_assignment",
           "named": true
         },
         {
@@ -391,10 +396,6 @@
         },
         {
           "type": "type_declaration",
-          "named": true
-        },
-        {
-          "type": "type_notation",
           "named": true
         }
       ]
@@ -414,12 +415,22 @@
           }
         ]
       },
-      "field_type": {
+      "field_value": {
         "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "field_type",
+            "type": "field_value",
+            "named": true
+          }
+        ]
+      },
+      "struct_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "struct_name",
             "named": true
           }
         ]
@@ -543,6 +554,10 @@
     "named": false
   },
   {
+    "type": ".",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
@@ -607,24 +622,16 @@
     "named": true
   },
   {
-    "type": "dot",
-    "named": true
-  },
-  {
     "type": "field_name",
-    "named": true
-  },
-  {
-    "type": "identifier",
-    "named": true
-  },
-  {
-    "type": "integer",
     "named": true
   },
   {
     "type": "let",
     "named": false
+  },
+  {
+    "type": "let_identifier",
+    "named": true
   },
   {
     "type": "multiplication_operator",

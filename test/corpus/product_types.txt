@@ -7,20 +7,20 @@ let list: []Int64 = [1, 2, 3]
 ------------------------------
 
 (source_file
-  (identifier)
-  (type_notation
-  (type_operator)
-    (array_type
-      (integer_type)))
-  (assignment_operator)
-  (array_literal
-  (integer)
-  (integer)
-  (integer)))
+  (let_assignment
+    (let_identifier)
+    (type_notation
+      (type_operator)
+      (array_type
+        (integer_type)))
+    (array_literal
+      (integer)
+      (integer)
+      (integer))))
 
-=======
-Structs
-=======
+==================
+Struct Declaration
+==================
 
 struct Point { x: Float, y: Float }
 
@@ -35,6 +35,29 @@ struct Point { x: Float, y: Float }
     (field_name)
     (field_type
       (float_type))))
+
+==============================
+Struct Instance
+==============================
+
+let origin = Point {
+  x: 0.0,
+  y: 0.0,
+}
+
+---------------------------------
+
+(source_file
+  (let_assignment
+    (let_identifier)
+    (struct_literal
+      (struct_name)
+      (field_name)
+      (field_value
+        (float))
+      (field_name)
+      (field_value
+        (float)))))
 
 ===========================
 Struct with no comma Errors

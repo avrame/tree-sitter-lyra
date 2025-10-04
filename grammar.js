@@ -7,14 +7,14 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-const literals = require('./grammar/literals/literals');
-const struct_literals = require('./grammar/literals/structs');
-const numbers = require('./grammar/literals/numbers');
-const expressions = require('./grammar/expressions/expressions');
-const math_expressions = require('./grammar/expressions/math_expressions');
-const types = require('./grammar/types/types');
-const struct_types = require('./grammar/types/structs');
-const statements = require('./grammar/statements/statements');
+const literals = require('./include/literals/literals');
+const struct_literals = require('./include/literals/structs');
+const numbers = require('./include/literals/numbers');
+const expressions = require('./include/expressions/expressions');
+const math_expressions = require('./include/expressions/math_expressions');
+const types = require('./include/types/types');
+const struct_types = require('./include/types/structs');
+const statements = require('./include/statements/statements');
 
 
 module.exports = grammar({

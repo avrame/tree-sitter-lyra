@@ -23,6 +23,5 @@ let answer: Int = 42
   (let_assignment
     (let_identifier)
     (type_notation
-      (type_operator)
       (integer_type))
     (integer)))

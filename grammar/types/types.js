@@ -1,9 +1,7 @@
 module.exports = {
-    type_notation: $ => seq($.type_operator, $.type),
+    type_notation: $ => seq(':', $.type),
 
     type_declaration: $ => choice($.struct_type, $.data_type),
-
-    type_operator: $ => ':',
     
     type: $ => choice($._primitive_type, $.user_defined_type, $.array_type),
     

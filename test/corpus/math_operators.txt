@@ -9,7 +9,6 @@ Simple Math Operator
 (source_file
   (addition
     (integer)
-    (addition_operator)
     (integer)))
 
 ======================
@@ -23,8 +22,6 @@ Test Simple Precedence
 (source_file
   (addition
     (integer)
-    (addition_operator)
     (multiplication
       (integer)
-      (multiplication_operator)
       (integer))))

@@ -102,10 +102,6 @@
           "named": true
         },
         {
-          "type": "addition_operator",
-          "named": true
-        },
-        {
           "type": "division",
           "named": true
         },
@@ -195,10 +191,6 @@
         },
         {
           "type": "division",
-          "named": true
-        },
-        {
-          "type": "division_operator",
           "named": true
         },
         {
@@ -296,10 +288,6 @@
           "named": true
         },
         {
-          "type": "multiplication_operator",
-          "named": true
-        },
-        {
           "type": "negation",
           "named": true
         },
@@ -315,7 +303,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -343,20 +331,11 @@
           "named": true
         },
         {
-          "type": "negation_operator",
-          "named": true
-        },
-        {
           "type": "subtraction",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "negation_operator",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "return_statement",
@@ -508,42 +487,32 @@
         {
           "type": "subtraction",
           "named": true
-        },
-        {
-          "type": "subtraction_operator",
-          "named": true
         }
       ]
     }
-  },
-  {
-    "type": "subtraction_operator",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "type_notation",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
           "type": "type",
-          "named": true
-        },
-        {
-          "type": "type_operator",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "type_operator",
-    "named": true,
-    "fields": {}
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
   },
   {
     "type": ",",
@@ -555,6 +524,10 @@
   },
   {
     "type": ".",
+    "named": false
+  },
+  {
+    "type": "/",
     "named": false
   },
   {
@@ -602,10 +575,6 @@
     "named": false
   },
   {
-    "type": "addition_operator",
-    "named": true
-  },
-  {
     "type": "boolean_type",
     "named": true
   },
@@ -618,10 +587,6 @@
     "named": true
   },
   {
-    "type": "division_operator",
-    "named": true
-  },
-  {
     "type": "field_name",
     "named": true
   },
@@ -631,10 +596,6 @@
   },
   {
     "type": "let_identifier",
-    "named": true
-  },
-  {
-    "type": "multiplication_operator",
     "named": true
   },
   {

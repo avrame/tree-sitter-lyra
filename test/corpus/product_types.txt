@@ -10,7 +10,6 @@ let list: []Int64 = [1, 2, 3]
   (let_assignment
     (let_identifier)
     (type_notation
-      (type_operator)
       (array_type
         (integer_type)))
     (array_literal

@@ -22,19 +22,6 @@
         ]
       }
     },
-    "expression": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_math_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_literal"
-        }
-      ]
-    },
     "_literal": {
       "type": "PREC_RIGHT",
       "value": 1,
@@ -215,20 +202,20 @@
         }
       ]
     },
-    "_digits_and_underscore": {
+    "_digit_sequence": {
       "type": "PATTERN",
       "value": "[0-9_]+"
     },
     "integer": {
       "type": "SYMBOL",
-      "name": "_digits_and_underscore"
+      "name": "_digit_sequence"
     },
     "float": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_digits_and_underscore"
+          "name": "_digit_sequence"
         },
         {
           "type": "STRING",
@@ -236,20 +223,20 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_digits_and_underscore"
+          "name": "_digit_sequence"
         }
       ]
     },
-    "_operator": {
+    "expression": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_binary_operator"
+          "name": "_math_expression"
         },
         {
           "type": "SYMBOL",
-          "name": "negation"
+          "name": "_literal"
         }
       ]
     },
@@ -262,7 +249,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_binary_operator"
+          "name": "_arithmetic_operator"
         },
         {
           "type": "SYMBOL",
@@ -270,7 +257,7 @@
         }
       ]
     },
-    "_binary_operator": {
+    "_arithmetic_operator": {
       "type": "CHOICE",
       "members": [
         {
@@ -302,8 +289,8 @@
             "name": "_math_expression"
           },
           {
-            "type": "SYMBOL",
-            "name": "addition_operator"
+            "type": "STRING",
+            "value": "+"
           },
           {
             "type": "SYMBOL",
@@ -323,8 +310,8 @@
             "name": "_math_expression"
           },
           {
-            "type": "SYMBOL",
-            "name": "subtraction_operator"
+            "type": "STRING",
+            "value": "-"
           },
           {
             "type": "SYMBOL",
@@ -344,8 +331,8 @@
             "name": "_math_expression"
           },
           {
-            "type": "SYMBOL",
-            "name": "multiplication_operator"
+            "type": "STRING",
+            "value": "*"
           },
           {
             "type": "SYMBOL",
@@ -365,8 +352,8 @@
             "name": "_math_expression"
           },
           {
-            "type": "SYMBOL",
-            "name": "division_operator"
+            "type": "STRING",
+            "value": "/"
           },
           {
             "type": "SYMBOL",
@@ -374,22 +361,6 @@
           }
         ]
       }
-    },
-    "addition_operator": {
-      "type": "STRING",
-      "value": "+"
-    },
-    "subtraction_operator": {
-      "type": "STRING",
-      "value": "-"
-    },
-    "multiplication_operator": {
-      "type": "STRING",
-      "value": "*"
-    },
-    "division_operator": {
-      "type": "STRING",
-      "value": "/"
     },
     "negation": {
       "type": "PREC_RIGHT",
@@ -398,8 +369,8 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "negation_operator"
+            "type": "STRING",
+            "value": "-"
           },
           {
             "type": "SYMBOL",
@@ -408,16 +379,12 @@
         ]
       }
     },
-    "negation_operator": {
-      "type": "STRING",
-      "value": "-"
-    },
     "type_notation": {
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "type_operator"
+          "type": "STRING",
+          "value": ":"
         },
         {
           "type": "SYMBOL",
@@ -437,10 +404,6 @@
           "name": "data_type"
         }
       ]
-    },
-    "type_operator": {
-      "type": "STRING",
-      "value": ":"
     },
     "type": {
       "type": "CHOICE",

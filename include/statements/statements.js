@@ -1,9 +1,11 @@
 module.exports = {
-    _statement: $ => choice($.let_assignment, $.return_statement),
+    _statement: $ => choice($.declaration, $.var_reassignment, $.return_statement),
     
-    let_assignment: $ => seq('let', alias($.identifier, $.let_identifier), optional($.type_notation), '=', $.expression),
+    declaration: $ => seq(choice('let', 'var'), $.identifier, optional($.type_notation), '=', $.expression),
 
-    identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    var_reassignment: $ => seq($.identifier, '=', $.expression),
+
+    identifier: $ => /[a-z][a-z0-9_]*/,
 
     return_statement: $ => seq('return', $.expression),
 }

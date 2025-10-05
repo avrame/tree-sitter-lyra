@@ -7,21 +7,21 @@ let answer = 42
 ---
 
 (source_file
-  (let_assignment
-    (let_identifier)
+  (declaration
+    (identifier)
     (integer)))
 
 ====================
 Assignment with Type
 ====================
 
-let answer: int = 42
+let answer: Int = 42
 
 ---
 
 (source_file
-  (let_assignment
-    (let_identifier)
+  (declaration
+    (identifier)
     (type_notation
       (signed_integer_type))
     (integer)))

@@ -1,6 +1,0 @@
-=========
-Data type
-=========
-
-data Color = HexColor(String) | ColorName | RGB { r: u8, g: u8, b: u8 }
-data ColorName = White | Black | Gray | Red | Orange | Yellow | Green | Blue | Purple

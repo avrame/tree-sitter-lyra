@@ -3,18 +3,18 @@ module.exports = {
 
     type_declaration: $ => choice($.struct_type, $.data_type),
     
-    type: $ => choice($._primitive_type, $.user_defined_type, $.array_type),
+    type: $ => choice($._primitive_type, $.user_defined_type_name, $.array_type, $.generic_type),
     
-    user_defined_type: $ => /[A-Z][a-zA-Z0-9]*/,
+    user_defined_type_name: $ => /[A-Z][a-zA-Z0-9]*/,
 
     _primitive_type: $ => choice($._integer_type, $.float_type, $.string_type, $.boolean_type),
 
-    string_type: $ => 'string',
+    string_type: $ => 'String',
 
-    boolean_type: $ => 'bool',
+    boolean_type: $ => 'Bool',
 
-    array_type: $ => seq('[]', $.type),
+    generic_parameters: $ => seq('<', $.generic_type, repeat(seq(',', $.generic_type)), optional(','), '>'),
 
-    data_type: $ => seq('data', alias($.user_defined_type, $.data_type_name), '=', alias($.type, $.data_type_type)),
-
+    // A generic type is a lowercase letter optionally followed by any number of letters or numbers
+    generic_type: $ => /[a-z][a-z0-9]*/
 }

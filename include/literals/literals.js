@@ -3,9 +3,9 @@ module.exports = {
 
     string: $ => /"[^"]*"/,
 
-    array_literal: $ => seq(
-        '[',
-            $.expression, repeat(seq(',', $.expression)), optional(','),
-        ']'
+    generic_arguments: $ => seq(
+        '<',
+            $.type, repeat(seq(',', $.type)), optional(','),
+        '>'
     ),
 }

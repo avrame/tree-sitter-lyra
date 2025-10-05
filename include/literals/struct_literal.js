@@ -1,6 +1,7 @@
 module.exports = {
   struct_literal: $ => seq(
-    field('struct_name', alias($.identifier, $.struct_name)),
+    field('struct_name', alias($.user_defined_type_name, $.struct_name)),
+    optional($.generic_arguments),
     '{',
         $._struct_field,
         repeat(seq(',', $._struct_field)),

@@ -1,9 +1,1 @@
-struct Point {
-  x: Float,
-  y: Float,
-}
-
-let origin = Point {
-  x: 0.0,
-  y: 0.0
-}
+data Maybe<t> = Nil | Some t

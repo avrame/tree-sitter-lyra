@@ -8,14 +8,18 @@
 // @ts-check
 
 const literals = require('./include/literals/literals');
-const struct_literals = require('./include/literals/structs');
-const numbers = require('./include/literals/numbers');
+const struct_literals = require('./include/literals/struct_literal');
+const tuple_literals = require('./include/literals/tuple_literal');
+const array_literals = require('./include/literals/array_literal');
+const numbers = require('./include/literals/number_literals');
 const expressions = require('./include/expressions/expressions');
 const math_expressions = require('./include/expressions/math_expressions');
 const types = require('./include/types/types');
-const number_types = require('./include/types/numbers');
-const data_types = require('./include/types/data_types');
-const struct_types = require('./include/types/structs');
+const array_types = require('./include/types/array_type');
+const number_types = require('./include/types/number_types');
+const struct_types = require('./include/types/struct_type');
+const tuple_types = require('./include/types/tuple_type');
+const data_types = require('./include/types/data_type');
 const statements = require('./include/statements/statements');
 
 
@@ -29,13 +33,17 @@ module.exports = grammar({
 
     ...literals,
     ...struct_literals,
+    ...tuple_literals,
+    ...array_literals,
     ...numbers,
     ...expressions,
     ...math_expressions,
     ...types,
+    ...array_types,
     ...number_types,
-    ...data_types,
     ...struct_types,
+    ...tuple_types,
+    ...data_types,
     ...statements,
   }
 });

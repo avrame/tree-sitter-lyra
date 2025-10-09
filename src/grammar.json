@@ -397,6 +397,10 @@
         {
           "type": "SYMBOL",
           "name": "array_spread"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "function_call"
         }
       ]
     },
@@ -717,7 +721,7 @@
     },
     "group": {
       "type": "PREC",
-      "value": 100,
+      "value": 90,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1725,25 +1729,34 @@
       ]
     },
     "function_call": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
+      "type": "PREC",
+      "value": 100,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "name",
+            "content": {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "identifier"
+              },
+              "named": true,
+              "value": "function_name"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "arguments",
+            "content": {
+              "type": "SYMBOL",
+              "name": "argument_list"
+            }
           }
-        },
-        {
-          "type": "FIELD",
-          "name": "arguments",
-          "content": {
-            "type": "SYMBOL",
-            "name": "argument_list"
-          }
-        }
-      ]
+        ]
+      }
     },
     "argument_list": {
       "type": "SEQ",
@@ -1753,8 +1766,12 @@
           "value": "("
         },
         {
-          "type": "SYMBOL",
-          "name": "argument"
+          "type": "FIELD",
+          "name": "argument",
+          "content": {
+            "type": "SYMBOL",
+            "name": "argument"
+          }
         },
         {
           "type": "REPEAT",
@@ -1797,8 +1814,13 @@
           "type": "FIELD",
           "name": "name",
           "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            "named": true,
+            "value": "argument_name"
           }
         },
         {
@@ -1812,16 +1834,26 @@
               "type": "FIELD",
               "name": "value",
               "content": {
-                "type": "SYMBOL",
-                "name": "expression"
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                },
+                "named": true,
+                "value": "argument_value"
               }
             },
             {
               "type": "FIELD",
               "name": "wildcard",
               "content": {
-                "type": "STRING",
-                "value": "_"
+                "type": "ALIAS",
+                "content": {
+                  "type": "STRING",
+                  "value": "_"
+                },
+                "named": true,
+                "value": "wildcard"
               }
             }
           ]

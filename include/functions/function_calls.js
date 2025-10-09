@@ -1,23 +1,23 @@
 module.exports = {
-  function_call: $ => seq(
-    field('name', $.identifier),
+  function_call: $ => prec(100, seq(
+    field('name', alias($.identifier, $.function_name)),
     field('arguments', $.argument_list)
-  ),
+  )),
 
   argument_list: $ => seq(
     '(',
-    $.argument,
+    field('argument', $.argument),
     repeat(seq(',', $.argument)),
     optional(','),
     ')'
   ),
 
   argument: $ => seq(
-    field('name', $.identifier), // for named arguments
+    field('name', alias($.identifier, $.argument_name)), // for named arguments
     '=',
     choice(
-      field('value', $.expression),
-      field('wildcard', '_') // for partial application
+      field('value', alias($.expression, $.argument_value)),
+      field('wildcard', alias('_' , $.wildcard)) // for partial application
     )
   ),
 }

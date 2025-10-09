@@ -1,0 +1,118 @@
+==========================
+Basic Function declaration
+==========================
+
+fn sum (a: Int, b: Int): Int {
+  return a + b
+}
+
+---
+
+(source_file
+  (function_declaration
+    (identifier)
+    (parameter_list
+      (parameter
+        (identifier)
+        (type_notation
+          (signed_integer_type)))
+      (parameter
+        (identifier)
+        (type_notation
+          (signed_integer_type))))
+    (type_notation
+      (signed_integer_type))
+    (block
+      (return_statement
+        (addition
+          (identifier)
+          (identifier))))))
+
+==================================
+Function declaration with defaults
+==================================
+
+fn product (a: Int, b: Int = 10): Int {
+  return a * b
+}
+
+---
+
+(source_file
+  (function_declaration
+    (identifier)
+    (parameter_list
+      (parameter
+        (identifier)
+        (type_notation
+          (signed_integer_type)))
+      (parameter
+        (identifier)
+        (type_notation
+          (signed_integer_type))
+        (default_value
+          (integer))))
+    (type_notation
+      (signed_integer_type))
+    (block
+      (return_statement
+        (multiplication
+          (identifier)
+          (identifier))))))
+
+===================
+Basic Function call
+===================
+
+let result = sum(a=1, b=2)
+
+---
+
+(source_file
+  (declaration
+    name: (identifier)
+    value: (function_call
+      name: (function_name)
+      arguments: (argument_list
+        argument: (argument
+          name: (argument_name)
+          value: (argument_value
+            (integer)))
+        (argument
+          name: (argument_name)
+          value: (argument_value
+            (integer)))))))
+
+============================================
+Basic Function call with partial application
+============================================
+
+let add_one = sum(a=1, b=_)
+let result = add_one(b=2)
+// result == 3
+
+---
+
+(source_file
+  (declaration
+    (identifier)
+    (function_call
+      (function_name)
+      (argument_list
+        (argument
+          (argument_name)
+          (argument_value
+            (integer)))
+        (argument
+          (argument_name)
+          (wildcard)))))
+  (declaration
+    (identifier)
+    (function_call
+      (function_name)
+      (argument_list
+        (argument
+          (argument_name)
+          (argument_value
+            (integer))))))
+  (comment))

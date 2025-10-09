@@ -24,6 +24,10 @@
         "named": true
       },
       {
+        "type": "function_call",
+        "named": true
+      },
+      {
         "type": "group",
         "named": true
       },
@@ -187,6 +191,68 @@
     "type": "alias_type_name",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "argument",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "argument_name",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "argument_value",
+            "named": true
+          }
+        ]
+      },
+      "wildcard": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "wildcard",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "argument_list",
+    "named": true,
+    "fields": {
+      "argument": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "argument",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "argument",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "array_literal",
@@ -910,6 +976,32 @@
     "type": "float_type",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "function_call",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "argument_list",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "function_name",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "function_declaration",
@@ -1729,6 +1821,11 @@
     }
   },
   {
+    "type": "wildcard_pattern",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -1849,8 +1946,16 @@
     "named": false
   },
   {
+    "type": "_",
+    "named": false
+  },
+  {
     "type": "alias",
     "named": false
+  },
+  {
+    "type": "argument_name",
+    "named": true
   },
   {
     "type": "array_capacity",
@@ -1892,6 +1997,10 @@
   {
     "type": "fn",
     "named": false
+  },
+  {
+    "type": "function_name",
+    "named": true
   },
   {
     "type": "generic_type",
@@ -1950,7 +2059,7 @@
     "named": false
   },
   {
-    "type": "wildcard_pattern",
+    "type": "wildcard",
     "named": true
   },
   {

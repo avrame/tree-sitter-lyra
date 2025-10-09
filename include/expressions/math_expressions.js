@@ -23,6 +23,6 @@ module.exports = {
     constraint_division: $ => prec.left(20, seq($._constraint_math_expression, '/', $._constraint_math_expression)),
     constraint_negation: $ => prec.right(30, seq('-', $._constraint_math_expression)),
 
-    group: $ => prec(100, seq('(', $._math_expression, ')')),
+    group: $ => prec(90, seq('(', $._math_expression, ')')),
 }
 

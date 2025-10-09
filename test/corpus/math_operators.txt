@@ -25,3 +25,36 @@ Test Simple Precedence
     (multiplication
       (integer)
       (integer))))
+
+=====================
+Test Group Precedence
+=====================
+
+(4 + 5) * 2
+
+---
+
+(source_file
+  (multiplication
+    (group
+      (addition
+        (integer)
+        (integer)))
+    (integer)))
+
+===================================
+Test Group Precedence with Negation
+===================================
+
+-(4 + 5) * 2
+
+---
+
+(source_file
+  (multiplication
+    (negation
+      (group
+        (addition
+          (integer)
+          (integer))))
+    (integer)))

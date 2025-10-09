@@ -1,0 +1,208 @@
+===================
+Array Destructuring
+===================
+
+let [a, b, c] = [1, 2, 3]
+// a == 1, b == 2, c == 3
+
+---
+
+(source_file
+  (destructuring_declaration
+    (destructuring_pattern
+      (array_pattern
+        (pattern
+          (identifier))
+        (pattern
+          (identifier))
+        (pattern
+          (identifier))))
+    (array_literal
+      (integer)
+      (integer)
+      (integer)))
+  (comment))
+
+=============================
+Array Destructuring with rest
+=============================
+
+let [a, ...rest] = [1, 2, 3]
+// a == 1, rest == [2, 3]
+---
+
+(source_file
+  (destructuring_declaration
+    (destructuring_pattern
+      (array_pattern
+        (pattern
+          (identifier))
+        (rest_pattern
+          (identifier))))
+    (array_literal
+      (integer)
+      (integer)
+      (integer)))
+  (comment))
+
+======================================
+Array destructuring with starting rest
+======================================
+
+let [...first, last] = [1, 2, 3]
+// first == [1, 2], last == 3
+
+---
+
+(source_file
+  (destructuring_declaration
+    (destructuring_pattern
+      (array_pattern
+        (rest_pattern
+          (identifier))
+        (pattern
+          (identifier))))
+    (array_literal
+      (integer)
+      (integer)
+      (integer)))
+  (comment))
+
+====================================
+Array destructuring with middle rest
+====================================
+
+let [a, b, ...middle, c] = [1, 2, 3, 4, 5]
+// a == 1, b == 2, middle == [3, 4], c == 5
+
+---
+
+(source_file
+  (destructuring_declaration
+    (destructuring_pattern
+      (array_pattern
+        (pattern
+          (identifier))
+        (pattern
+          (identifier))
+        (rest_pattern
+          (identifier))
+        (pattern
+          (identifier))))
+    (array_literal
+      (integer)
+      (integer)
+      (integer)
+      (integer)
+      (integer)))
+  (comment))
+
+====================
+Struct destructuring
+====================
+
+// let some_struct = Foo { a: 1, b: 2, c: 3 }
+let { a, b, c } = some_struct
+// a == 1, b == 2, c == 3
+
+---
+
+(source_file
+  (comment)
+  (destructuring_declaration
+    (destructuring_pattern
+      (struct_pattern
+        (identifier)
+        (identifier)
+        (identifier)))
+    (identifier))
+  (comment))
+
+======================================
+Struct destructuring with rest pattern
+======================================
+
+// let some_struct = Foo { a: 1, b: 2, c: 3 }
+let { a, ...rest } = some_struct
+// a == 1, rest == { b: 2, c: 3 }
+
+---
+
+(source_file
+  (comment)
+  (destructuring_declaration
+    (destructuring_pattern
+      (struct_pattern
+        (identifier)
+        (rest_pattern
+          (identifier))))
+    (identifier))
+  (comment))
+
+====================================================
+Struct destructuring with rest pattern and new names
+====================================================
+
+// let some_struct = Foo { a: 1, b: 2, c: 3 }
+let { a: foo, ...rest } = some_struct
+// foo == 1, rest == { b: 2, c: 3 }
+
+---
+
+(source_file
+  (comment)
+  (destructuring_declaration
+    (destructuring_pattern
+      (struct_pattern
+        (identifier)
+        (new_name)
+        (rest_pattern
+          (identifier))))
+    (identifier))
+  (comment))
+
+===================
+Tuple destructuring
+===================
+
+// let some_tuple = Foo (1, 2, 3)
+let (a, b, c) = some_tuple
+// a == 1, b == 2, c == 3
+
+---
+
+(source_file
+  (comment)
+  (destructuring_declaration
+    (destructuring_pattern
+      (tuple_pattern
+        (pattern
+          (identifier))
+        (pattern
+          (identifier))
+        (pattern
+          (identifier))))
+    (identifier))
+  (comment))
+
+=====================================
+Tuple destructuring with rest pattern
+=====================================
+
+// let some_tuple = (1, 2, 3)
+let (a, ...rest) = some_tuple
+// a == 1, rest = (2, 3)
+
+---
+
+(source_file
+  (comment)
+  (destructuring_declaration
+    (destructuring_pattern
+      (tuple_pattern
+        (pattern
+          (identifier))
+        (rest_pattern
+          (identifier))))
+    (identifier))
+  (comment))

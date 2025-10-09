@@ -22,12 +22,19 @@ const struct_types = require('./include/types/struct_type');
 const tuple_types = require('./include/types/tuple_type');
 const data_types = require('./include/types/data_type');
 const statements = require('./include/statements/statements');
-
+const function_declarations = require('./include/functions/function_declarations');
+const function_calls = require('./include/functions/function_calls');
+const comments = require('./include/comments');
+const pattern_matching = require('./include/patterns/pattern_matching');
+const destructuring = require('./include/destructuring/destructuring');
+const patterns = require('./include/patterns/patterns');
 
 module.exports = grammar({
   name: "jewel_parser",
 
   supertypes: $ => [$.expression, $.type, $.type_declaration],
+
+  extras: $ => [/\s/, $.comment],
 
   rules: {
     source_file: $ => repeat(choice($.expression, $._statement, $.type_declaration)),
@@ -46,6 +53,12 @@ module.exports = grammar({
     ...tuple_types,
     ...data_types,
     ...statements,
+    ...function_declarations,
+    ...function_calls,
     ...alias_types,
+    ...comments,
+    ...pattern_matching,
+    ...destructuring,
+    ...patterns,
   }
 });

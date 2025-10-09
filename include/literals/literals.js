@@ -11,6 +11,10 @@ module.exports = {
 
   string_literal: $ => /"[^"]*"/,
 
+  boolean_literal: $ => /true|false/,
+
+  regex_literal: $ => /\/[^\/\\]*(?:\\.[^\/\\]*)*\//,
+
   generic_arguments: $ => seq(
     '<',
       $.type, repeat(seq(',', $.type)), optional(','),

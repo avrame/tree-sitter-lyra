@@ -15,6 +15,7 @@ const numbers = require('./include/literals/number_literals');
 const expressions = require('./include/expressions/expressions');
 const math_expressions = require('./include/expressions/math_expressions');
 const types = require('./include/types/types');
+const alias_types = require('./include/types/alias_type');
 const array_types = require('./include/types/array_type');
 const number_types = require('./include/types/number_types');
 const struct_types = require('./include/types/struct_type');
@@ -45,5 +46,6 @@ module.exports = grammar({
     ...tuple_types,
     ...data_types,
     ...statements,
+    ...alias_types,
   }
 });

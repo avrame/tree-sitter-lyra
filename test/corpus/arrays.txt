@@ -1,6 +1,6 @@
-======
-Arrays
-======
+=================
+Array declaration
+=================
 
 var fibs: Array<Int8> = [1, 1, 2, 3]
 

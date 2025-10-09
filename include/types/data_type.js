@@ -9,7 +9,7 @@ module.exports = {
     repeat(seq('|', $._data_type_constructor))
   ),
 
-  _data_type_constructor: $ => prec.left(1, seq(
+  _data_type_constructor: $ => prec.right(seq(
     $.data_type_constructor_name,
     optional(
       choice(

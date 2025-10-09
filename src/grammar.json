@@ -34,7 +34,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "string"
+            "name": "string_literal"
           },
           {
             "type": "SYMBOL",
@@ -47,7 +47,7 @@
         ]
       }
     },
-    "string": {
+    "string_literal": {
       "type": "PATTERN",
       "value": "\"[^\"]*\""
     },
@@ -398,6 +398,35 @@
         {
           "type": "SYMBOL",
           "name": "negation"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    },
+    "_constraint_math_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_constraint_arithmetic_operator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "constraint_negation"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "const_identifier"
         }
       ]
     },
@@ -419,6 +448,27 @@
         {
           "type": "SYMBOL",
           "name": "division"
+        }
+      ]
+    },
+    "_constraint_arithmetic_operator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "constraint_addition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "constraint_subtraction"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "constraint_multiplication"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "constraint_division"
         }
       ]
     },
@@ -506,6 +556,90 @@
         ]
       }
     },
+    "constraint_addition": {
+      "type": "PREC_LEFT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_constraint_math_expression"
+          },
+          {
+            "type": "STRING",
+            "value": "+"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_constraint_math_expression"
+          }
+        ]
+      }
+    },
+    "constraint_subtraction": {
+      "type": "PREC_LEFT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_constraint_math_expression"
+          },
+          {
+            "type": "STRING",
+            "value": "-"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_constraint_math_expression"
+          }
+        ]
+      }
+    },
+    "constraint_multiplication": {
+      "type": "PREC_LEFT",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_constraint_math_expression"
+          },
+          {
+            "type": "STRING",
+            "value": "*"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_constraint_math_expression"
+          }
+        ]
+      }
+    },
+    "constraint_division": {
+      "type": "PREC_LEFT",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_constraint_math_expression"
+          },
+          {
+            "type": "STRING",
+            "value": "/"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_constraint_math_expression"
+          }
+        ]
+      }
+    },
     "negation": {
       "type": "PREC_RIGHT",
       "value": 3,
@@ -519,6 +653,23 @@
           {
             "type": "SYMBOL",
             "name": "_math_expression"
+          }
+        ]
+      }
+    },
+    "constraint_negation": {
+      "type": "PREC_RIGHT",
+      "value": 3,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "-"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_constraint_math_expression"
           }
         ]
       }
@@ -546,6 +697,10 @@
         {
           "type": "SYMBOL",
           "name": "data_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "alias_type"
         }
       ]
     },
@@ -1034,7 +1189,7 @@
     },
     "_data_type_constructor": {
       "type": "PREC_RIGHT",
-      "value": 1,
+      "value": 0,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1076,6 +1231,10 @@
         {
           "type": "SYMBOL",
           "name": "declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "const_declaration"
         },
         {
           "type": "SYMBOL",
@@ -1129,6 +1288,39 @@
         }
       ]
     },
+    "const_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "const"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "const_identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "type_notation"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        }
+      ]
+    },
     "var_reassignment": {
       "type": "SEQ",
       "members": [
@@ -1150,6 +1342,10 @@
       "type": "PATTERN",
       "value": "[a-z][a-z0-9_]*"
     },
+    "const_identifier": {
+      "type": "PATTERN",
+      "value": "[A-Z][A-Z0-9_]*"
+    },
     "return_statement": {
       "type": "SEQ",
       "members": [
@@ -1160,6 +1356,208 @@
         {
           "type": "SYMBOL",
           "name": "expression"
+        }
+      ]
+    },
+    "alias_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "alias"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "user_defined_type_name"
+          },
+          "named": true,
+          "value": "alias_type_name"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "where"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "constraints"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "constraints": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "constraint"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "constraint"
+              }
+            ]
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "constraint": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "range_constraint"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "enum_constraint"
+        }
+      ]
+    },
+    "range_constraint": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "range="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "range"
+        }
+      ]
+    },
+    "enum_constraint": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "enum="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "enum"
+        }
+      ]
+    },
+    "range": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_constraint_math_expression"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ".."
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_constraint_math_expression"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "enum": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "enum_value"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "|"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "enum_value"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "enum_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "string_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_number"
         }
       ]
     }

@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.13)
 
-project(tree-sitter-jewel-parser
+project(tree-sitter-lyra-parser
         VERSION "0.1.0"
         DESCRIPTION "A tree-sitter parser for the Lyra Programming Language"
-        HOMEPAGE_URL "https://github.com/tree-sitter/tree-sitter-jewel_parser"
+        HOMEPAGE_URL "https://github.com/tree-sitter/tree-sitter-lyra_parser"
         LANGUAGES C)
 
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
@@ -26,40 +26,40 @@ add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/src/parser.c"
                    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
                    COMMENT "Generating parser.c")
 
-add_library(tree-sitter-jewel-parser src/parser.c)
+add_library(tree-sitter-lyra-parser src/parser.c)
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/scanner.c)
-  target_sources(tree-sitter-jewel-parser PRIVATE src/scanner.c)
+  target_sources(tree-sitter-lyra-parser PRIVATE src/scanner.c)
 endif()
-target_include_directories(tree-sitter-jewel-parser
+target_include_directories(tree-sitter-lyra-parser
                            PRIVATE src
                            INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/bindings/c>
                                      $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-target_compile_definitions(tree-sitter-jewel-parser PRIVATE
+target_compile_definitions(tree-sitter-lyra-parser PRIVATE
                            $<$<BOOL:${TREE_SITTER_REUSE_ALLOCATOR}>:TREE_SITTER_REUSE_ALLOCATOR>
                            $<$<CONFIG:Debug>:TREE_SITTER_DEBUG>)
 
-set_target_properties(tree-sitter-jewel-parser
+set_target_properties(tree-sitter-lyra-parser
                       PROPERTIES
                       C_STANDARD 11
                       POSITION_INDEPENDENT_CODE ON
                       SOVERSION "${TREE_SITTER_ABI_VERSION}.${PROJECT_VERSION_MAJOR}"
                       DEFINE_SYMBOL "")
 
-configure_file(bindings/c/tree-sitter-jewel-parser.pc.in
-               "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-jewel-parser.pc" @ONLY)
+configure_file(bindings/c/tree-sitter-lyra-parser.pc.in
+               "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-lyra-parser.pc" @ONLY)
 
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bindings/c/tree_sitter"
         DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
         FILES_MATCHING PATTERN "*.h")
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-jewel-parser.pc"
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-lyra-parser.pc"
         DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
-install(TARGETS tree-sitter-jewel-parser
+install(TARGETS tree-sitter-lyra-parser
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 
 file(GLOB QUERIES queries/*.scm)
 install(FILES ${QUERIES}
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/tree-sitter/queries/jewel-parser")
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/tree-sitter/queries/lyra-parser")
 
 add_custom_target(ts-test "${TREE_SITTER_CLI}" test
                   WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"

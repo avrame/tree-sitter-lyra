@@ -7,7 +7,7 @@ typedef struct TSLanguage TSLanguage;
 extern "C" {
 #endif
 
-const TSLanguage *tree_sitter_jewel_parser(void);
+const TSLanguage *tree_sitter_lyra_parser(void);
 
 #ifdef __cplusplus
 }

@@ -1,4 +1,4 @@
-module github.com/tree-sitter/tree-sitter-jewel_parser
+module github.com/tree-sitter/tree-sitter-lyra_parser
 
 go 1.22
 

@@ -7,7 +7,7 @@
 //! let code = r#"
 //! "#;
 //! let mut parser = tree_sitter::Parser::new();
-//! let language = tree_sitter_jewel_parser::LANGUAGE;
+//! let language = tree_sitter_lyra_parser::LANGUAGE;
 //! parser
 //!     .set_language(&language.into())
 //!     .expect("Error loading The Jewel Programming Language Parser parser");
@@ -21,11 +21,11 @@
 use tree_sitter_language::LanguageFn;
 
 extern "C" {
-    fn tree_sitter_jewel_parser() -> *const ();
+    fn tree_sitter_lyra_parser() -> *const ();
 }
 
 /// The tree-sitter [`LanguageFn`] for this grammar.
-pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_jewel_parser) };
+pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_lyra_parser) };
 
 /// The content of the [`node-types.json`] file for this grammar.
 ///

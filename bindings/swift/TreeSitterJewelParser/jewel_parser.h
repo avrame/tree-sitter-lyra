@@ -1,5 +1,5 @@
-#ifndef TREE_SITTER_JEWEL_PARSER_H_
-#define TREE_SITTER_JEWEL_PARSER_H_
+#ifndef TREE_SITTER_LYRA_PARSER_H_
+#define TREE_SITTER_LYRA_PARSER_H_
 
 typedef struct TSLanguage TSLanguage;
 
@@ -13,4 +13,4 @@ const TSLanguage *tree_sitter_lyra_parser(void);
 }
 #endif
 
-#endif // TREE_SITTER_JEWEL_PARSER_H_
+#endif // TREE_SITTER_LYRA_PARSER_H_

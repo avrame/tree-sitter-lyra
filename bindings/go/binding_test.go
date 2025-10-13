@@ -10,6 +10,6 @@ import (
 func TestCanLoadGrammar(t *testing.T) {
 	language := tree_sitter.NewLanguage(tree_sitter_lyra_parser.Language())
 	if language == nil {
-		t.Errorf("Error loading The Jewel Programming Language Parser grammar")
+		t.Errorf("Error loading The Lyra Programming Language Parser grammar")
 	}
 }

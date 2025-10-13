@@ -9,4 +9,4 @@ class TestLanguage(TestCase):
         try:
             Parser(Language(tree_sitter_lyra_parser.language()))
         except Exception:
-            self.fail("Error loading The Jewel Programming Language Parser grammar")
+            self.fail("Error loading The Lyra Programming Language Parser grammar")

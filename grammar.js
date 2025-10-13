@@ -1,5 +1,5 @@
 /**
- * @file A tree-sitter parser for the Jewel Programming Language
+ * @file A tree-sitter parser for the Lyra Programming Language
  * @author Avram Eisner <avrame@gmail.com>
  * @license MIT
  */

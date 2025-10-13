@@ -1,4 +1,4 @@
-"""A tree-sitter parser for the Jewel Programming Language"""
+"""A tree-sitter parser for the Lyra Programming Language"""
 
 from importlib.resources import files as _files
 

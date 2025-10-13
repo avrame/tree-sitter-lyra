@@ -1,12 +1,12 @@
 import XCTest
 import SwiftTreeSitter
-import TreeSitterJewelParser
+import TreeSitterLyraParser
 
-final class TreeSitterJewelParserTests: XCTestCase {
+final class TreeSitterLyraParserTests: XCTestCase {
     func testCanLoadGrammar() throws {
         let parser = Parser()
         let language = Language(language: tree_sitter_lyra_parser())
         XCTAssertNoThrow(try parser.setLanguage(language),
-                         "Error loading The Jewel Programming Language Parser grammar")
+                         "Error loading The Lyra Programming Language Parser grammar")
     }
 }

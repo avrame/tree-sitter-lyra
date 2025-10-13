@@ -6,16 +6,17 @@ struct Point { x: Float32, y: Float32 }
 
 ------------------------------
 
-(source_file
-  (struct_type
-    (struct_name)
-    (struct_type_body
-      (field_name)
-      (field_type
-        (float_type))
-      (field_name)
-      (field_type
-        (float_type)))))
+(program
+  (type_declaration
+    (struct_type
+      (struct_name)
+      (struct_type_body
+        (field_name)
+        (field_type
+          (float_type))
+        (field_name)
+        (field_type
+          (float_type))))))
 
 ==============================
 Struct Instance
@@ -28,7 +29,7 @@ let origin = Point {
 
 ---------------------------------
 
- (source_file
+(program
   (declaration
     (identifier)
     (struct_literal
@@ -48,18 +49,19 @@ struct Point<num> { x: num, y: num }
 
 ----------------------------------
 
-(source_file
-  (struct_type
-    (struct_name)
-    (generic_parameters
-      (generic_type))
-    (struct_type_body
-      (field_name)
-      (field_type
+(program
+  (type_declaration
+    (struct_type
+      (struct_name)
+      (generic_parameters
         (generic_type))
-      (field_name)
-      (field_type
-        (generic_type)))))
+      (struct_type_body
+        (field_name)
+        (field_type
+          (generic_type))
+        (field_name)
+        (field_type
+          (generic_type))))))
 
 ===================================
 Struct Instance with Generic Params
@@ -70,7 +72,7 @@ let float_point = Point<Float64> { x: 1.23, y: 4.56 }
 
 ----------------------------------
 
-(source_file
+(program
   (declaration
     (identifier)
     (struct_literal
@@ -114,4 +116,4 @@ struct Point {}
 
 ----------------------------------
 
-==================================
+====================

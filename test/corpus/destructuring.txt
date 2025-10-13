@@ -7,16 +7,13 @@ let [a, b, c] = [1, 2, 3]
 
 ---
 
-(source_file
+(program
   (destructuring_declaration
     (destructuring_pattern
       (array_pattern
-        (pattern
-          (identifier))
-        (pattern
-          (identifier))
-        (pattern
-          (identifier))))
+        (identifier)
+        (identifier)
+        (identifier)))
     (array_literal
       (integer)
       (integer)
@@ -31,12 +28,11 @@ let [a, ...rest] = [1, 2, 3]
 // a == 1, rest == [2, 3]
 ---
 
-(source_file
+(program
   (destructuring_declaration
     (destructuring_pattern
       (array_pattern
-        (pattern
-          (identifier))
+        (identifier)
         (rest_pattern
           (identifier))))
     (array_literal
@@ -54,14 +50,13 @@ let [...first, last] = [1, 2, 3]
 
 ---
 
-(source_file
+(program
   (destructuring_declaration
     (destructuring_pattern
       (array_pattern
         (rest_pattern
           (identifier))
-        (pattern
-          (identifier))))
+        (identifier)))
     (array_literal
       (integer)
       (integer)
@@ -77,18 +72,15 @@ let [a, b, ...middle, c] = [1, 2, 3, 4, 5]
 
 ---
 
-(source_file
+(program
   (destructuring_declaration
     (destructuring_pattern
       (array_pattern
-        (pattern
-          (identifier))
-        (pattern
-          (identifier))
+        (identifier)
+        (identifier)
         (rest_pattern
           (identifier))
-        (pattern
-          (identifier))))
+        (identifier)))
     (array_literal
       (integer)
       (integer)
@@ -107,7 +99,7 @@ let { a, b, c } = some_struct
 
 ---
 
-(source_file
+(program
   (comment)
   (destructuring_declaration
     (destructuring_pattern
@@ -115,7 +107,8 @@ let { a, b, c } = some_struct
         (identifier)
         (identifier)
         (identifier)))
-    (identifier))
+    (postfix_expression
+      (identifier)))
   (comment))
 
 ======================================
@@ -128,7 +121,7 @@ let { a, ...rest } = some_struct
 
 ---
 
-(source_file
+(program
   (comment)
   (destructuring_declaration
     (destructuring_pattern
@@ -136,7 +129,8 @@ let { a, ...rest } = some_struct
         (identifier)
         (rest_pattern
           (identifier))))
-    (identifier))
+    (postfix_expression
+      (identifier)))
   (comment))
 
 ====================================================
@@ -149,7 +143,7 @@ let { a: foo, ...rest } = some_struct
 
 ---
 
-(source_file
+(program
   (comment)
   (destructuring_declaration
     (destructuring_pattern
@@ -158,7 +152,8 @@ let { a: foo, ...rest } = some_struct
         (new_name)
         (rest_pattern
           (identifier))))
-    (identifier))
+    (postfix_expression
+      (identifier)))
   (comment))
 
 ===================
@@ -171,18 +166,16 @@ let (a, b, c) = some_tuple
 
 ---
 
-(source_file
+(program
   (comment)
   (destructuring_declaration
     (destructuring_pattern
       (tuple_pattern
-        (pattern
-          (identifier))
-        (pattern
-          (identifier))
-        (pattern
-          (identifier))))
-    (identifier))
+        (identifier)
+        (identifier)
+        (identifier)))
+    (postfix_expression
+      (identifier)))
   (comment))
 
 =====================================
@@ -195,14 +188,14 @@ let (a, ...rest) = some_tuple
 
 ---
 
-(source_file
+(program
   (comment)
   (destructuring_declaration
     (destructuring_pattern
       (tuple_pattern
-        (pattern
-          (identifier))
+        (identifier)
         (rest_pattern
           (identifier))))
-    (identifier))
+    (postfix_expression
+      (identifier)))
   (comment))

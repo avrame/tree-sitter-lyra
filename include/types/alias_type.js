@@ -24,7 +24,7 @@ module.exports = {
 
   // Range constraint
   range_constraint: $ => seq('range=', $.range),
-  range: $ => seq(optional($._constraint_math_expression), '..', optional($._constraint_math_expression)),
+  range: $ => seq(optional($._constraint_math_expr), '..', optional($._constraint_math_expr)),
 
   // Enum constraint
   enum_constraint: $ => seq('enum=', $.enum),
@@ -33,7 +33,7 @@ module.exports = {
 
   // Size constraint (Array)
   size_constraint: $ => seq('size=', $.size),
-  size: $ => seq($._constraint_math_expression),
+  size: $ => seq($._constraint_math_expr),
 
   // Pattern constraint (String)
   pattern_constraint: $ => seq('pattern=', $.pattern),

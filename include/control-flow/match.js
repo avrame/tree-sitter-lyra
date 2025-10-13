@@ -1,6 +1,6 @@
 module.exports = {
   // Pattern matching expressions
-  match_expression: $ => seq(
+  match_expr: $ => seq(
     'match',
     field('value', $.expression),
     '{',

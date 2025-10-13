@@ -1,5 +1,3 @@
-const { identifier } = require("../statements/statements");
-
 module.exports = {
   // Core pattern types
   pattern: $ => prec.left(choice(

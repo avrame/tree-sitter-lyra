@@ -1,1 +1,7 @@
-data Maybe<t> = Nil | Some t
+if x == 0 then
+  println("Zero!")
+else if x < 0
+  println("Negative!")
+else
+  println("Positive!")
+end

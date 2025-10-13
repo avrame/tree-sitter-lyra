@@ -10,10 +10,12 @@ module.exports = {
   parameter_list: $ => seq(
     '(',
     $.parameter,
-    repeat(seq(',', $.parameter)),
-    optional(','),
+    repeat(seq($._comma, $.parameter)),
+    optional($._comma),
     ')'
   ),
+
+  _comma: $ => prec.left(10, ','),
 
   parameter: $ => seq(
     field('name', $.identifier),

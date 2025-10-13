@@ -6,7 +6,7 @@ Simple Math Operator
 
 ---
 
-(source_file
+(program
   (addition
     (integer)
     (integer)))
@@ -19,7 +19,7 @@ Test Simple Precedence
 
 ---
 
-(source_file
+(program
   (addition
     (integer)
     (multiplication
@@ -34,7 +34,7 @@ Test Group Precedence
 
 ---
 
-(source_file
+(program
   (multiplication
     (group
       (addition
@@ -50,7 +50,7 @@ Test Group Precedence with Negation
 
 ---
 
-(source_file
+(program
   (multiplication
     (negation
       (group

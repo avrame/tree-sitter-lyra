@@ -8,7 +8,7 @@ fn sum (a: Int, b: Int): Int {
 
 ---
 
-(source_file
+(program
   (function_declaration
     (identifier)
     (parameter_list
@@ -38,7 +38,7 @@ fn product (a: Int, b: Int = 10): Int {
 
 ---
 
-(source_file
+(program
   (function_declaration
     (identifier)
     (parameter_list
@@ -60,27 +60,27 @@ fn product (a: Int, b: Int = 10): Int {
           (identifier)
           (identifier))))))
 
-===================
-Basic Function call
-===================
+========================================
+Basic Function call with named arguments
+========================================
 
 let result = sum(a=1, b=2)
 
 ---
 
-(source_file
+(program
   (declaration
-    name: (identifier)
-    value: (function_call
-      name: (function_name)
-      arguments: (argument_list
-        argument: (argument
-          name: (argument_name)
-          value: (argument_value
+    (identifier)
+    (function_call_expression
+      (identifier)
+      (argument_list
+        (named_argument
+          (argument_name)
+          (value
             (integer)))
-        (argument
-          name: (argument_name)
-          value: (argument_value
+        (named_argument
+          (argument_name)
+          (value
             (integer)))))))
 
 ============================================
@@ -93,26 +93,26 @@ let result = add_one(b=2)
 
 ---
 
-(source_file
+(program
   (declaration
     (identifier)
-    (function_call
-      (function_name)
+    (function_call_expression
+      (identifier)
       (argument_list
-        (argument
+        (named_argument
           (argument_name)
-          (argument_value
+          (value
             (integer)))
-        (argument
+        (named_argument
           (argument_name)
           (wildcard)))))
   (declaration
     (identifier)
-    (function_call
-      (function_name)
+    (function_call_expression
+      (identifier)
       (argument_list
-        (argument
+        (named_argument
           (argument_name)
-          (argument_value
+          (value
             (integer))))))
   (comment))

@@ -2,8 +2,9 @@ module.exports = {
   function_declaration: $ => seq(
     'fn',
     field('name', $.identifier),
+    optional(field('generic_parameters', $.generic_parameters)),
     field('parameters', $.parameter_list),
-    optional(field('return_type', $.type_notation)),
+    optional(field('return_type', $.return_type_notation)),
     field('body', $.block)
   ),
 

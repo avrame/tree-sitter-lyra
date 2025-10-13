@@ -2,7 +2,7 @@
 Basic Function declaration
 ==========================
 
-fn sum (a: Int, b: Int): Int {
+fn sum (a: Int, b: Int) -> Int {
   return a + b
 }
 
@@ -20,8 +20,40 @@ fn sum (a: Int, b: Int): Int {
         (identifier)
         (type_notation
           (signed_integer_type))))
-    (type_notation
+    (return_type_notation
       (signed_integer_type))
+    (block
+      (return_statement
+        (addition
+          (identifier)
+          (identifier))))))
+
+==================================================
+Basic Function declaration with generic parameters
+==================================================
+
+fn sum<n> (a: n, b: n) -> n {
+  return a + b
+}
+
+---
+
+(program
+  (function_declaration
+    (identifier)
+    (generic_parameters
+      (generic_type))
+    (parameter_list
+      (parameter
+        (identifier)
+        (type_notation
+          (generic_type)))
+      (parameter
+        (identifier)
+        (type_notation
+          (generic_type))))
+    (return_type_notation
+      (generic_type))
     (block
       (return_statement
         (addition
@@ -32,7 +64,7 @@ fn sum (a: Int, b: Int): Int {
 Function declaration with defaults
 ==================================
 
-fn product (a: Int, b: Int = 10): Int {
+fn product (a: Int, b: Int = 10) -> Int {
   return a * b
 }
 
@@ -52,13 +84,56 @@ fn product (a: Int, b: Int = 10): Int {
           (signed_integer_type))
         (default_value
           (integer))))
-    (type_notation
+    (return_type_notation
       (signed_integer_type))
     (block
       (return_statement
         (multiplication
           (identifier)
           (identifier))))))
+
+=====================
+Higher order function
+=====================
+
+fn map<t,u>(array: Array<t>, func: (t) -> u) -> Array<u> {
+//  new_array: Array<u,array.len()> = []
+//  for item in array {
+//    new_array.push(func(item))
+//  }
+//  new_array
+}
+
+---
+
+(program
+  (function_declaration
+    (identifier)
+    (generic_parameters
+      (generic_type)
+      (generic_type))
+    (parameter_list
+      (parameter
+        (identifier)
+        (type_notation
+          (array_type
+            (generic_type))))
+      (parameter
+        (identifier)
+        (type_notation
+          (function_type
+            (function_type_parameter_list
+              (generic_type))
+            (generic_type)))))
+    (return_type_notation
+      (array_type
+        (generic_type)))
+    (block
+      (comment)
+      (comment)
+      (comment)
+      (comment)
+      (comment))))
 
 ========================================
 Basic Function call with named arguments
@@ -87,7 +162,7 @@ let result = sum(a=1, b=2)
 Basic Function call with partial application
 ============================================
 
-let add_one = sum(a=1, b=_)
+let add_one = sum(1, _)
 let result = add_one(b=2)
 // result == 3
 
@@ -99,13 +174,9 @@ let result = add_one(b=2)
     (function_call_expression
       (identifier)
       (argument_list
-        (named_argument
-          (argument_name)
-          (value
-            (integer)))
-        (named_argument
-          (argument_name)
-          (wildcard)))))
+        (value
+          (integer))
+        (wildcard))))
   (declaration
     (identifier)
     (function_call_expression

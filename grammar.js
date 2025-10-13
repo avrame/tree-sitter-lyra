@@ -18,7 +18,7 @@ const destructuring = require('./include/destructuring/destructuring');
 const patterns = require('./include/patterns');
 
 module.exports = grammar({
-  name: "jewel",
+  name: "lyra",
 
   supertypes: $ => [$.expression, $.statement, $.pattern, $.type],
 

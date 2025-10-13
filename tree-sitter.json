@@ -2,21 +2,21 @@
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
   "grammars": [
     {
-      "name": "jewel_parser",
-      "camelcase": "JewelParser",
-      "title": "The Jewel Programming Language Parser",
-      "scope": "source.jewel_parser",
+      "name": "lyra_parser",
+      "camelcase": "LyraParser",
+      "title": "The Lyra Programming Language Parser",
+      "scope": "source.lyra_parser",
       "file-types": [
-        ".jwl"
+        ".lyra"
       ],
-      "injection-regex": "^jewel_parser$",
-      "class-name": "TreeSitterJewelParser"
+      "injection-regex": "^lyra_parser$",
+      "class-name": "TreeSitterLyraParser"
     }
   ],
   "metadata": {
     "version": "0.1.0",
     "license": "MIT",
-    "description": "A tree-sitter parser for the Jewel Programming Language",
+    "description": "A tree-sitter parser for the Lyra Programming Language",
     "authors": [
       {
         "name": "Avram Eisner",

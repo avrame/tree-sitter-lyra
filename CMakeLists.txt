@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-jewel-parser
         VERSION "0.1.0"
-        DESCRIPTION "A tree-sitter parser for the Jewel Programming Language"
+        DESCRIPTION "A tree-sitter parser for the Lyra Programming Language"
         HOMEPAGE_URL "https://github.com/tree-sitter/tree-sitter-jewel_parser"
         LANGUAGES C)
 

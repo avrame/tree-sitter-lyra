@@ -6,6 +6,7 @@ module.exports = {
     $.array_pattern,                // array destructuring: [a, b, ...rest]
     $.struct_pattern,               // struct destructuring: {name, age}
     $.tuple_pattern,                // tuple destructuring: (x, y, z)
+    $.data_pattern,                 // data pattern: Some(42)
     $.wildcard_pattern              // wildcard: _
   )),
 
@@ -57,6 +58,12 @@ module.exports = {
     $.rest_pattern,                 // ...rest
     $.wildcard_pattern              // _
   )),
+
+  // Data pattern
+  data_pattern: $ => seq(
+    alias($.user_defined_type_name, $.data_type_name),
+    optional(seq('(', $.pattern, ')')),
+  ),
 
   // Literal patterns (for pattern matching)
   literal_pattern: $ => choice(

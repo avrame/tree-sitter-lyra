@@ -1,18 +1,20 @@
 module.exports = {
   // Pattern matching expressions
-  match_expr: $ => seq(
+  match_expr: $ => prec(201, seq(
     'match',
     field('value', $.expression),
     '{',
-    repeat($.match_arm),
+    $.match_arm,
+    repeat(seq($._comma, $.match_arm)),
+    optional($._comma),
     '}'
-  ),
+  )),
 
   match_arm: $ => seq(
     field('pattern', $.pattern),
     optional($.guard),
     '=>',
-    field('body', $.expression)
+    field('body', choice($.expression, $.block))
   ),
 
   guard: $ => seq('if', $.expression),

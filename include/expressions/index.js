@@ -15,6 +15,7 @@ module.exports = {
     $.for_in_loop, // can return a value after a break statement
     $._literal,
     $.spread_expr,
+    $.match_expr,
   ),
 
   // Function call expression with higher precedence

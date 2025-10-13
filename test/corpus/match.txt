@@ -1,0 +1,35 @@
+============
+Simple Match
+============
+
+// let foo: Maybe<Int> = Some(42)
+let bar = match foo {
+  Some(42) => "The Answer!",
+  Some(_) => "Just some number",
+  None => "huh?",
+}
+
+---
+
+(program
+  (comment)
+  (declaration
+    (identifier)
+    (match_expr
+      (postfix_expression
+        (identifier))
+      (match_arm
+        (data_pattern
+          (data_type_name)
+          (literal_pattern
+            (integer)))
+        (string_literal))
+      (match_arm
+        (data_pattern
+          (data_type_name)
+          (wildcard_pattern))
+        (string_literal))
+      (match_arm
+        (data_pattern
+          (data_type_name))
+        (string_literal)))))

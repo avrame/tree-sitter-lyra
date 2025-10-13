@@ -16,7 +16,6 @@ const functions = require('./include/functions/');
 const comments = require('./include/comments');
 const destructuring = require('./include/destructuring/destructuring');
 const patterns = require('./include/patterns');
-const control_flow = require('./include/control-flow/');
 
 module.exports = grammar({
   name: "jewel",
@@ -39,6 +38,5 @@ module.exports = grammar({
     ...comments,
     ...destructuring,
     ...patterns,
-    ...control_flow,
   }
 });

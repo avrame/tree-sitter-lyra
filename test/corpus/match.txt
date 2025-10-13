@@ -33,3 +33,8 @@ let bar = match foo {
         (data_pattern
           (data_type_name))
         (string_literal)))))
+
+===
+Match with blocks
+===
+

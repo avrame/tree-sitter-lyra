@@ -1,3 +1,4 @@
+const control_flow = require('./control-flow/');
 const boolean = require('./boolean');
 const math = require('./math');
 const range = require('./range');
@@ -61,6 +62,8 @@ module.exports = {
 
   spread_expr: $ => prec.right(20, seq('...', $.identifier)),
   nil_expr: $ => 'nil',
+
+  ...control_flow,
   ...boolean,
   ...math,
   ...range,

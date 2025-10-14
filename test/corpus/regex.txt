@@ -1,0 +1,12 @@
+====================
+Simple Regex (Phone)
+====================
+
+let phone = r/[2-9][0-9]{2} [2-9][0-9]{2} [0-9]{4}$/
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (regex_literal)))

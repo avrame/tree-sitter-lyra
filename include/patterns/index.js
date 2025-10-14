@@ -67,7 +67,7 @@ module.exports = {
 
   // Literal patterns (for pattern matching)
   literal_pattern: $ => choice(
-    $._number,
+    $._number_literal,
     $.string_literal,
     $.boolean_literal
   ),

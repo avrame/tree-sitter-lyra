@@ -479,6 +479,11 @@
     }
   },
   {
+    "type": "binary_int",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "block",
     "named": true,
     "fields": {},
@@ -1820,6 +1825,11 @@
     }
   },
   {
+    "type": "hexadecimal_int",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "if_block",
     "named": true,
     "fields": {},
@@ -1910,7 +1920,25 @@
   {
     "type": "integer",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_int",
+          "named": true
+        },
+        {
+          "type": "hexadecimal_int",
+          "named": true
+        },
+        {
+          "type": "octal_int",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "less_than",
@@ -2155,6 +2183,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "octal_int",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "parameter",
@@ -2988,6 +3021,18 @@
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": "0b",
+    "named": false
+  },
+  {
+    "type": "0o",
+    "named": false
+  },
+  {
+    "type": "0x",
     "named": false
   },
   {

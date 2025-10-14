@@ -24,3 +24,44 @@ let float_num = 1_234.567_890
     (identifier)
     (float)))
 
+======================
+Hexadecimal Int format
+======================
+
+let the_answer = 0x2A
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (integer
+      (hexadecimal_int))))
+
+================
+Octal int format
+================
+
+let the_answer = 0o46
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (integer
+      (octal_int))))
+
+=================
+Binary int format
+=================
+
+let the_answer = 0b101010
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (integer
+      (binary_int))))

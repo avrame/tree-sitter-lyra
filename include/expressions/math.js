@@ -3,10 +3,10 @@ module.exports = {
     _math_expr: $ => choice($._primary_math_expr, $.addition, $.subtraction, $.multiplication, $.division),
 
     // Primary math expression - base elements without arithmetic operators or negation to avoid circular dependency
-    _primary_math_expr: $ => choice($._number, $._primary_expression, $.group, $.negation),
+    _primary_math_expr: $ => choice($._number_literal, $._primary_expression, $.group, $.negation),
 
     // Math expression for constraints that can include const_identifier without circular dependency
-    _constraint_math_expr: $ => choice($._number, $._constraint_arithmetic_operator, $.constraint_negation, $.identifier, $.const_identifier),
+    _constraint_math_expr: $ => choice($._number_literal, $._constraint_arithmetic_operator, $.constraint_negation, $.identifier, $.const_identifier),
 
     _arithmetic_operator: $ => choice($.addition, $.subtraction, $.multiplication, $.division),
     _constraint_arithmetic_operator: $ => choice($.constraint_addition, $.constraint_subtraction, $.constraint_multiplication, $.constraint_division),

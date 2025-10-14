@@ -7,7 +7,7 @@ module.exports = {
   _literal: $ => prec.right(
     1,
     choice(
-      $._number,
+      $._number_literal,
       $.boolean_literal,
       $.regex_literal,
       $.string_literal,
@@ -24,7 +24,7 @@ module.exports = {
 
   boolean_literal: $ => token(choice('true', 'false')),
 
-  regex_literal: $ => /\/[^\/\\]*(?:\\.[^\/\\]*)*\//,
+  regex_literal: $ => /r\/[^\/\\]*(?:\\.[^\/\\]*)*\//,
 
   generic_arguments: $ => seq(
     '<',

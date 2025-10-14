@@ -29,7 +29,7 @@ module.exports = {
   // Enum constraint
   enum_constraint: $ => seq('enum=', $.enum),
   enum: $ => seq($.enum_value, repeat(seq('|', $.enum_value))),
-  enum_value: $ => choice($.string_literal, $._number),
+  enum_value: $ => choice($.string_literal, $._number_literal),
 
   // Size constraint (Array)
   size_constraint: $ => seq('size=', $.size),

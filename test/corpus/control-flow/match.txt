@@ -16,8 +16,7 @@ let bar = match foo {
   (declaration
     (identifier)
     (match_expr
-      (postfix_expression
-        (identifier))
+      (identifier)
       (match_arm
         (data_pattern
           (data_type_name)

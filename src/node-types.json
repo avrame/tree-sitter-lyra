@@ -40,10 +40,6 @@
         "named": true
       },
       {
-        "type": "function_call_expression",
-        "named": true
-      },
-      {
         "type": "group",
         "named": true
       },
@@ -85,10 +81,6 @@
       },
       {
         "type": "postfix_expression",
-        "named": true
-      },
-      {
-        "type": "qualified_identifier",
         "named": true
       },
       {
@@ -288,10 +280,6 @@
           "named": true
         },
         {
-          "type": "qualified_identifier",
-          "named": true
-        },
-        {
           "type": "subtraction",
           "named": true
         }
@@ -325,42 +313,6 @@
     "type": "alias_type_name",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "argument_list",
-    "named": true,
-    "fields": {
-      "value": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "value",
-            "named": true
-          }
-        ]
-      },
-      "wildcard": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "wildcard",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "named_argument",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "array_capacity",
@@ -412,10 +364,6 @@
         },
         {
           "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "qualified_identifier",
           "named": true
         },
         {
@@ -568,10 +516,6 @@
         },
         {
           "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "qualified_identifier",
           "named": true
         },
         {
@@ -1195,10 +1139,6 @@
           "named": true
         },
         {
-          "type": "qualified_identifier",
-          "named": true
-        },
-        {
           "type": "subtraction",
           "named": true
         }
@@ -1398,10 +1338,6 @@
           "named": true
         },
         {
-          "type": "qualified_identifier",
-          "named": true
-        },
-        {
           "type": "relational_operator",
           "named": true
         },
@@ -1595,33 +1531,6 @@
     }
   },
   {
-    "type": "function_call_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "argument_list",
-          "named": true
-        },
-        {
-          "type": "const_identifier",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "qualified_identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "function_declaration",
     "named": true,
     "fields": {
@@ -1796,10 +1705,6 @@
         },
         {
           "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "qualified_identifier",
           "named": true
         },
         {
@@ -2091,10 +1996,6 @@
           "named": true
         },
         {
-          "type": "qualified_identifier",
-          "named": true
-        },
-        {
           "type": "subtraction",
           "named": true
         }
@@ -2176,10 +2077,6 @@
         {
           "type": "parenthesized_expression",
           "named": true
-        },
-        {
-          "type": "qualified_identifier",
-          "named": true
         }
       ]
     }
@@ -2231,7 +2128,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "parameter",
@@ -2274,12 +2171,22 @@
     "type": "postfix_expression",
     "named": true,
     "fields": {
+      "call": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "function_call",
+            "named": true
+          }
+        ]
+      },
       "index": {
         "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "indexing",
+            "type": "expression",
             "named": true
           }
         ]
@@ -2289,14 +2196,18 @@
         "required": false,
         "types": [
           {
-            "type": "member_access",
+            "type": "const_identifier",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           }
         ]
       }
     },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -2304,31 +2215,11 @@
           "named": true
         },
         {
-          "type": "function_call",
-          "named": true
-        },
-        {
           "type": "identifier",
           "named": true
         },
         {
-          "type": "indexing",
-          "named": true
-        },
-        {
-          "type": "member_access",
-          "named": true
-        },
-        {
-          "type": "nil_expr",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "qualified_identifier",
+          "type": "postfix_expression",
           "named": true
         }
       ]
@@ -2349,25 +2240,6 @@
         },
         {
           "type": "type_declaration",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "qualified_identifier",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "const_identifier",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         }
       ]
@@ -2793,10 +2665,6 @@
         },
         {
           "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "qualified_identifier",
           "named": true
         },
         {
@@ -3233,10 +3101,6 @@
     "named": false
   },
   {
-    "type": "indexing",
-    "named": true
-  },
-  {
     "type": "less_than_or_equals",
     "named": true
   },
@@ -3247,10 +3111,6 @@
   {
     "type": "match",
     "named": false
-  },
-  {
-    "type": "member_access",
-    "named": true
   },
   {
     "type": "new_name",

@@ -17,9 +17,9 @@ if x == 3 {
           (equals))
         (integer)))
     (if_block
-      (function_call_expression
+      (postfix_expression
         (identifier)
-        (argument_list
+        (function_call
           (value
             (string_literal)))))))
 
@@ -44,16 +44,16 @@ if x == 3 {
           (equals))
         (integer)))
     (if_block
-      (function_call_expression
+      (postfix_expression
         (identifier)
-        (argument_list
+        (function_call
           (value
             (string_literal)))))
     (else)
     (if_block
-      (function_call_expression
+      (postfix_expression
         (identifier)
-        (argument_list
+        (function_call
           (value
             (string_literal)))))))
 
@@ -101,9 +101,9 @@ end
         (equality_operator
           (equals))
         (integer)))
-    (function_call_expression
+    (postfix_expression
       (identifier)
-      (argument_list
+      (function_call
         (value
           (string_literal))))
     (else_if)
@@ -113,15 +113,15 @@ end
         (relational_operator
           (less_than))
         (integer)))
-    (function_call_expression
+    (postfix_expression
       (identifier)
-      (argument_list
+      (function_call
         (value
           (string_literal))))
     (else)
-    (function_call_expression
+    (postfix_expression
       (identifier)
-      (argument_list
+      (function_call
         (value
           (string_literal))))))
 
@@ -162,16 +162,16 @@ if x == 0 {
               (equals))
             (integer)))
         (if_block
-          (function_call_expression
+          (postfix_expression
             (identifier)
-            (argument_list
+            (function_call
               (value
                 (string_literal)))))
         (else)
         (if_block
-          (function_call_expression
+          (postfix_expression
             (identifier)
-            (argument_list
+            (function_call
               (value
                 (string_literal)))))))
     (else)
@@ -184,15 +184,15 @@ if x == 0 {
               (equals))
             (integer)))
         (if_block
-          (function_call_expression
+          (postfix_expression
             (identifier)
-            (argument_list
+            (function_call
               (value
                 (string_literal)))))
         (else)
         (if_block
-          (function_call_expression
+          (postfix_expression
             (identifier)
-            (argument_list
+            (function_call
               (value
                 (string_literal)))))))))

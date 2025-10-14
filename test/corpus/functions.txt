@@ -1,6 +1,43 @@
-==========================
-Basic Function declaration
-==========================
+=============================================
+Basic Function declaration without parameters
+=============================================
+
+fn foo() {
+  // do stuff
+}
+
+---
+
+(program
+  (function_declaration
+    (identifier)
+    (parameter_list)
+    (block
+      (comment))))
+
+==============================================================
+Basic Function declaration without parameters with return type
+==============================================================
+
+fn foo() -> Int {
+  return 0
+}
+
+---
+
+(program
+  (function_declaration
+    (identifier)
+    (parameter_list)
+    (return_type_notation
+      (signed_integer_type))
+    (block
+      (return_statement
+        (integer)))))
+
+==========================================
+Basic Function declaration with parameters
+==========================================
 
 fn sum (a: Int, b: Int) -> Int {
   return a + b
@@ -146,9 +183,9 @@ let result = sum(a=1, b=2)
 (program
   (declaration
     (identifier)
-    (function_call_expression
+    (postfix_expression
       (identifier)
-      (argument_list
+      (function_call
         (named_argument
           (argument_name)
           (value
@@ -171,19 +208,47 @@ let result = add_one(b=2)
 (program
   (declaration
     (identifier)
-    (function_call_expression
+    (postfix_expression
       (identifier)
-      (argument_list
+      (function_call
         (value
           (integer))
         (wildcard))))
   (declaration
     (identifier)
-    (function_call_expression
+    (postfix_expression
       (identifier)
-      (argument_list
+      (function_call
         (named_argument
           (argument_name)
           (value
             (integer))))))
   (comment))
+
+===
+call with space
+===
+
+f ()
+
+---
+
+(program
+  (postfix_expression
+    (identifier)
+    (function_call)))
+
+===
+qualified call with space
+===
+
+ns.f ()
+
+---
+
+(program
+  (postfix_expression
+    (postfix_expression
+      (identifier)
+      (identifier))
+    (function_call)))

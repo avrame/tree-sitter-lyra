@@ -11,7 +11,7 @@ module.exports = {
     )
   ),
 
-  tuple_value: $ => alias($.expression, $.tuple_value),
+  tuple_value: $ => prec.right(1, alias($.expression, $.tuple_value)),
 
   tuple_name: $ => field('tuple_name', alias($.user_defined_type_name, $.tuple_name)),
 }

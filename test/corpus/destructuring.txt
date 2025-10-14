@@ -107,8 +107,7 @@ let { a, b, c } = some_struct
         (identifier)
         (identifier)
         (identifier)))
-    (postfix_expression
-      (identifier)))
+      (identifier))
   (comment))
 
 ======================================
@@ -129,8 +128,7 @@ let { a, ...rest } = some_struct
         (identifier)
         (rest_pattern
           (identifier))))
-    (postfix_expression
-      (identifier)))
+    (identifier))
   (comment))
 
 ====================================================
@@ -152,8 +150,7 @@ let { a: foo, ...rest } = some_struct
         (new_name)
         (rest_pattern
           (identifier))))
-    (postfix_expression
-      (identifier)))
+    (identifier))
   (comment))
 
 ===================
@@ -174,8 +171,7 @@ let (a, b, c) = some_tuple
         (identifier)
         (identifier)
         (identifier)))
-    (postfix_expression
-      (identifier)))
+    (identifier))
   (comment))
 
 =====================================
@@ -196,6 +192,5 @@ let (a, ...rest) = some_tuple
         (identifier)
         (rest_pattern
           (identifier))))
-    (postfix_expression
-      (identifier)))
+    (identifier))
   (comment))

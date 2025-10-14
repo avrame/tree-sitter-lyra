@@ -1,25 +1,19 @@
 module.exports = {
-  argument_list: $ => prec.left(1, seq(
+  argument_list: $ => seq(
     '(',
-    optional(
-      choice(
-        // named arguments only
-        seq(
-          $.named_argument,
-          repeat(seq($._comma, $.named_argument)),
-        ),
-        // positional arguments optionally followed by named arguments
-        seq(
-          $._argument_value,
-          repeat(seq($._comma, $._argument_value)),
-          optional(seq(
-            repeat1(seq($._comma, $.named_argument)),
-          )),
-        ),
+    optional(choice(
+      // named-only
+      seq($.named_argument, repeat(seq($._comma, $.named_argument)), optional($._comma)),
+      // positional [,...] then optional named [,...]
+      seq(
+        $._argument_value,
+        repeat(seq($._comma, $._argument_value)),
+        optional(seq($._comma, $.named_argument, repeat(seq($._comma, $.named_argument)))),
+        optional($._comma)
       )
-    ),
+    )),
     ')'
-  )),
+  ),
 
   named_argument: $ => seq(
     field('name', alias($.identifier, $.argument_name)),
@@ -32,4 +26,3 @@ module.exports = {
     field('wildcard', alias('_', $.wildcard)) // for partial application
   )
 }
-

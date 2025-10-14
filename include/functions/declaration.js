@@ -10,9 +10,13 @@ module.exports = {
 
   parameter_list: $ => seq(
     '(',
-    $.parameter,
-    repeat(seq($._comma, $.parameter)),
-    optional($._comma),
+    optional(
+      seq(
+        $.parameter,
+        repeat(seq($._comma, $.parameter)),
+        optional($._comma),
+      )
+    ),
     ')'
   ),
 

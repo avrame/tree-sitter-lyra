@@ -30,14 +30,21 @@ module.exports = {
 
   // Tuple patterns (shared)
   tuple_pattern: $ => seq(
-    optional(field('tuple_name', alias($.identifier, $.tuple_name))),
-    optional(field('generic_arguments', $.generic_parameters)),
-    '(',
-    $._pattern_element,
-    repeat(seq(',', $._pattern_element)),
-    optional(','),
-    ')'
+    choice(
+      $.unit_pattern,
+      seq(
+        optional(field('tuple_name', alias($.identifier, $.tuple_name))),
+        optional(field('generic_arguments', $.generic_parameters)),
+        '(',
+        $._pattern_element,
+        repeat(seq(',', $._pattern_element)),
+        optional(','),
+        ')'
+      )
+    )
   ),
+
+  unit_pattern: $ => seq('(', ')'),
 
   // Pattern elements (shared)
   _pattern_element: $ => prec(1, choice(

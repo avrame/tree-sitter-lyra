@@ -1,0 +1,45 @@
+=======================================
+Simple Range w/ Int literals, less than
+=======================================
+
+0..<10
+
+---
+
+(program
+  (range_expr
+    (range_start
+      (integer))
+    (range_end_operator)
+    (range_end
+      (integer))))
+
+====================================
+Simple Range w/ Int literals, equals
+====================================
+
+0..=10
+
+---
+
+(program
+  (range_expr
+    (range_start
+      (integer))
+    (range_end_operator)
+    (range_end
+      (integer))))
+
+================================================================
+Don't allow more than 2 dots (that is a spread or rest operator)
+:error
+================================================================
+
+0...10
+
+---
+
+(program
+  (integer)
+  (ERROR))
+

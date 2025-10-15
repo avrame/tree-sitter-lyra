@@ -174,6 +174,23 @@ let (a, b, c) = some_tuple
     (identifier))
   (comment))
 
+====================================
+Tuple destructuring with empty tuple
+====================================
+
+let () = do_something()
+
+---
+
+(program
+  (destructuring_declaration
+    (destructuring_pattern
+      (tuple_pattern
+        (unit_pattern)))
+    (postfix_expression
+      (identifier)
+      (function_call))))
+
 =====================================
 Tuple destructuring with rest pattern
 =====================================

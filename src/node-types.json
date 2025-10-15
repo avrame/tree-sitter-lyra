@@ -2308,6 +2308,11 @@
     }
   },
   {
+    "type": "range_end_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "range_expr",
     "named": true,
     "fields": {},
@@ -2317,6 +2322,10 @@
       "types": [
         {
           "type": "range_end",
+          "named": true
+        },
+        {
+          "type": "range_end_operator",
           "named": true
         },
         {
@@ -2680,7 +2689,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "generic_arguments",
@@ -2749,6 +2758,10 @@
         {
           "type": "rest_pattern",
           "named": true
+        },
+        {
+          "type": "unit_pattern",
+          "named": true
         }
       ]
     }
@@ -2805,6 +2818,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "unit_pattern",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "unsigned_integer_type",

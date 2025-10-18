@@ -129,6 +129,45 @@ fn product (a: Int, b: Int = 10) -> Int {
           (identifier)
           (identifier))))))
 
+=====================================
+Function with patterns for parameters
+=====================================
+
+fn foo(bar: String, 42, { x, y }, [one, two, three, ...rest], (alpha, beta)) {
+  // do stuff
+}
+
+---
+
+(program
+  (function_declaration
+    (identifier)
+    (parameter_list
+      (parameter
+        (identifier)
+        (type_notation
+          (string_type)))
+      (parameter
+        (literal_pattern
+          (integer)))
+      (parameter
+        (struct_pattern
+          (identifier)
+          (identifier)))
+      (parameter
+        (array_pattern
+          (identifier)
+          (identifier)
+          (identifier)
+          (rest_pattern
+            (identifier))))
+      (parameter
+        (tuple_pattern
+          (identifier)
+          (identifier))))
+    (block
+      (comment))))
+
 =====================
 Higher order function
 =====================

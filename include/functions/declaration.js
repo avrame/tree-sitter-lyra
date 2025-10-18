@@ -22,11 +22,14 @@ module.exports = {
 
   _comma: $ => prec.left(10, ','),
 
-  parameter: $ => seq(
-    field('name', $.identifier),
-    optional(field('type', $.type_notation)),
-    optional(field('default', $.default_value))
-  ),
+  parameter: $ => choice(
+    prec(1, seq(
+      field('name', $.identifier),
+      optional(field('type', $.type_notation)),
+      optional(field('default', $.default_value))
+    )),
+    $.pattern,
+),
 
   default_value: $ => seq('=', $.expression),
 }

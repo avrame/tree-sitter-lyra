@@ -129,6 +129,43 @@ fn product (a: Int, b: Int = 10) -> Int {
           (identifier)
           (identifier))))))
 
+===
+Mix of positional and named parameters
+===
+
+fn foo("bar", 42, baz=bonk, opt={ one: "one", two: "two" }) {
+  // some code
+}
+
+---
+
+(program
+  (function_declaration
+    (identifier)
+    (parameter_list
+      (parameter
+        (literal_pattern
+          (string_literal)))
+      (parameter
+        (literal_pattern
+          (integer)))
+      (parameter
+        (identifier)
+        (default_value
+          (identifier)))
+      (parameter
+        (identifier)
+        (default_value
+          (struct_literal
+            (field_name)
+            (field_value
+              (string_literal))
+            (field_name)
+            (field_value
+              (string_literal))))))
+    (block
+      (comment))))
+
 =====================================
 Function with patterns for parameters
 =====================================

@@ -116,17 +116,25 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "FIELD",
-            "name": "struct_name",
-            "content": {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "user_defined_type_name"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "struct_name",
+                "content": {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "user_defined_type_name"
+                  },
+                  "named": true,
+                  "value": "struct_name"
+                }
               },
-              "named": true,
-              "value": "struct_name"
-            }
+              {
+                "type": "BLANK"
+              }
+            ]
           },
           {
             "type": "CHOICE",

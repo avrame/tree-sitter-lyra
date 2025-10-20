@@ -1,0 +1,34 @@
+====================
+Simple Array Literal
+====================
+
+let foo = ["one", "two", "three"]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (array_literal
+      (string_literal)
+      (string_literal)
+      (string_literal))))
+
+=======================================
+Simple Array Literal with type notation
+=======================================
+
+let foo: Array<String> = ["one", "two", "three"]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (type_notation
+      (array_type
+        (string_type)))
+    (array_literal
+      (string_literal)
+      (string_literal)
+      (string_literal))))

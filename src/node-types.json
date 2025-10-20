@@ -2530,7 +2530,7 @@
       },
       "struct_name": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "struct_name",

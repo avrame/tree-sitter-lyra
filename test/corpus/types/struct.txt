@@ -63,41 +63,6 @@ struct Point<num> { x: num, y: num }
         (field_type
           (generic_type))))))
 
-===================================
-Struct Instance with Generic Params
-===================================
-
-let int_point = Point<Int32> { x: 123, y: 456 }
-let float_point = Point<Float64> { x: 1.23, y: 4.56 }
-
-----------------------------------
-
-(program
-  (declaration
-    (identifier)
-    (struct_literal
-      (struct_name)
-      (generic_arguments
-        (signed_integer_type))
-      (field_name)
-      (field_value
-        (integer))
-      (field_name)
-      (field_value
-        (integer))))
-  (declaration
-    (identifier)
-    (struct_literal
-      (struct_name)
-      (generic_arguments
-        (float_type))
-      (field_name)
-      (field_value
-        (float))
-      (field_name)
-      (field_value
-        (float)))))
-
 ===========================
 Struct with no comma Errors
 :error

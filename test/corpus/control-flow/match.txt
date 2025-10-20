@@ -33,7 +33,131 @@ let bar = match foo {
           (data_type_name))
         (string_literal)))))
 
-===
+=================
 Match with blocks
-===
+=================
 
+match foo {
+  [a] => {
+    // Here is a block
+    // With more than one comment
+  },
+  [a, b] => {
+    // Another block
+  },
+  _ => {
+    // The last block
+  }
+}
+
+---
+
+(program
+  (match_expr
+    (identifier)
+    (match_arm
+      (array_pattern
+        (identifier))
+      (block
+        (comment)
+        (comment)))
+    (match_arm
+      (array_pattern
+        (identifier)
+        (identifier))
+      (block
+        (comment)))
+    (match_arm
+      (wildcard_pattern)
+      (block
+        (comment)))))
+
+===================================
+Match with struct literals returned
+===================================
+
+let foo = match bar {
+  "foo" => { a: "b" },
+  "bar" => { b: "a" },
+  _ => { c: "d" },
+}
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (match_expr
+      (identifier)
+      (match_arm
+        (literal_pattern
+          (string_literal))
+        (struct_literal
+          (field_name)
+          (field_value
+            (string_literal))))
+      (match_arm
+        (literal_pattern
+          (string_literal))
+        (struct_literal
+          (field_name)
+          (field_value
+            (string_literal))))
+      (match_arm
+        (wildcard_pattern)
+        (struct_literal
+          (field_name)
+          (field_value
+            (string_literal)))))))
+
+=====================
+Match with range arms
+=====================
+
+ match foo {
+  0..=9 => print("one digit"),
+  42 => print("The Answer!"),
+  10..=99 => print("two digits"),
+  _ => print("lots of digits!"),
+ }
+
+---
+
+(program
+  (match_expr
+    value: (identifier)
+    (match_arm
+      pattern: (range_pattern
+        (integer)
+        (range_end_operator)
+        (integer))
+      body: (postfix_expression
+        (identifier)
+        call: (function_call
+          value: (value
+            (string_literal)))))
+    (match_arm
+      pattern: (literal_pattern
+        (integer))
+      body: (postfix_expression
+        (identifier)
+        call: (function_call
+          value: (value
+            (string_literal)))))
+    (match_arm
+      pattern: (range_pattern
+        (integer)
+        (range_end_operator)
+        (integer))
+      body: (postfix_expression
+        (identifier)
+        call: (function_call
+          value: (value
+            (string_literal)))))
+    (match_arm
+      pattern: (wildcard_pattern)
+      body: (postfix_expression
+        (identifier)
+        call: (function_call
+          value: (value
+            (string_literal)))))))

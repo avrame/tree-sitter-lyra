@@ -1,8 +1,9 @@
 module.exports = {
   // Core pattern types
-  pattern: $ => prec.left(choice(
+  pattern: $ => prec.left(5, choice(
     $.identifier,                    // simple binding: x
     $.literal_pattern,              // literal matching: 42, "hello"
+    $.range_pattern,                // range matching: 0..=9, 10..99
     $.array_pattern,                // array destructuring: [a, b, ...rest]
     $.struct_pattern,               // struct destructuring: {name, age}
     $.tuple_pattern,                // tuple destructuring: (x, y, z)
@@ -29,7 +30,7 @@ module.exports = {
   ),
 
   // Tuple patterns (shared)
-  tuple_pattern: $ => seq(
+  tuple_pattern: $ => prec.left(10, seq(
     choice(
       $.unit_pattern,
       seq(
@@ -42,7 +43,7 @@ module.exports = {
         ')'
       )
     )
-  ),
+  )),
 
   unit_pattern: $ => seq('(', ')'),
 
@@ -79,8 +80,16 @@ module.exports = {
     $.boolean_literal
   ),
 
+  // Range patterns (for pattern matching)
+  range_pattern: $ => prec.left(25, choice(
+    seq($._number_literal, '..', $.range_end_operator, $._number_literal),  // 0..=9, 10..99
+    seq($._number_literal, '..', $._number_literal)                        // 0..9
+  )),
+
+  range_end_operator: $ => choice('<', '='),
+
   // Wildcard pattern
-  wildcard_pattern: $ => '_',
+  wildcard_pattern: $ => prec.left(20, '_'),
 
   // Rest pattern
   rest_pattern: $ => seq('...', $.identifier),

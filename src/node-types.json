@@ -130,6 +130,10 @@
         "named": true
       },
       {
+        "type": "range_pattern",
+        "named": true
+      },
+      {
         "type": "struct_pattern",
         "named": true
       },
@@ -2350,6 +2354,29 @@
     }
   },
   {
+    "type": "range_pattern",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "range_end_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "relational_operator",
     "named": true,
     "fields": {},
@@ -2510,7 +2537,7 @@
     "fields": {
       "field_name": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "field_name",
@@ -2520,7 +2547,7 @@
       },
       "field_value": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "field_value",

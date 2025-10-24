@@ -1,6 +1,16 @@
 module.exports = {
     // Primary math expression - includes all math operations
-    _math_expr: $ => choice($._primary_math_expr, $.addition, $.subtraction, $.multiplication, $.division),
+    _math_expr: $ => choice(
+        $._primary_math_expr,
+        $.addition,
+        $.subtraction,
+        $.multiplication,
+        $.division,
+        $.addition_assignment,
+        $.subtraction_assignment,
+        $.multiplication_assignment,
+        $.division_assignment,
+    ),
 
     // Primary math expression - base elements without arithmetic operators or negation to avoid circular dependency
     _primary_math_expr: $ => choice($._number_literal, $._primary_expression, $.group, $.negation),
@@ -22,6 +32,11 @@ module.exports = {
     constraint_multiplication: $ => prec.left(120, seq($._constraint_math_expr, '*', $._constraint_math_expr)),
     constraint_division: $ => prec.left(120, seq($._constraint_math_expr, '/', $._constraint_math_expr)),
     constraint_negation: $ => prec.right(140, seq('-', $._constraint_math_expr)),
+
+    addition_assignment: $ => prec.left(110, seq($._primary_math_expr, '+=', $._math_expr)),
+    subtraction_assignment: $ => prec.left(110, seq($._primary_math_expr, '-=', $._math_expr)),
+    multiplication_assignment: $ => prec.left(120, seq($._primary_math_expr, '*=', $._math_expr)),
+    division_assignment: $ => prec.left(120, seq($._primary_math_expr, '/=', $._math_expr)),
 
     group: $ => prec(180, seq('(', $._math_expr, ')')),
 }

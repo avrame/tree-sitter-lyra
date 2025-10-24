@@ -1,0 +1,144 @@
+============================
+Infinite for loop
+============================
+
+for {
+  println("foo")
+}
+
+---
+
+(program
+  (for_loop
+    (for_body
+      (postfix_expression
+        (identifier)
+        (function_call
+          (value
+            (string_literal)))))))
+
+=======================
+For loop with condition
+=======================
+
+var i = 0
+for i < 10 {
+  println("i == #{i}")
+}
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (integer))
+  (for_loop
+    (for_condition
+      (for_condition_expr
+        (identifier)
+        (relational_operator
+          (less_than))
+        (integer)))
+    (for_body
+      (postfix_expression
+        (identifier)
+        (function_call
+          (value
+            (string_literal)))))))
+
+=========================================================
+For loop with initial expression and condition expression
+=========================================================
+
+for var i = 0; i < 10 {
+  println("i == #{i}")
+  i += 1
+}
+
+---
+
+(program
+  (for_loop
+    (for_condition
+      (for_initial_expr
+        (identifier)
+        (integer))
+      (for_condition_expr
+        (identifier)
+        (relational_operator
+          (less_than))
+        (integer)))
+    (for_body
+      (postfix_expression
+        (identifier)
+        (function_call
+          (value
+            (string_literal))))
+      (addition_assignment
+        (identifier)
+        (integer)))))
+
+=======================================================
+For loop with condition expression and after expression
+=======================================================
+
+var i = 0
+for i < 10; i += 1 {
+  println("i == #{i}")
+}
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (integer))
+  (for_loop
+    (for_condition
+      (for_condition_expr
+        (identifier)
+        (relational_operator
+          (less_than))
+        (integer))
+      (for_after_expr
+        (addition_assignment
+          (identifier)
+          (integer))))
+    (for_body
+      (postfix_expression
+        (identifier)
+        (function_call
+          (value
+            (string_literal)))))))
+
+==========================================================================
+For loop with initial expression, boolean expression, and after expression
+==========================================================================
+
+for var i = 0; i < 10; i += 1 {
+  println("i == #{i}")
+}
+
+---
+
+(program
+  (for_loop
+    (for_condition
+      (for_initial_expr
+        (identifier)
+        (integer))
+      (for_condition_expr
+        (identifier)
+        (relational_operator
+          (less_than))
+        (integer))
+      (for_after_expr
+        (addition_assignment
+          (identifier)
+          (integer))))
+    (for_body
+      (postfix_expression
+        (identifier)
+        (function_call
+          (value
+            (string_literal)))))))

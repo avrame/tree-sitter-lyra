@@ -72,6 +72,17 @@ struct Point { x: Float64 y: Float64 }
 
 ----------------------------------
 
+(program
+  (type_declaration
+    (struct_type
+      (struct_name)
+      (struct_type_body
+        (field_name)
+        (field_type
+          (float_type))
+        (ERROR
+          (identifier))))))
+
 ===================
 Empty Struct Errors
 :error
@@ -80,5 +91,9 @@ Empty Struct Errors
 struct Point {}
 
 ----------------------------------
+
+(program
+  (ERROR
+    (user_defined_type_name)))
 
 ====================

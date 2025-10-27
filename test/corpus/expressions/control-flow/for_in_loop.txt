@@ -172,3 +172,40 @@ for i in foo.bar {
         (function_call
           (value
             (string_literal)))))))
+
+===========================================
+For in loop without an iterable is an error
+:error
+===========================================
+
+for foo in {
+  // error
+}
+
+---
+
+(program
+  (ERROR
+    "for"
+    identifier
+    "in"
+    "{"))
+
+===========================================
+For in loop without an item var is an error
+:error
+===========================================
+
+for in foo {
+  // error
+}
+
+---
+
+(ERROR
+  "for"
+  identifier
+  (ERROR)
+  "{")
+
+===========================================

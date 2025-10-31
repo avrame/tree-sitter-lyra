@@ -1,23 +1,64 @@
 ======================
 Simple Lambda Function
-:skip
 ======================
 
 let sum: (Int, Int) -> Int = (a, b) => a + b
 
 ---
 
+(program
+  (declaration
+    (identifier)
+    (type_notation
+      (function_type
+        (function_type_parameter_list
+          (signed_integer_type)
+          (signed_integer_type))
+        (signed_integer_type)))
+    (lambda_expression
+      (function_pattern
+        (parameter_list
+          (parameter
+            (identifier))
+          (parameter
+            (identifier)))
+        (addition
+          (identifier)
+          (identifier))))))
+
 ==============================
 Function that returns a lambda
-:skip
 ==============================
 
 def make_sum_fn: (Int) -> (Int) -> Int where
-a => {
-  return b => a + b
+(a) => {
+  return (b) => a + b
 }
 
-sum_10 = make_sum_fn(10)
-assert(sum_10(4) == 14)
-
 ---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (signed_integer_type))
+        (function_type
+          (function_type_parameter_list
+            (signed_integer_type))
+          (signed_integer_type))))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier)))
+      (block
+        (return_statement
+          (lambda_expression
+            (function_pattern
+              (parameter_list
+                (parameter
+                  (identifier)))
+              (addition
+                (identifier)
+                (identifier)))))))))

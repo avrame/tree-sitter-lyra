@@ -16,6 +16,7 @@ module.exports = {
     $.for_in_loop,
     $._literal,
     $.spread_expr,
+    $.lambda_expression,
   ),
 
   identifier: $ => /[a-z][a-z0-9_]*/,

@@ -21,6 +21,8 @@ module.exports = {
     )),
   ),
 
+  lambda_expression: $ => $.function_pattern,
+
   function_pattern_list: $ => seq(
     '{',
     $.function_pattern,

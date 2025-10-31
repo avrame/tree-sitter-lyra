@@ -68,6 +68,10 @@
         "named": true
       },
       {
+        "type": "lambda_expression",
+        "named": true
+      },
+      {
         "type": "map_literal",
         "named": true
       },
@@ -2198,6 +2202,21 @@
         },
         {
           "type": "octal_int",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "lambda_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "function_pattern",
           "named": true
         }
       ]

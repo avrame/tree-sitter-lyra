@@ -697,6 +697,10 @@
         {
           "type": "SYMBOL",
           "name": "spread_expr"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "lambda_expression"
         }
       ]
     },
@@ -3517,6 +3521,10 @@
           ]
         }
       ]
+    },
+    "lambda_expression": {
+      "type": "SYMBOL",
+      "name": "function_pattern"
     },
     "function_pattern_list": {
       "type": "SEQ",

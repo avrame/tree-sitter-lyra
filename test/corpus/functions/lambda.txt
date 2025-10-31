@@ -1,0 +1,23 @@
+======================
+Simple Lambda Function
+:skip
+======================
+
+let sum: (Int, Int) -> Int = (a, b) => a + b
+
+---
+
+==============================
+Function that returns a lambda
+:skip
+==============================
+
+def make_sum_fn: (Int) -> (Int) -> Int where
+a => {
+  return b => a + b
+}
+
+sum_10 = make_sum_fn(10)
+assert(sum_10(4) == 14)
+
+---

@@ -12,18 +12,6 @@ module.exports = {
     optional(seq(':', field('function_type', $.function_type))),
   ),
 
-  parameter_type_list: $ => seq(
-    '(',
-    optional(
-      seq(
-        $.type,
-        repeat(seq($._comma, $.type)),
-        optional($._comma),
-      )
-    ),
-    ')'
-  ),
-
   function_pattern: $ => seq(
     field('parameters', $.parameter_list),
     '=>',
@@ -35,19 +23,10 @@ module.exports = {
 
   function_pattern_list: $ => seq(
     '{',
-    $.pattern_matching_function_pattern,
-    repeat1(seq($._comma, $.pattern_matching_function_pattern)),
+    $.function_pattern,
+    repeat1(seq($._comma, $.function_pattern)),
     optional($._comma),
     '}',
-  ),
-
-  pattern_matching_function_pattern: $ => seq(
-    field('pattern', $.pattern),
-    '=>',
-    field('body', choice(
-      $.block,
-      $.expression,
-    )),
   ),
 
   parameter_list: $ => seq(

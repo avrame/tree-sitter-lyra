@@ -1882,7 +1882,7 @@
       "required": true,
       "types": [
         {
-          "type": "pattern_matching_function_pattern",
+          "type": "function_pattern",
           "named": true
         }
       ]
@@ -2678,36 +2678,6 @@
           "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "pattern_matching_function_pattern",
-    "named": true,
-    "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "block",
-            "named": true
-          },
-          {
-            "type": "expression",
-            "named": true
-          }
-        ]
-      },
-      "pattern": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "pattern",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {

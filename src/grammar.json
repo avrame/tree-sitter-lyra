@@ -3518,64 +3518,6 @@
         }
       ]
     },
-    "parameter_type_list": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "("
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "type"
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "_comma"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "type"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "_comma"
-                    },
-                    {
-                      "type": "BLANK"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": ")"
-        }
-      ]
-    },
     "function_pattern_list": {
       "type": "SEQ",
       "members": [
@@ -3585,7 +3527,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "pattern_matching_function_pattern"
+          "name": "function_pattern"
         },
         {
           "type": "REPEAT1",
@@ -3598,7 +3540,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "pattern_matching_function_pattern"
+                "name": "function_pattern"
               }
             ]
           }
@@ -3618,40 +3560,6 @@
         {
           "type": "STRING",
           "value": "}"
-        }
-      ]
-    },
-    "pattern_matching_function_pattern": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "pattern",
-          "content": {
-            "type": "SYMBOL",
-            "name": "pattern"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "=>"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "block"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "expression"
-              }
-            ]
-          }
         }
       ]
     },

@@ -10,7 +10,7 @@ module.exports = {
       $.return_statement,
       $.break_statement,
       $.continue_statement,
-      $.function_declaration,
+      $.function_definition,
       $.destructuring_declaration,
     )
   ),

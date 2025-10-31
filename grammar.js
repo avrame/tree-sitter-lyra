@@ -10,7 +10,7 @@
 const literals = require('./include/literals/');
 const numbers = require('./include/literals/numbers');
 const expressions = require('./include/expressions/');
-const types = require('./include/types/types');
+const types = require('./include/types/');
 const statements = require('./include/statements');
 const functions = require('./include/functions/');
 const comments = require('./include/comments');
@@ -28,6 +28,8 @@ module.exports = grammar({
 
   rules: {
     program: $ => repeat(choice($.statement, $.type_declaration)),
+
+    _comma: $ => prec.left(10, ','),
 
     ...literals,
     ...numbers,

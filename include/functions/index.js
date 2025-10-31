@@ -1,7 +1,7 @@
-const declaration = require('./declaration');
+const definition = require('./definition');
 const arguments_list = require('./arguments_list');
 
 module.exports = {
-  ...declaration,
+  ...definition,
   ...arguments_list,
 }

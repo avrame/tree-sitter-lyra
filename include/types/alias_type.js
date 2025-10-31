@@ -19,7 +19,7 @@ module.exports = {
     $.range_constraint,
     $.enum_constraint,
     $.size_constraint, // for arrays
-    $.pattern_constraint, // for strings
+    $.regex_constraint, // for strings
   ),
 
   // Range constraint
@@ -32,10 +32,8 @@ module.exports = {
   enum_value: $ => choice($.string_literal, $._number_literal),
 
   // Size constraint (Array)
-  size_constraint: $ => seq('size=', $.size),
-  size: $ => seq($._constraint_math_expr),
+  size_constraint: $ => seq('size=', $._constraint_math_expr),
 
-  // Pattern constraint (String)
-  pattern_constraint: $ => seq('pattern=', $.pattern),
-  pattern: $ => seq($.regex_literal),
+  // Regex constraint (String)
+  regex_constraint: $ => seq('regex=', choice($.regex_literal, $.identifier)),
 }

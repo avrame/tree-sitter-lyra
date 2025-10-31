@@ -1,0 +1,225 @@
+=============================================
+Basic Function declaration without parameters
+=============================================
+
+def foo where
+() => {
+// do stuff
+}
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier))
+    (function_pattern
+      (parameter_list)
+      (block
+        (comment)))))
+
+==============================================================
+Basic Function declaration without parameters with return type
+==============================================================
+
+def foo: () -> Int where
+() => {
+  return 42
+}
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (signed_integer_type)))
+    (function_pattern
+      (parameter_list)
+      (block
+        (return_statement
+          (integer))))))
+
+==========================================
+Basic Function declaration with parameters
+==========================================
+
+def sum: (Int, Int) -> Int where
+(a, b) => a + b
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (signed_integer_type)
+          (signed_integer_type))
+        (signed_integer_type)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier))
+        (parameter
+          (identifier)))
+      (addition
+        (identifier)
+        (identifier)))))
+
+==================================================
+Basic Function declaration with generic parameters
+==================================================
+
+def sum<n>: (n, n) -> n where
+(a, b) => a + b
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (generic_parameters
+        (generic_type))
+      (function_type
+        (function_type_parameter_list
+          (generic_type)
+          (generic_type))
+        (generic_type)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier))
+        (parameter
+          (identifier)))
+      (addition
+        (identifier)
+        (identifier)))))
+
+==================================
+Function declaration with defaults
+==================================
+
+def product: (Int, Int) -> Int where
+(a, b = 10) => a * b
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (signed_integer_type)
+          (signed_integer_type))
+        (signed_integer_type)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier))
+        (parameter
+          (identifier)
+          (default_value
+            (integer))))
+      (multiplication
+        (identifier)
+        (identifier)))))
+
+=====================================
+Function with patterns for parameters
+=====================================
+
+def foo: (String, Int, Point, Array<String>, SomeTuple) -> void where
+(bar, 42, { x, y }, [one, two, three, ...rest], (alpha, beta)) => {
+  // do stuff
+}
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (string_type)
+          (signed_integer_type)
+          (user_defined_type_name)
+          (array_type
+            (string_type))
+          (user_defined_type_name))
+        (generic_type)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier))
+        (parameter
+          (literal_pattern
+            (integer)))
+        (parameter
+          (struct_pattern
+            (identifier)
+            (identifier)))
+        (parameter
+          (array_pattern
+            (identifier)
+            (identifier)
+            (identifier)
+            (rest_pattern
+              (identifier))))
+        (parameter
+          (tuple_pattern
+            (identifier)
+            (identifier))))
+      (block
+        (comment)))))
+
+=====================
+Higher order function
+=====================
+
+def map<t,u>:
+(Array<t>, (t) -> u) -> Array<u> where
+(array, func) => {
+//  new_array: Array<u,array.len()> = []
+//  for item in array {
+//    new_array.push(func(item))
+//  }
+//  new_array
+}
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (generic_parameters
+        (generic_type)
+        (generic_type))
+      (function_type
+        (function_type_parameter_list
+          (array_type
+            (generic_type))
+          (function_type
+            (function_type_parameter_list
+              (generic_type))
+            (generic_type)))
+        (array_type
+          (generic_type))))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier))
+        (parameter
+          (identifier)))
+      (block
+        (comment)
+        (comment)
+        (comment)
+        (comment)
+        (comment)))))

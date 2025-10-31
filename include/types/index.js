@@ -14,7 +14,7 @@ module.exports = {
 
     type_declaration: $ => choice($.struct_type, $.data_type, $.alias_type),
     
-    type: $ => choice($._primitive_type, $.user_defined_type_name, $.array_type, $.generic_type, $.function_type),
+    type: $ => prec(2, choice($._primitive_type, $.user_defined_type_name, $.array_type, $.generic_type, $.function_type)),
     
     user_defined_type_name: $ => /[A-Z][a-zA-Z0-9]*/,
 

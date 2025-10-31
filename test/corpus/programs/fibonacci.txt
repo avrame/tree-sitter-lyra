@@ -1,0 +1,89 @@
+===================
+Recursive Fibonacci
+===================
+
+def fib: (Int) -> Int where
+(x) => {
+  if x == 0 then 0
+  else if x == 1 then 1
+  else fib(x - 1) + fib(x - 2) end
+}
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (signed_integer_type))
+        (signed_integer_type)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier)))
+      (block
+        (if_then_expr
+          (if_condition
+            (boolean_expr
+              (identifier)
+              (equality_operator
+                (equals))
+              (integer)))
+          (integer)
+          (else_if)
+          (if_condition
+            (boolean_expr
+              (identifier)
+              (equality_operator
+                (equals))
+              (integer)))
+          (integer)
+          (else)
+          (addition
+            (postfix_expression
+              (identifier)
+              (function_call
+                (value
+                  (subtraction
+                    (identifier)
+                    (integer)))))
+            (postfix_expression
+              (identifier)
+              (function_call
+                (value
+                  (subtraction
+                    (identifier)
+                    (integer)))))))))))
+
+==================================================================
+Recursive Fibonacci with function pattern matching and memoization
+:skip
+==================================================================
+
+def memoize: ((Int) -> Int) -> (Int) -> Int where
+(fn) => {
+  let cache = Map<Int, Int>
+  return (arg) => {
+    match cache[arg] {
+      Some(x) => return x,
+      None => {
+        cache[arg] = fn(arg)
+        return cache[arg]
+      }
+    }
+  }
+}
+
+def fib: (Int) -> Int where {
+  0 => 0,
+  1 => 1,
+  x => fib(x - 1) + fib(x - 2),
+}
+
+let memoized_fib = memoize(fib)
+
+assert(memoized_fib(10) == 55)
+
+---

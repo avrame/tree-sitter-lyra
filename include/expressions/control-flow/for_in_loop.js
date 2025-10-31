@@ -12,14 +12,15 @@ module.exports = {
   ),
 
   for_in_condition: $ => prec.left(1, seq(
-    alias($.identifier, $.for_variable),
-    optional(seq(',', alias($.identifier, $.for_index))),
+    alias($.identifier, $.for_variable_or_key),
+    optional(seq(',', alias($.identifier, $.for_index_or_value))),
     'in',
     choice(
       $.range_expr,
       $.array_literal,
       $.tuple_literal,
       $.struct_literal,
+      $.map_literal,
       $.identifier,
       $.postfix_expression,
     )

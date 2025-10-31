@@ -6,6 +6,7 @@ const generic_type = require('./generic_type');
 const number_types = require('./number_types');
 const struct_type = require('./struct_type');
 const tuple_type = require('./tuple_type');
+const map_type = require('./map_type');
 
 module.exports = {
     type_notation: $ => seq(':', $.type),
@@ -14,7 +15,7 @@ module.exports = {
 
     type_declaration: $ => choice($.struct_type, $.data_type, $.alias_type),
     
-    type: $ => prec(2, choice($._primitive_type, $.user_defined_type_name, $.array_type, $.generic_type, $.function_type)),
+    type: $ => prec(2, choice($._primitive_type, $.user_defined_type_name, $.array_type, $.generic_type, $.function_type, $.map_type)),
     
     user_defined_type_name: $ => /[A-Z][a-zA-Z0-9]*/,
 
@@ -32,4 +33,5 @@ module.exports = {
     ...number_types,
     ...struct_type,
     ...tuple_type,
+    ...map_type,
 }

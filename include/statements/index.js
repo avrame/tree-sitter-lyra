@@ -15,7 +15,7 @@ module.exports = {
     )
   ),
 
-  block: $ => seq('{', repeat($.statement), '}'),
+  block: $ => prec.left(2, seq('{', repeat($.statement), '}')),
 
   return_statement: $ => prec.right(170, seq('return', optional(field('value', $.expression)))),
 

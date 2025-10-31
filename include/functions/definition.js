@@ -28,8 +28,8 @@ module.exports = {
     field('parameters', $.parameter_list),
     '=>',
     field('body', choice(
-      $.expression,
       $.block,
+      $.expression,
     )),
   ),
 
@@ -45,8 +45,8 @@ module.exports = {
     field('pattern', $.pattern),
     '=>',
     field('body', choice(
-      $.expression,
       $.block,
+      $.expression,
     )),
   ),
 

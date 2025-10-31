@@ -1,0 +1,43 @@
+================
+Simple Empty Map
+================
+
+let map: Map<Int, String> = {}
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (type_notation
+      (map_type
+        (key_type
+          (signed_integer_type))
+        (value_type
+          (string_type))))
+    (map_literal)))
+
+===================================
+Simple Map with initial keys/values
+===================================
+
+let map: Map<Int, String> = { 1 => "one", 2 => "two" }
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (type_notation
+      (map_type
+        (key_type
+          (signed_integer_type))
+        (value_type
+          (string_type))))
+    (map_literal
+      (map_entry
+        (integer)
+        (string_literal))
+      (map_entry
+        (integer)
+        (string_literal)))))

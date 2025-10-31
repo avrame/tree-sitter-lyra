@@ -251,45 +251,7 @@
         "members": [
           {
             "type": "STRING",
-            "value": "Map"
-          },
-          {
-            "type": "STRING",
-            "value": "<"
-          },
-          {
-            "type": "FIELD",
-            "name": "key_type",
-            "content": {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "type"
-              },
-              "named": true,
-              "value": "key_type"
-            }
-          },
-          {
-            "type": "STRING",
-            "value": ","
-          },
-          {
-            "type": "FIELD",
-            "name": "value_type",
-            "content": {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "type"
-              },
-              "named": true,
-              "value": "value_type"
-            }
-          },
-          {
-            "type": "STRING",
-            "value": ">"
+            "value": "{"
           },
           {
             "type": "CHOICE",
@@ -297,10 +259,6 @@
               {
                 "type": "SEQ",
                 "members": [
-                  {
-                    "type": "STRING",
-                    "value": "{"
-                  },
                   {
                     "type": "SYMBOL",
                     "name": "map_entry"
@@ -332,10 +290,6 @@
                         "type": "BLANK"
                       }
                     ]
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "}"
                   }
                 ]
               },
@@ -343,6 +297,10 @@
                 "type": "BLANK"
               }
             ]
+          },
+          {
+            "type": "STRING",
+            "value": "}"
           }
         ]
       }
@@ -1448,11 +1406,11 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "expression"
+                "name": "block"
               },
               {
                 "type": "SYMBOL",
-                "name": "block"
+                "name": "expression"
               }
             ]
           }
@@ -2225,6 +2183,10 @@
           {
             "type": "SYMBOL",
             "name": "function_type"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "map_type"
           }
         ]
       }
@@ -3053,6 +3015,53 @@
         }
       ]
     },
+    "map_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "Map"
+        },
+        {
+          "type": "STRING",
+          "value": "<"
+        },
+        {
+          "type": "FIELD",
+          "name": "key_type",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "type"
+            },
+            "named": true,
+            "value": "key_type"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "FIELD",
+          "name": "value_type",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "type"
+            },
+            "named": true,
+            "value": "value_type"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        }
+      ]
+    },
     "statement": {
       "type": "SEQ",
       "members": [
@@ -3100,24 +3109,28 @@
       ]
     },
     "block": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "{"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "statement"
+      "type": "PREC_LEFT",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "{"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "statement"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "}"
           }
-        },
-        {
-          "type": "STRING",
-          "value": "}"
-        }
-      ]
+        ]
+      }
     },
     "return_statement": {
       "type": "PREC_RIGHT",
@@ -3631,11 +3644,11 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "expression"
+                "name": "block"
               },
               {
                 "type": "SYMBOL",
-                "name": "block"
+                "name": "expression"
               }
             ]
           }

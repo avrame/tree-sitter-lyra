@@ -234,6 +234,10 @@
         "named": true
       },
       {
+        "type": "map_type",
+        "named": true
+      },
+      {
         "type": "signed_integer_type",
         "named": true
       },
@@ -2260,6 +2264,21 @@
   {
     "type": "map_literal",
     "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "map_entry",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "map_type",
+    "named": true,
     "fields": {
       "key_type": {
         "multiple": false,
@@ -2281,16 +2300,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "map_entry",
-          "named": true
-        }
-      ]
     }
   },
   {

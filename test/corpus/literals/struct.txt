@@ -1,6 +1,6 @@
-===
+================
 Anonymous Struct
-===
+================
 
 let foo = { bar: "baz", blah: 23 }
 

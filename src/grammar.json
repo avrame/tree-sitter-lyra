@@ -587,20 +587,17 @@
       }
     },
     "boolean_literal": {
-      "type": "TOKEN",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "true"
-          },
-          {
-            "type": "STRING",
-            "value": "false"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "true"
+        },
+        {
+          "type": "STRING",
+          "value": "false"
+        }
+      ]
     },
     "regex_literal": {
       "type": "PATTERN",
@@ -610,8 +607,11 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "<"
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "<"
+          }
         },
         {
           "type": "SYMBOL",
@@ -754,17 +754,34 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "FIELD",
-          "name": "call",
-          "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "argument_list"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "generic_arguments"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             },
-            "named": true,
-            "value": "function_call"
-          }
+            {
+              "type": "FIELD",
+              "name": "call",
+              "content": {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "argument_list"
+                },
+                "named": true,
+                "value": "function_call"
+              }
+            }
+          ]
         },
         {
           "type": "SEQ",
@@ -777,17 +794,8 @@
               "type": "FIELD",
               "name": "property",
               "content": {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "identifier"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "const_identifier"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "identifier"
               }
             }
           ]
@@ -817,7 +825,7 @@
     },
     "postfix_expression": {
       "type": "PREC_RIGHT",
-      "value": 300,
+      "value": 150,
       "content": {
         "type": "CHOICE",
         "members": [
@@ -4434,5 +4442,56 @@
     "pattern",
     "type"
   ],
-  "reserved": {}
+  "reserved": {
+    "identifier": [
+      {
+        "type": "STRING",
+        "value": "for"
+      },
+      {
+        "type": "STRING",
+        "value": "if"
+      },
+      {
+        "type": "STRING",
+        "value": "else"
+      },
+      {
+        "type": "STRING",
+        "value": "match"
+      },
+      {
+        "type": "STRING",
+        "value": "let"
+      },
+      {
+        "type": "STRING",
+        "value": "var"
+      },
+      {
+        "type": "STRING",
+        "value": "const"
+      },
+      {
+        "type": "STRING",
+        "value": "def"
+      },
+      {
+        "type": "STRING",
+        "value": "nil"
+      },
+      {
+        "type": "STRING",
+        "value": "true"
+      },
+      {
+        "type": "STRING",
+        "value": "false"
+      },
+      {
+        "type": "STRING",
+        "value": "where"
+      }
+    ]
+  }
 }

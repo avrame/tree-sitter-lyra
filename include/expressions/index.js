@@ -35,10 +35,13 @@ module.exports = {
 
   _postfix_op: $ => choice(
     // function call
-    field('call', alias($.argument_list, $.function_call)),
-    // .prop / .Prop
+    seq(
+      optional($.generic_arguments),
+      field('call', alias($.argument_list, $.function_call))
+    ),
+    // .prop
     seq('.', field('property', choice($.identifier, $.const_identifier))),
-    // [index]
+    // [index] or [key]
     seq('[', field('index', $.expression), ']'),
   ),
   

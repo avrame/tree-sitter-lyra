@@ -25,12 +25,12 @@ module.exports = {
   
   string_literal: $ => token(seq('"', repeat(choice(/[^"\\\n]+/, /\\./)), '"')),
 
-  boolean_literal: $ => token(choice('true', 'false')),
+  boolean_literal: $ => choice('true', 'false'),
 
   regex_literal: $ => /r\/[^\/\\]*(?:\\.[^\/\\]*)*\//,
 
   generic_arguments: $ => seq(
-    '<',
+    token.immediate('<'),
       $.type, repeat(seq(',', $.type)), optional(','),
     '>'
   ),

@@ -26,6 +26,10 @@ module.exports = grammar({
 
   inline: $ => [$._comma],
 
+  reserved: {
+    identifier: () => ['for', 'if', 'else', 'match', 'let', 'var', 'const', 'def', 'nil', 'true', 'false', 'where'],
+  },
+
   rules: {
     program: $ => repeat(choice($.statement, $.type_declaration)),
 

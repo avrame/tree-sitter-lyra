@@ -62,3 +62,35 @@ def make_sum_fn: (Int) -> (Int) -> Int where
               (addition
                 (identifier)
                 (identifier)))))))))
+
+==============================
+Function that accepts a lambda
+==============================
+
+let doubled = map<Int, Int>([1, 2, 3], (x) => 2 * x)
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (postfix_expression
+      (identifier)
+      (generic_arguments
+        (signed_integer_type)
+        (signed_integer_type))
+      (function_call
+        (value
+          (array_literal
+            (integer)
+            (integer)
+            (integer)))
+        (value
+          (lambda_expression
+            (function_pattern
+              (parameter_list
+                (parameter
+                  (identifier)))
+              (multiplication
+                (integer)
+                (identifier)))))))))

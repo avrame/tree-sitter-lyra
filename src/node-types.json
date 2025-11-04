@@ -701,6 +701,11 @@
     }
   },
   {
+    "type": "boolean_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "break_statement",
     "named": true,
     "fields": {
@@ -2728,10 +2733,6 @@
         "required": false,
         "types": [
           {
-            "type": "const_identifier",
-            "named": true
-          },
-          {
             "type": "identifier",
             "named": true
           }
@@ -2739,11 +2740,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "const_identifier",
+          "named": true
+        },
+        {
+          "type": "generic_arguments",
           "named": true
         },
         {
@@ -3674,10 +3679,6 @@
     "named": true
   },
   {
-    "type": "boolean_literal",
-    "named": true
-  },
-  {
     "type": "boolean_type",
     "named": true
   },
@@ -3729,6 +3730,10 @@
   {
     "type": "equals",
     "named": true
+  },
+  {
+    "type": "false",
+    "named": false
   },
   {
     "type": "field_name",
@@ -3832,6 +3837,10 @@
   },
   {
     "type": "then",
+    "named": false
+  },
+  {
+    "type": "true",
     "named": false
   },
   {

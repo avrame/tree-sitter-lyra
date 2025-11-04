@@ -45,7 +45,7 @@ let origin = Point {
 Struct Declaration with Generic Params
 ======================================
 
-struct Point<num> { x: num, y: num }
+struct Point<n> { x: n, y: n }
 
 ----------------------------------
 

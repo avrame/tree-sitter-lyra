@@ -1,11 +1,19 @@
 module.exports = {
-  const_declaration: $ => seq(
-    field('keyword', 'const'),
-    field('name', $.const_identifier),
-    optional(field('type', $.type_notation)),
-    '=',
-    field('value', $.expression)
-  ),
+  const_declaration: $ => prec.left(choice(
+    seq(
+      field('keyword', 'const'),
+      field('name', $.const_identifier),
+      field('type', $.type_notation),
+      '=',
+      field('value', $.expression)
+    ),
+    seq(
+      field('keyword', 'const'),
+      field('name', $.const_identifier),
+      '=',
+      field('value', $.expression)
+    )
+  )),
 
   declaration: $ => prec.left(seq(
     field('keyword', choice('let', 'var')),

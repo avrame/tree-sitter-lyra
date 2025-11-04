@@ -3,15 +3,15 @@ const assignments = require('./assignments');
 module.exports = {
   statement: $ => seq(
     choice(
-      $.expression,
-      $.declaration,
       $.const_declaration,
+      $.declaration,
       $.var_reassignment,
       $.return_statement,
       $.break_statement,
       $.continue_statement,
       $.function_definition,
       $.destructuring_declaration,
+      $.expression,
     )
   ),
 

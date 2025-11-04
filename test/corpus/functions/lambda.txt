@@ -67,7 +67,7 @@ def make_sum_fn: (Int) -> (Int) -> Int where
 Function that accepts a lambda
 ==============================
 
-let doubled = map<Int, Int>([1, 2, 3], (x) => 2 * x)
+let doubled = map::<Int, Int>([1, 2, 3], (x) => 2 * x)
 
 ---
 

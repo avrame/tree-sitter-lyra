@@ -30,8 +30,9 @@ module.exports = {
   regex_literal: $ => /r\/[^\/\\]*(?:\\.[^\/\\]*)*\//,
 
   generic_arguments: $ => seq(
-    token.immediate('<'),
-      $.type, repeat(seq(',', $.type)), optional(','),
+    '::',
+    '<',
+    $.type, repeat(seq(',', $.type)), optional(','),
     '>'
   ),
 }

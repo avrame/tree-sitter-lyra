@@ -2733,6 +2733,10 @@
         "required": false,
         "types": [
           {
+            "type": "const_identifier",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           }
@@ -3572,6 +3576,10 @@
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "::",
     "named": false
   },
   {

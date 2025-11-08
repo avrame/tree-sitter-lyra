@@ -30,7 +30,6 @@ module.exports = {
     $.const_identifier,
     $.parenthesized_expression,
     // $.lambda_expression, // TODO: add lambda expression
-    $.nil_expr,
   ),
 
   _postfix_op: $ => choice(
@@ -57,7 +56,6 @@ module.exports = {
   )),
 
   spread_expr: $ => prec.right(20, seq('...', $.identifier)),
-  nil_expr: $ => 'nil',
 
   ...control_flow,
   ...boolean,

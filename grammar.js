@@ -31,7 +31,7 @@ module.exports = grammar({
   ],
 
   reserved: {
-    identifier: () => ['for', 'if', 'else', 'match', 'let', 'var', 'const', 'def', 'nil', 'true', 'false', 'where'],
+    identifier: () => ['for', 'if', 'else', 'match', 'let', 'var', 'const', 'def', 'true', 'false', 'where'],
   },
 
   rules: {

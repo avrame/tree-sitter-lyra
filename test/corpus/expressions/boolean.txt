@@ -1,0 +1,164 @@
+===============
+Equals operator
+===============
+
+x == 42
+
+---
+
+(program
+  (boolean_expr
+    (identifier)
+    (equality_operator
+      (equals))
+    (integer))) 
+
+===================
+Not Equals operator
+===================
+
+x != 42
+
+---
+
+(program
+  (boolean_expr
+    (identifier)
+    (equality_operator
+      (not_equals))
+    (integer)))
+
+==================
+Less-than operator
+==================
+
+x < 42
+
+---
+
+(program
+  (boolean_expr
+    (identifier)
+    (relational_operator
+      (less_than))
+    (integer)))
+
+=====================
+Greater-than operator
+=====================
+
+x > 42
+
+---
+
+(program
+  (boolean_expr
+    (identifier)
+    (relational_operator
+      (greater_than))
+    (integer)))
+
+===========================
+Less-than or equal operator
+===========================
+
+x <= 42
+
+---
+
+(program
+  (boolean_expr
+    (identifier)
+    (relational_operator
+      (less_than_or_equals))
+    (integer)))
+
+==============================
+Greater-than or equal operator
+==============================
+
+x >= 42
+
+---
+
+(program
+  (boolean_expr
+    (identifier)
+    (relational_operator
+      (greater_than_or_equals))
+    (integer)))
+
+============
+And operator
+============
+
+0 <= x && x <= 10
+
+---
+
+(program
+  (boolean_expr
+    (boolean_expr
+      (integer)
+      (relational_operator
+        (less_than_or_equals))
+      (identifier))
+    (and)
+    (boolean_expr
+      (identifier)
+      (relational_operator
+        (less_than_or_equals))
+      (integer))))
+
+===========
+Or operator
+===========
+
+x == 0 || x == 42
+
+---
+
+(program
+  (boolean_expr
+    (boolean_expr
+      (identifier)
+      (equality_operator
+        (equals))
+      (integer))
+    (or)
+    (boolean_expr
+      (identifier)
+      (equality_operator
+        (equals))
+      (integer))))
+
+============================
+Not Operator with identifier
+============================
+
+!x
+
+---
+
+(program
+  (boolean_expr
+    (not)
+    (identifier)))
+
+==========================================
+Not Operator with parenthesized expression
+==========================================
+
+!(x == 42)
+
+---
+
+(program
+  (boolean_expr
+    (not)
+    (parenthesized_expression
+      (boolean_expr
+        (identifier)
+        (equality_operator
+          (equals))
+        (integer)))))

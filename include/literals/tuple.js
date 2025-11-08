@@ -1,14 +1,20 @@
 module.exports = {
   tuple_literal: $ => prec.left(1,
     choice(
+      // Empty tuple
       seq('(',')'),
+      // Tuple with at least one comma (multi-element or single-element with trailing comma)
       seq(
         optional($._tuple_name),
         optional($.generic_arguments),
         '(',
           $._tuple_value,
-          repeat(seq($._comma, $._tuple_value)),
-          optional($._comma),
+          choice(
+            // Multiple elements: at least one comma between elements
+            seq(repeat1(seq($._comma, $._tuple_value)), optional($._comma)),
+            // Single element with trailing comma
+            $._comma
+          ),
         ')'
       )
     )

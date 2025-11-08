@@ -92,10 +92,6 @@
         "named": true
       },
       {
-        "type": "nil_expr",
-        "named": true
-      },
-      {
         "type": "parenthesized_expression",
         "named": true
       },
@@ -320,10 +316,6 @@
           "named": true
         },
         {
-          "type": "nil_expr",
-          "named": true
-        },
-        {
           "type": "parenthesized_expression",
           "named": true
         },
@@ -396,10 +388,6 @@
         },
         {
           "type": "negation",
-          "named": true
-        },
-        {
-          "type": "nil_expr",
           "named": true
         },
         {
@@ -506,10 +494,6 @@
           "named": true
         },
         {
-          "type": "nil_expr",
-          "named": true
-        },
-        {
           "type": "parenthesized_expression",
           "named": true
         },
@@ -610,31 +594,7 @@
       "required": true,
       "types": [
         {
-          "type": "addition",
-          "named": true
-        },
-        {
-          "type": "addition_assignment",
-          "named": true
-        },
-        {
           "type": "and",
-          "named": true
-        },
-        {
-          "type": "boolean_expr",
-          "named": true
-        },
-        {
-          "type": "const_identifier",
-          "named": true
-        },
-        {
-          "type": "division",
-          "named": true
-        },
-        {
-          "type": "division_assignment",
           "named": true
         },
         {
@@ -642,35 +602,7 @@
           "named": true
         },
         {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "group",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "multiplication",
-          "named": true
-        },
-        {
-          "type": "multiplication_assignment",
-          "named": true
-        },
-        {
-          "type": "negation",
-          "named": true
-        },
-        {
-          "type": "nil_expr",
+          "type": "expression",
           "named": true
         },
         {
@@ -682,23 +614,7 @@
           "named": true
         },
         {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "postfix_expression",
-          "named": true
-        },
-        {
           "type": "relational_operator",
-          "named": true
-        },
-        {
-          "type": "subtraction",
-          "named": true
-        },
-        {
-          "type": "subtraction_assignment",
           "named": true
         }
       ]
@@ -1323,10 +1239,6 @@
           "named": true
         },
         {
-          "type": "nil_expr",
-          "named": true
-        },
-        {
           "type": "parenthesized_expression",
           "named": true
         },
@@ -1399,10 +1311,6 @@
         },
         {
           "type": "negation",
-          "named": true
-        },
-        {
-          "type": "nil_expr",
           "named": true
         },
         {
@@ -1553,31 +1461,7 @@
       "required": true,
       "types": [
         {
-          "type": "addition",
-          "named": true
-        },
-        {
-          "type": "addition_assignment",
-          "named": true
-        },
-        {
           "type": "and",
-          "named": true
-        },
-        {
-          "type": "boolean_expr",
-          "named": true
-        },
-        {
-          "type": "const_identifier",
-          "named": true
-        },
-        {
-          "type": "division",
-          "named": true
-        },
-        {
-          "type": "division_assignment",
           "named": true
         },
         {
@@ -1585,35 +1469,7 @@
           "named": true
         },
         {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "group",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "multiplication",
-          "named": true
-        },
-        {
-          "type": "multiplication_assignment",
-          "named": true
-        },
-        {
-          "type": "negation",
-          "named": true
-        },
-        {
-          "type": "nil_expr",
+          "type": "expression",
           "named": true
         },
         {
@@ -1625,23 +1481,7 @@
           "named": true
         },
         {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "postfix_expression",
-          "named": true
-        },
-        {
           "type": "relational_operator",
-          "named": true
-        },
-        {
-          "type": "subtraction",
-          "named": true
-        },
-        {
-          "type": "subtraction_assignment",
           "named": true
         }
       ]
@@ -2063,10 +1903,6 @@
           "named": true
         },
         {
-          "type": "nil_expr",
-          "named": true
-        },
-        {
           "type": "parenthesized_expression",
           "named": true
         },
@@ -2453,10 +2289,6 @@
           "named": true
         },
         {
-          "type": "nil_expr",
-          "named": true
-        },
-        {
           "type": "parenthesized_expression",
           "named": true
         },
@@ -2529,10 +2361,6 @@
         },
         {
           "type": "negation",
-          "named": true
-        },
-        {
-          "type": "nil_expr",
           "named": true
         },
         {
@@ -2620,10 +2448,6 @@
         },
         {
           "type": "negation",
-          "named": true
-        },
-        {
-          "type": "nil_expr",
           "named": true
         },
         {
@@ -3238,10 +3062,6 @@
           "named": true
         },
         {
-          "type": "nil_expr",
-          "named": true
-        },
-        {
           "type": "parenthesized_expression",
           "named": true
         },
@@ -3314,10 +3134,6 @@
         },
         {
           "type": "negation",
-          "named": true
-        },
-        {
-          "type": "nil_expr",
           "named": true
         },
         {
@@ -3793,10 +3609,6 @@
   },
   {
     "type": "new_name",
-    "named": true
-  },
-  {
-    "type": "nil_expr",
     "named": true
   },
   {

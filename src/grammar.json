@@ -496,30 +496,44 @@
                 "name": "_tuple_value"
               },
               {
-                "type": "REPEAT",
-                "content": {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "_comma"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "_tuple_value"
-                    }
-                  ]
-                }
-              },
-              {
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "SYMBOL",
-                    "name": "_comma"
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "REPEAT1",
+                        "content": {
+                          "type": "SEQ",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "_comma"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "_tuple_value"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "_comma"
+                          },
+                          {
+                            "type": "BLANK"
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
-                    "type": "BLANK"
+                    "type": "SYMBOL",
+                    "name": "_comma"
                   }
                 ]
               },
@@ -752,10 +766,6 @@
         {
           "type": "SYMBOL",
           "name": "parenthesized_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "nil_expr"
         }
       ]
     },
@@ -904,10 +914,6 @@
           }
         ]
       }
-    },
-    "nil_expr": {
-      "type": "STRING",
-      "value": "nil"
     },
     "if_then_expr": {
       "type": "PREC_RIGHT",
@@ -1465,7 +1471,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "boolean_expr"
+                  "name": "expression"
                 }
               ]
             }
@@ -1592,40 +1598,67 @@
       ]
     },
     "equals": {
-      "type": "STRING",
-      "value": "=="
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "=="
+      }
     },
     "not_equals": {
-      "type": "STRING",
-      "value": "!="
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "!="
+      }
     },
     "greater_than": {
-      "type": "STRING",
-      "value": ">"
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": ">"
+      }
     },
     "less_than": {
-      "type": "STRING",
-      "value": "<"
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "<"
+      }
     },
     "greater_than_or_equals": {
-      "type": "STRING",
-      "value": ">="
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": ">="
+      }
     },
     "less_than_or_equals": {
-      "type": "STRING",
-      "value": "<="
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "<="
+      }
     },
     "and": {
-      "type": "STRING",
-      "value": "&&"
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "&&"
+      }
     },
     "or": {
-      "type": "STRING",
-      "value": "||"
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "||"
+      }
     },
     "not": {
-      "type": "STRING",
-      "value": "!"
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "!"
+      }
     },
     "_math_expr": {
       "type": "CHOICE",
@@ -4498,10 +4531,6 @@
       {
         "type": "STRING",
         "value": "def"
-      },
-      {
-        "type": "STRING",
-        "value": "nil"
       },
       {
         "type": "STRING",

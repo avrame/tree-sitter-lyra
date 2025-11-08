@@ -130,6 +130,10 @@
       {
         "type": "subtraction_assignment",
         "named": true
+      },
+      {
+        "type": "tuple_literal",
+        "named": true
       }
     ]
   },
@@ -3338,17 +3342,24 @@
   {
     "type": "tuple_literal",
     "named": true,
-    "fields": {},
+    "fields": {
+      "tuple_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "tuple_name",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
       "types": [
         {
           "type": "generic_arguments",
-          "named": true
-        },
-        {
-          "type": "tuple_name",
           "named": true
         },
         {
@@ -3361,18 +3372,7 @@
   {
     "type": "tuple_name",
     "named": true,
-    "fields": {
-      "tuple_name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "tuple_name",
-            "named": true
-          }
-        ]
-      }
-    }
+    "fields": {}
   },
   {
     "type": "tuple_pattern",

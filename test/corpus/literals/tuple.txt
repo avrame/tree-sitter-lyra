@@ -1,0 +1,61 @@
+=============================
+Basic Anonymous Tuple Literal
+=============================
+
+let coords = (10, 20, 30)
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (tuple_literal
+      (tuple_value
+        (integer))
+      (tuple_value
+        (integer))
+      (tuple_value
+        (integer)))))
+
+
+=========================
+Basic Named Tuple Literal
+=========================
+
+let coords = Coords (10, 20, 30)
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (tuple_literal
+      (tuple_name)
+      (tuple_value
+        (integer))
+      (tuple_value
+        (integer))
+      (tuple_value
+        (integer)))))
+
+==========================================
+Basic Named Tuple Literal with generic arg
+==========================================
+
+let coords = Coords::<Int32> (10, 20, 30)
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (tuple_literal
+      (tuple_name)
+      (generic_arguments
+        (signed_integer_type))
+      (tuple_value
+        (integer))
+      (tuple_value
+        (integer))
+      (tuple_value
+        (integer)))))        

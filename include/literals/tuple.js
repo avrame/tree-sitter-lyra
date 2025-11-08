@@ -1,9 +1,9 @@
 module.exports = {
-  tuple_literal: $ => prec.right(180,
+  tuple_literal: $ => prec.left(1,
     choice(
       seq('(',')'),
       seq(
-        optional($.tuple_name),
+        optional($._tuple_name),
         optional($.generic_arguments),
         '(',
           $._tuple_value,
@@ -16,5 +16,5 @@ module.exports = {
 
   _tuple_value: $ => prec.right(1, alias($.expression, $.tuple_value)),
 
-  tuple_name: $ => prec(2, field('tuple_name', alias($.user_defined_type_name, $.tuple_name))),
+  _tuple_name: $ => prec(2, field('tuple_name', alias($.user_defined_type_name, $.tuple_name))),
 }

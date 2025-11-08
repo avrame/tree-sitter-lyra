@@ -15,6 +15,7 @@ module.exports = {
       $.array_literal,
       $.struct_literal,
       $.map_literal,
+      $.tuple_literal,
     )
   ),
   ...array_literal,

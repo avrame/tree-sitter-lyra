@@ -1,0 +1,12 @@
+======================
+Simple Boolean Literal
+======================
+
+let foo = true
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (boolean_literal)))

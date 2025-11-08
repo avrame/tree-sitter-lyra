@@ -26,6 +26,10 @@ module.exports = grammar({
 
   inline: $ => [$._comma],
 
+  conflicts: $ => [
+    [$.struct_literal, $._tuple_name],
+  ],
+
   reserved: {
     identifier: () => ['for', 'if', 'else', 'match', 'let', 'var', 'const', 'def', 'nil', 'true', 'false', 'where'],
   },

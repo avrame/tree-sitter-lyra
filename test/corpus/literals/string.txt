@@ -1,0 +1,12 @@
+====================
+Basic String Literal
+====================
+
+let greeting = "Hello, World!"
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (string_literal)))

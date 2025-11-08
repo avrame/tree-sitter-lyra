@@ -6,6 +6,7 @@ module.exports = {
   // for item in get_array() { println("item: #{item}") }
   // for key, value in some_struct { println("key: #{key}, value: #{value}") }
   for_in_loop: $ => seq(
+    optional(seq(alias($.identifier, $.label), ':')),
     'for',
     $.for_in_condition,
     alias($.block, $.for_in_body)
@@ -19,7 +20,6 @@ module.exports = {
       $.range_expr,
       $.array_literal,
       $.tuple_literal,
-      $.struct_literal,
       $.map_literal,
       $.identifier,
       $.postfix_expression,

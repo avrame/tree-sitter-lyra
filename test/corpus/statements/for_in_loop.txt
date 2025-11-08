@@ -78,38 +78,6 @@ for i in (1, "2", 3) {
           (value
             (string_literal)))))))
 
-=======================
-For in loop with struct
-=======================
-
-for key, val in { one: 1, two: "2", three: 3 } {
-  println("key: #{key}, val: #{val}")
-}
-
----
-
-(program
-  (for_in_loop
-    (for_in_condition
-      (for_variable_or_key)
-      (for_index_or_value)
-      (struct_literal
-        (field_name)
-        (field_value
-          (integer))
-        (field_name)
-        (field_value
-          (string_literal))
-        (field_name)
-        (field_value
-          (integer))))
-    (for_in_body
-      (postfix_expression
-        (identifier)
-        (function_call
-          (value
-            (string_literal)))))))
-
 ===========================
 For in loop with identifier
 ===========================

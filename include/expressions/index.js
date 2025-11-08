@@ -12,8 +12,6 @@ module.exports = {
     $.if_then_expr,
     $.if_block_expr,
     $.match_expr,
-    $.for_loop,
-    $.for_in_loop,
     $._literal,
     $.spread_expr,
     $.lambda_expression,

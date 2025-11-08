@@ -1,4 +1,6 @@
 const assignments = require('./assignments');
+const for_loop = require('./control-flow/for_loop');
+const for_in_loop = require('./control-flow/for_in_loop');
 
 module.exports = {
   statement: $ => seq(
@@ -11,6 +13,8 @@ module.exports = {
       $.continue_statement,
       $.function_definition,
       $.destructuring_declaration,
+      $.for_loop,
+      $.for_in_loop,
       $.expression,
     )
   ),
@@ -21,7 +25,9 @@ module.exports = {
 
   break_statement: $ => prec.right(170, seq('break', optional(field('label', $.identifier)))),
 
-  continue_statement: $ => prec.right(170, seq('continue', optional(field('label', $.identifier)))),
+  continue_statement: $ => prec.right(170, 'continue'),
 
   ...assignments,
+  ...for_loop,
+  ...for_in_loop,
 }

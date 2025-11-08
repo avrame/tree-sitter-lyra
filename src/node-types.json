@@ -40,14 +40,6 @@
         "named": true
       },
       {
-        "type": "for_in_loop",
-        "named": true
-      },
-      {
-        "type": "for_loop",
-        "named": true
-      },
-      {
         "type": "group",
         "named": true
       },
@@ -197,6 +189,14 @@
       },
       {
         "type": "expression",
+        "named": true
+      },
+      {
+        "type": "for_in_loop",
+        "named": true
+      },
+      {
+        "type": "for_loop",
         "named": true
       },
       {
@@ -967,18 +967,7 @@
   {
     "type": "continue_statement",
     "named": true,
-    "fields": {
-      "label": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    }
+    "fields": {}
   },
   {
     "type": "data_pattern",
@@ -1539,10 +1528,6 @@
           "named": true
         },
         {
-          "type": "struct_literal",
-          "named": true
-        },
-        {
           "type": "tuple_literal",
           "named": true
         }
@@ -1563,6 +1548,10 @@
         },
         {
           "type": "for_in_condition",
+          "named": true
+        },
+        {
+          "type": "label",
           "named": true
         }
       ]
@@ -1632,6 +1621,10 @@
         },
         {
           "type": "for_condition",
+          "named": true
+        },
+        {
+          "type": "label",
           "named": true
         }
       ]
@@ -3594,6 +3587,10 @@
   {
     "type": "in",
     "named": false
+  },
+  {
+    "type": "label",
+    "named": true
   },
   {
     "type": "less_than_or_equals",

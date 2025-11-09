@@ -1,0 +1,50 @@
+===============
+Property Access
+===============
+
+let name = person.name
+
+---
+
+(program
+  (declaration
+    name: (identifier)
+    value: (postfix_expression
+      (identifier)
+      property: (identifier))))
+
+==============
+Array Indexing
+==============
+
+let first = array[0]
+
+---
+
+(program
+  (declaration
+    name: (identifier)
+    value: (postfix_expression
+      (identifier)
+      index: (integer))))
+
+==========================
+Chained Postfix Operations
+==========================
+
+let foo = struct.function()[0].property
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (postfix_expression
+      (postfix_expression
+        (postfix_expression
+          (postfix_expression
+            (identifier)
+            (identifier))
+          (function_call))
+        (integer))
+      (identifier))))

@@ -162,3 +162,50 @@ Not Operator with parenthesized expression
         (equality_operator
           (equals))
         (integer)))))
+
+============================================
+Comparison without right operand is an error
+:error
+============================================
+
+x ==
+
+---
+
+(program
+  (identifier)
+  (ERROR
+    (equality_operator
+      (equals))))
+
+==============================================
+Double negation without expression is an error
+:error
+==============================================
+
+!!
+
+---
+
+
+(program
+  (boolean_expr
+    (not)
+    (boolean_expr
+      (not)
+      (integer
+        (MISSING _digit_sequence)))))
+
+==============================================
+And operator without right operand is an error
+:error
+==============================================
+
+x && 
+
+---
+
+(program
+  (identifier)
+  (ERROR
+    (and)))   

@@ -4,7 +4,7 @@ Basic Function declaration without parameters
 
 def foo where
 () => {
-// do stuff
+  // do stuff
 }
 
 ---
@@ -223,3 +223,75 @@ def map<t,u>:
         (comment)
         (comment)
         (comment)))))
+
+===================================
+Function without body is an error
+:error
+===================================
+
+def foo where
+
+---
+
+(program
+  (ERROR
+    (function_signature
+      (identifier))))
+
+=============================================
+Missing comma in parameters types is an error
+:error
+=============================================
+
+def foo: (Int Int) -> Int where
+(x, y) => x * y
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (signed_integer_type))
+        (ERROR)
+        (signed_integer_type)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier))
+        (parameter
+          (identifier)))
+      (multiplication
+        (identifier)
+        (identifier)))))
+
+============================================
+Missing comma in parameter names is an error
+:error
+============================================
+
+def foo: (Int, Int) -> Int where
+(x y) => x * y
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (signed_integer_type)
+          (signed_integer_type))
+        (signed_integer_type)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier))
+        (ERROR
+          (UNEXPECTED 'y')))
+      (multiplication
+        (identifier)
+        (identifier)))))

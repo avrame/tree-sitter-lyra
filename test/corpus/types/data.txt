@@ -119,106 +119,33 @@ data Hue = HueDeg Angle | HueRadian Radian | HueTurn Turn
       (data_type_constructor_name)
       (user_defined_type_name))))
 
-====================================
-Basic Alias Type without constraints
-====================================
+==========================================
+Data type without constructors is an error
+:error
+==========================================
 
-alias Turn = Float
-
----
-
-(program
-  (type_declaration
-    (alias_type
-      (alias_type_name)
-      (user_defined_type_name))))
-
-===============================
-Alias Type with enum constraint
-===============================
-
-alias CSSColorName = String where(enum="red" | "green" | "blue" | "rebeccapurple" | "aliceblue")
+data Foo =
 
 ---
 
 (program
   (type_declaration
-    (alias_type
-      (alias_type_name)
-      (string_type)
-      (constraints
-        (constraint
-          (enum_constraint
-            (enum
-              (enum_value
-                (string_literal))
-              (enum_value
-                (string_literal))
-              (enum_value
-                (string_literal))
-              (enum_value
-                (string_literal))
-              (enum_value
-                (string_literal)))))))))
+    (data_type
+      (data_type_name)
+      (data_type_constructor_name
+        (MISSING "user_defined_type_name_token1")))))
 
-=================================
-Alias Type with range constraints
-=================================
+=========================================
+Data type with lowercase name is an error
+:error
+=========================================
 
-alias Angle = Float where(range=0..360)
-alias Radian = Float64 where(range=0..2*PI)
-alias Alpha = Float32 where(range=0..1)
+data foo = Bar | Baz
 
 ---
 
 (program
-  (type_declaration
-    (alias_type
-      (alias_type_name)
-      (user_defined_type_name)
-      (constraints
-        (constraint
-          (range_constraint
-            (range
-              (integer)
-              (integer)))))))
-  (type_declaration
-    (alias_type
-      (alias_type_name)
-      (float_type)
-      (constraints
-        (constraint
-          (range_constraint
-            (range
-              (integer)
-              (constraint_multiplication
-                (integer)
-                (const_identifier))))))))
-  (type_declaration
-    (alias_type
-      (alias_type_name)
-      (float_type)
-      (constraints
-        (constraint
-          (range_constraint
-            (range
-              (integer)
-              (integer))))))))
-
-=================================
-Alias Type with regex constraints
-=================================
-
-alias HexString = String where(regex=r/^#(?:[0-9a-fA-F]{3}){1,2}$/)
-
----
-
-(program
-  (type_declaration
-    (alias_type
-      (alias_type_name)
-      (string_type)
-      (constraints
-        (constraint
-          (regex_constraint
-            (regex_literal)))))))
+  (ERROR)
+  (identifier)
+  (ERROR
+    (user_defined_type_name)))

@@ -47,7 +47,7 @@ match foo {
   },
   _ => {
     // The last block
-  }
+  },
 }
 
 ---
@@ -161,3 +161,60 @@ Match with range arms
         call: (function_call
           value: (value
             (string_literal)))))))
+
+===================================
+Match without arms is an error
+:error
+===================================
+
+match foo {
+}
+
+---
+
+(program
+  (ERROR
+    (identifier)))
+
+===================================
+Match arm without body is an error
+:error
+===================================
+
+match foo {
+  Some(x) =>,
+  None => "nothing",
+}
+
+---
+
+(program
+  (match_expr
+    (identifier)
+    (match_arm
+      (data_pattern
+        (data_type_name)
+        (identifier))
+      (ERROR
+        (user_defined_type_name))
+      (string_literal))))
+
+=====================================
+Match arm without pattern is an error
+:error
+=====================================
+
+match foo {
+  => "something"
+}
+
+---
+
+(program
+  (match_expr
+    (identifier)
+    (match_arm
+      (literal_pattern
+        (integer
+          (MISSING _digit_sequence)))
+      (string_literal))))

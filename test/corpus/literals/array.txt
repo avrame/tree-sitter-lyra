@@ -1,0 +1,52 @@
+============
+Simple Array
+============
+
+let arr = [1, 2, 3]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (array_literal
+      (integer)
+      (integer)
+      (integer))))
+
+====================================
+Array with missing comma is an error
+:error
+====================================
+
+let arr = [1 2 3]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (array_literal
+      (integer)
+      (MISSING "]")))
+  (integer)
+  (integer)
+  (ERROR))
+
+==========================
+Unclosed array is an error
+:error
+==========================
+
+let arr = [1, 2, 3
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (array_literal
+      (integer)
+      (integer)
+      (integer)
+      (MISSING "]"))))

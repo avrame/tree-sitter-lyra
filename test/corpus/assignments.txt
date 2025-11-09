@@ -89,3 +89,61 @@ pi = 3.141592
   (var_reassignment
     (identifier)
     (float)))
+
+===================================
+Assignment without value is an error
+:error
+===================================
+
+let x =
+
+---
+
+(program
+  (ERROR
+    (identifier)))
+
+===================================
+Const reassignment is an error
+===================================
+
+const PI = 3.14
+PI = 3.141592
+
+---
+
+(program
+  (const_declaration
+    (const_identifier)
+    (float))
+  (const_identifier)
+  (ERROR
+    (UNEXPECTED '3'))
+  (integer))
+
+===================================
+Multiple equal signs is an error
+:error
+===================================
+
+let x == 42
+
+---
+
+(program
+  (ERROR
+    (identifier)
+    (equals)))
+
+===================================
+Missing identifier is an error
+:error
+===================================
+
+let = 42
+
+---
+
+(program
+  (ERROR
+    (integer)))    

@@ -48,3 +48,65 @@ let foo = struct.function()[0].property
           (function_call))
         (integer))
       (identifier))))
+
+=================================================
+Property access without property name is an error
+:error
+=================================================
+
+foo.
+
+---
+
+(program
+  (identifier)
+  (ERROR))
+
+===============================================
+Array index without closing bracket is an error
+:error
+===============================================
+
+arr[0
+
+---
+
+(program
+  (postfix_expression
+    (identifier)
+    (integer)
+    (MISSING "]")))
+
+==========================================
+Array index without expression is an error
+:error
+==========================================
+
+arr[]
+
+---
+
+(program
+  (postfix_expression
+    (identifier)
+    (integer
+      (MISSING _digit_sequence))))
+
+==============================================
+Function call with unclosed parens is an error
+:error
+==============================================
+
+foo(1, 2
+
+---
+
+(program
+  (postfix_expression
+    (identifier)
+    (function_call
+      (value
+        (integer))
+      (value
+        (integer))
+      (MISSING ")"))))

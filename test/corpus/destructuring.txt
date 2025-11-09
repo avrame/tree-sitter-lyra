@@ -211,3 +211,19 @@ let (a, ...rest) = some_tuple
           (identifier))))
     (identifier))
   (comment))
+
+===================================
+Array destructuring without value is an error
+:error
+===================================
+
+let [a, b, c] =
+
+---
+
+(program
+  (ERROR
+    (array_pattern
+      (identifier)
+      (identifier)
+      (identifier))))

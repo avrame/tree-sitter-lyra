@@ -196,3 +196,25 @@ if x == 0 {
             (function_call
               (value
                 (string_literal)))))))))
+
+===================================
+If without condition is an error
+:error
+===================================
+
+if {
+  foo()
+}
+
+---
+
+
+===================================
+If without body is an error
+:error
+===================================
+
+if foo
+
+---
+           

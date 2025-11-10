@@ -4,6 +4,7 @@ module.exports = {
     $.array_pattern,
     $.struct_pattern, 
     $.tuple_pattern,
+    $.data_pattern,
     $.identifier  // simple destructuring: let x = value
   )),
 
@@ -13,6 +14,22 @@ module.exports = {
     field('pattern', $.destructuring_pattern),
     optional(field('type', $.type_notation)),
     '=',
-    field('value', $.expression)
+    field('value', $.expression),
   ),
+
+  // Destructuring declaration with else block
+  destructuring_else_declaration: $ => prec.right(20, seq(
+    $.destructuring_declaration,
+    'else',
+    $.block,
+  )),
+
+  // If Destructuring Declaration
+  if_destructuring_declaration: $ => prec.right(20, seq(
+    'if',
+    $.destructuring_declaration,
+    $.block,
+    optional(seq('else', $.block)),
+  )),
+
 }

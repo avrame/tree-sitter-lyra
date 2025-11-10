@@ -212,6 +212,101 @@ let (a, ...rest) = some_tuple
     (identifier))
   (comment))
 
+===============================
+If Let Destructuring Expression
+===============================
+
+if let Some(num) = get_num() {
+  println("We got the number: #{num}")
+}
+
+---
+
+(program
+  (if_destructuring_declaration
+    (destructuring_declaration
+      (destructuring_pattern
+        (data_pattern
+          (data_type_name)
+          (identifier)))
+      (postfix_expression
+        (identifier)
+        (function_call)))
+    (block
+      (postfix_expression
+        (identifier)
+        (function_call
+          (value
+            (string_literal)))))))
+
+====================================
+If Let Else Destructuring Expression
+====================================
+
+if let Some(num) = get_num() {
+  println("We got the number: #{num}")
+} else {
+  println("Darn, we didn't get the number!")
+}
+
+---
+
+(program
+  (if_destructuring_declaration
+    (destructuring_declaration
+      (destructuring_pattern
+        (data_pattern
+          (data_type_name)
+          (identifier)))
+      (postfix_expression
+        (identifier)
+        (function_call)))
+    (block
+      (postfix_expression
+        (identifier)
+        (function_call
+          (value
+            (string_literal)))))
+    (block
+      (postfix_expression
+        (identifier)
+        (function_call
+          (value
+            (string_literal)))))))
+
+=================================
+Let Else Destructuring Expression
+=================================
+
+let Some(num) = get_num() else {
+  println("Darn, we didn't get the number!")
+}
+println("We got the number: #{num}")
+
+---
+
+(program
+  (destructuring_else_declaration
+    (destructuring_declaration
+      (destructuring_pattern
+        (data_pattern
+          (data_type_name)
+          (identifier)))
+      (postfix_expression
+        (identifier)
+        (function_call)))
+    (block
+      (postfix_expression
+        (identifier)
+        (function_call
+          (value
+            (string_literal))))))
+  (postfix_expression
+    (identifier)
+    (function_call
+      (value
+        (string_literal)))))  
+
 ===================================
 Array destructuring without value is an error
 :error

@@ -188,6 +188,10 @@
         "named": true
       },
       {
+        "type": "destructuring_else_declaration",
+        "named": true
+      },
+      {
         "type": "expression",
         "named": true
       },
@@ -201,6 +205,10 @@
       },
       {
         "type": "function_definition",
+        "named": true
+      },
+      {
+        "type": "if_destructuring_declaration",
         "named": true
       },
       {
@@ -1145,6 +1153,25 @@
     }
   },
   {
+    "type": "destructuring_else_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "destructuring_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "destructuring_pattern",
     "named": true,
     "fields": {},
@@ -1154,6 +1181,10 @@
       "types": [
         {
           "type": "array_pattern",
+          "named": true
+        },
+        {
+          "type": "data_pattern",
           "named": true
         },
         {
@@ -1320,6 +1351,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "else",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "enum",
@@ -1990,6 +2026,25 @@
         },
         {
           "type": "postfix_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_destructuring_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "destructuring_declaration",
           "named": true
         }
       ]
@@ -3530,7 +3585,7 @@
   },
   {
     "type": "else",
-    "named": true
+    "named": false
   },
   {
     "type": "else_if",

@@ -11,6 +11,7 @@ module.exports = {
     $.range_expr,
     $.if_then_expr,
     $.if_block_expr,
+    // $.if_let_expr,
     $.match_expr,
     $._literal,
     $.spread_expr,

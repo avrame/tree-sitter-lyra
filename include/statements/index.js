@@ -13,6 +13,8 @@ module.exports = {
       $.continue_statement,
       $.function_definition,
       $.destructuring_declaration,
+      $.destructuring_else_declaration,
+      $.if_destructuring_declaration,
       $.for_loop,
       $.for_in_loop,
       $.expression,

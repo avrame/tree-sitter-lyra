@@ -2924,6 +2924,40 @@
     }
   },
   {
+    "type": "string_interpolation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "string_content",
+          "named": true
+        },
+        {
+          "type": "string_interpolation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "struct_literal",
     "named": true,
     "fields": {
@@ -3367,6 +3401,14 @@
     "fields": {}
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "#{",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -3696,7 +3738,7 @@
     "named": false
   },
   {
-    "type": "string_literal",
+    "type": "string_content",
     "named": true
   },
   {

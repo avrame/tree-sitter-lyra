@@ -37,7 +37,9 @@ let map: Map<Int, String> = { 1 => "one", 2 => "two" }
     (map_literal
       (map_entry
         (integer)
-        (string_literal))
+        (string_literal
+          (string_content)))
       (map_entry
         (integer)
-        (string_literal)))))
+        (string_literal
+          (string_content))))))

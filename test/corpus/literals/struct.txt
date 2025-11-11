@@ -12,7 +12,8 @@ let foo = { bar: "baz", blah: 23 }
     (struct_literal
       (field_name)
       (field_value
-        (string_literal))
+        (string_literal
+          (string_content)))
       (field_name)
       (field_value
         (integer)))))

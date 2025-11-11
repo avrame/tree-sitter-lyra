@@ -21,7 +21,8 @@ if x == 3 {
         (identifier)
         (function_call
           (value
-            (string_literal)))))))
+            (string_literal
+              (string_content))))))))
 
 ==================
 If/else expression
@@ -48,14 +49,16 @@ if x == 3 {
         (identifier)
         (function_call
           (value
-            (string_literal)))))
+            (string_literal
+              (string_content))))))
     (else)
     (if_block
       (postfix_expression
         (identifier)
         (function_call
           (value
-            (string_literal)))))))
+            (string_literal
+              (string_content))))))))
 
 =============================
 If one-liner in an assignment
@@ -75,9 +78,11 @@ let foo = if x == 0 then "zero" else "not zero"
           (equality_operator
             (equals))
           (integer)))
-      (string_literal)
+      (string_literal
+        (string_content))
       (else)
-      (string_literal))))
+      (string_literal
+        (string_content)))))
 
 =========================
 If/Then on multiple lines
@@ -105,7 +110,8 @@ end
       (identifier)
       (function_call
         (value
-          (string_literal))))
+          (string_literal
+            (string_content)))))
     (else_if)
     (if_condition
       (boolean_expr
@@ -117,13 +123,15 @@ end
       (identifier)
       (function_call
         (value
-          (string_literal))))
+          (string_literal
+            (string_content)))))
     (else)
     (postfix_expression
       (identifier)
       (function_call
         (value
-          (string_literal))))))
+          (string_literal
+            (string_content)))))))
 
 =====================
 Nested If Expressions
@@ -166,14 +174,16 @@ if x == 0 {
             (identifier)
             (function_call
               (value
-                (string_literal)))))
+                (string_literal
+                  (string_content))))))
         (else)
         (if_block
           (postfix_expression
             (identifier)
             (function_call
               (value
-                (string_literal)))))))
+                (string_literal
+                  (string_content))))))))
     (else)
     (if_block
       (if_block_expr
@@ -188,14 +198,21 @@ if x == 0 {
             (identifier)
             (function_call
               (value
-                (string_literal)))))
+                (string_literal
+                  (string_content))))))
         (else)
         (if_block
           (postfix_expression
             (identifier)
             (function_call
               (value
-                (string_literal)))))))))
+                (string_literal
+                  (string_content)
+                  (string_interpolation
+                    (identifier))
+                  (string_content)
+                  (string_interpolation
+                    (identifier)))))))))))
 
 ===================================
 If without condition is an error

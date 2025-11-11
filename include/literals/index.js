@@ -3,6 +3,7 @@ const struct_literal = require('./struct');
 const map_literal = require('./map');
 const number_literals = require('./numbers');
 const tuple_literal = require('./tuple');
+const string_literal = require('./string');
 
 module.exports = {
   _literal: $ => prec.right(
@@ -23,8 +24,7 @@ module.exports = {
   ...map_literal,
   ...number_literals,
   ...tuple_literal,
-  
-  string_literal: $ => token(seq('"', repeat(choice(/[^"\\\n]+/, /\\./)), '"')),
+  ...string_literal,
 
   boolean_literal: $ => choice('true', 'false'),
 

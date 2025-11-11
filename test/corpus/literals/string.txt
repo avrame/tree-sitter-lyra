@@ -9,4 +9,53 @@ let greeting = "Hello, World!"
 (program
   (declaration
     (identifier)
-    (string_literal)))
+    (string_literal
+      (string_content))))
+
+=================================
+String Literal with interpolation
+=================================
+
+let greeting = "Hello, #{name}"
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (string_literal
+      (string_content)
+      (string_interpolation
+        (identifier)))))
+
+======================================================
+String Literal with a complex interpolation expression
+======================================================
+
+let greeting = "Hello, #{employee.get_name()}!"
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (string_literal
+      (string_content)
+      (string_interpolation
+        (postfix_expression
+          (postfix_expression
+            (identifier)
+            (identifier))
+          (function_call)))
+      (string_content))))
+
+========================================
+String Literal with nested interpolation
+:skip
+========================================
+
+let greeting = "Hello, #{if is_male then "Mr. #{last_name}" else "Mrs. #{last_name}"}!"
+
+---
+
+(program)

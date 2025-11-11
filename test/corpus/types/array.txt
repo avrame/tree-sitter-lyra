@@ -10,9 +10,12 @@ let foo = ["one", "two", "three"]
   (declaration
     (identifier)
     (array_literal
-      (string_literal)
-      (string_literal)
-      (string_literal))))
+      (string_literal
+        (string_content))
+      (string_literal
+        (string_content))
+      (string_literal
+        (string_content)))))
 
 =======================================
 Simple Array Literal with type notation
@@ -29,6 +32,9 @@ let foo: Array<String> = ["one", "two", "three"]
       (array_type
         (string_type)))
     (array_literal
-      (string_literal)
-      (string_literal)
-      (string_literal))))
+      (string_literal
+        (string_content))
+      (string_literal
+        (string_content))
+      (string_literal
+        (string_content)))))

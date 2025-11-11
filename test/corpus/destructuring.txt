@@ -237,7 +237,10 @@ if let Some(num) = get_num() {
         (identifier)
         (function_call
           (value
-            (string_literal)))))))
+            (string_literal
+              (string_content)
+              (string_interpolation
+                (identifier)))))))))
 
 ====================================
 If Let Else Destructuring Expression
@@ -266,13 +269,17 @@ if let Some(num) = get_num() {
         (identifier)
         (function_call
           (value
-            (string_literal)))))
+            (string_literal
+              (string_content)
+              (string_interpolation
+                (identifier)))))))
     (block
       (postfix_expression
         (identifier)
         (function_call
           (value
-            (string_literal)))))))
+            (string_literal
+              (string_content))))))))
 
 =================================
 Let Else Destructuring Expression
@@ -300,12 +307,16 @@ println("We got the number: #{num}")
         (identifier)
         (function_call
           (value
-            (string_literal))))))
+            (string_literal
+              (string_content)))))))
   (postfix_expression
     (identifier)
     (function_call
       (value
-        (string_literal)))))  
+        (string_literal
+          (string_content)
+          (string_interpolation
+            (identifier)))))))
 
 ===================================
 Array destructuring without value is an error

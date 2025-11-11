@@ -22,16 +22,19 @@ let bar = match foo {
           (data_type_name)
           (literal_pattern
             (integer)))
-        (string_literal))
+        (string_literal
+          (string_content)))
       (match_arm
         (data_pattern
           (data_type_name)
           (wildcard_pattern))
-        (string_literal))
+        (string_literal
+          (string_content)))
       (match_arm
         (data_pattern
           (data_type_name))
-        (string_literal)))))
+        (string_literal
+          (string_content))))))
 
 =================
 Match with blocks
@@ -91,24 +94,29 @@ let foo = match bar {
       (identifier)
       (match_arm
         (literal_pattern
-          (string_literal))
+          (string_literal
+            (string_content)))
         (struct_literal
           (field_name)
           (field_value
-            (string_literal))))
+            (string_literal
+              (string_content)))))
       (match_arm
         (literal_pattern
-          (string_literal))
+          (string_literal
+            (string_content)))
         (struct_literal
           (field_name)
           (field_value
-            (string_literal))))
+            (string_literal
+              (string_content)))))
       (match_arm
         (wildcard_pattern)
         (struct_literal
           (field_name)
           (field_value
-            (string_literal)))))))
+            (string_literal
+              (string_content))))))))
 
 =====================
 Match with range arms
@@ -125,42 +133,46 @@ Match with range arms
 
 (program
   (match_expr
-    value: (identifier)
+    (identifier)
     (match_arm
-      pattern: (range_pattern
+      (range_pattern
         (integer)
         (range_end_operator)
         (integer))
-      body: (postfix_expression
+      (postfix_expression
         (identifier)
-        call: (function_call
-          value: (value
-            (string_literal)))))
+        (function_call
+          (value
+            (string_literal
+              (string_content))))))
     (match_arm
-      pattern: (literal_pattern
+      (literal_pattern
         (integer))
-      body: (postfix_expression
+      (postfix_expression
         (identifier)
-        call: (function_call
-          value: (value
-            (string_literal)))))
+        (function_call
+          (value
+            (string_literal
+              (string_content))))))
     (match_arm
-      pattern: (range_pattern
+      (range_pattern
         (integer)
         (range_end_operator)
         (integer))
-      body: (postfix_expression
+      (postfix_expression
         (identifier)
-        call: (function_call
-          value: (value
-            (string_literal)))))
+        (function_call
+          (value
+            (string_literal
+              (string_content))))))
     (match_arm
-      pattern: (wildcard_pattern)
-      body: (postfix_expression
+      (wildcard_pattern)
+      (postfix_expression
         (identifier)
-        call: (function_call
-          value: (value
-            (string_literal)))))))
+        (function_call
+          (value
+            (string_literal
+              (string_content))))))))
 
 =================
 Match with guards
@@ -198,7 +210,8 @@ match foo {
         (identifier)
         (function_call
           (value
-            (string_literal)))))
+            (string_literal
+              (string_content))))))
     (match_arm
       (data_pattern
         (data_type_name)
@@ -220,7 +233,8 @@ match foo {
         (identifier)
         (function_call
           (value
-            (string_literal)))))
+            (string_literal
+              (string_content))))))
     (match_arm
       (data_pattern
         (data_type_name))
@@ -228,7 +242,8 @@ match foo {
         (identifier)
         (function_call
           (value
-            (string_literal)))))))
+            (string_literal
+              (string_content))))))))
 
 ===================================
 Match without arms is an error

@@ -30,15 +30,20 @@ alias CSSColorName = String where(enum="red" | "green" | "blue" | "rebeccapurple
           (enum_constraint
             (enum
               (enum_value
-                (string_literal))
+                (string_literal
+                  (string_content)))
               (enum_value
-                (string_literal))
+                (string_literal
+                  (string_content)))
               (enum_value
-                (string_literal))
+                (string_literal
+                  (string_content)))
               (enum_value
-                (string_literal))
+                (string_literal
+                  (string_content)))
               (enum_value
-                (string_literal)))))))))
+                (string_literal
+                  (string_content))))))))))
 
 =================================
 Alias Type with range constraints

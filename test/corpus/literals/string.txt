@@ -49,6 +49,23 @@ let greeting = "Hello, #{employee.get_name()}!"
           (function_call)))
       (string_content))))
 
+=====================================
+String Literal with escaped hash char
+=====================================
+
+"Phone \#: #{phone_num}"
+
+---
+
+(program
+  (string_literal
+    (string_content)
+    (string_content)
+    (string_content)
+    (string_interpolation
+      (identifier))))
+
+
 ========================================
 String Literal with nested interpolation
 :skip

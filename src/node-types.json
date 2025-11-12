@@ -446,6 +446,11 @@
     "fields": {}
   },
   {
+    "type": "and",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "array_capacity",
     "named": true,
     "fields": {},
@@ -1430,6 +1435,11 @@
     }
   },
   {
+    "type": "equals",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "float",
     "named": true,
     "fields": {}
@@ -1876,6 +1886,11 @@
     "fields": {}
   },
   {
+    "type": "greater_than_or_equals",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "group",
     "named": true,
     "fields": {},
@@ -2121,6 +2136,11 @@
     "fields": {}
   },
   {
+    "type": "less_than_or_equals",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "literal_pattern",
     "named": true,
     "fields": {},
@@ -2279,6 +2299,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "method_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "multiplication",
@@ -2510,7 +2535,17 @@
     }
   },
   {
+    "type": "not_equals",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "octal_int",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "or",
     "named": true,
     "fields": {}
   },
@@ -3238,6 +3273,63 @@
     }
   },
   {
+    "type": "trait_declaration",
+    "named": true,
+    "fields": {
+      "method": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "trait_method",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "trait_name",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "trait_method",
+    "named": true,
+    "fields": {
+      "function_type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "function_type",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "method_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "trait_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "tuple_literal",
     "named": true,
     "fields": {
@@ -3335,6 +3427,10 @@
         {
           "type": "struct_type",
           "named": true
+        },
+        {
+          "type": "trait_declaration",
+          "named": true
         }
       ]
     }
@@ -3401,11 +3497,27 @@
     "fields": {}
   },
   {
+    "type": "!=",
+    "named": false
+  },
+  {
     "type": "\"",
     "named": false
   },
   {
     "type": "#{",
+    "named": false
+  },
+  {
+    "type": "%",
+    "named": false
+  },
+  {
+    "type": "&",
+    "named": false
+  },
+  {
+    "type": "&&",
     "named": false
   },
   {
@@ -3418,6 +3530,10 @@
   },
   {
     "type": "*",
+    "named": false
+  },
+  {
+    "type": "**",
     "named": false
   },
   {
@@ -3497,7 +3613,19 @@
     "named": false
   },
   {
+    "type": "<<",
+    "named": false
+  },
+  {
+    "type": "<=",
+    "named": false
+  },
+  {
     "type": "=",
+    "named": false
+  },
+  {
+    "type": "==",
     "named": false
   },
   {
@@ -3506,6 +3634,14 @@
   },
   {
     "type": ">",
+    "named": false
+  },
+  {
+    "type": ">=",
+    "named": false
+  },
+  {
+    "type": ">>",
     "named": false
   },
   {
@@ -3577,16 +3713,16 @@
     "named": false
   },
   {
+    "type": "^",
+    "named": false
+  },
+  {
     "type": "_",
     "named": false
   },
   {
     "type": "alias",
     "named": false
-  },
-  {
-    "type": "and",
-    "named": true
   },
   {
     "type": "argument_name",
@@ -3642,10 +3778,6 @@
     "named": false
   },
   {
-    "type": "equals",
-    "named": true
-  },
-  {
     "type": "false",
     "named": false
   },
@@ -3670,10 +3802,6 @@
     "named": true
   },
   {
-    "type": "greater_than_or_equals",
-    "named": true
-  },
-  {
     "type": "identifier",
     "named": true
   },
@@ -3690,10 +3818,6 @@
     "named": true
   },
   {
-    "type": "less_than_or_equals",
-    "named": true
-  },
-  {
     "type": "let",
     "named": false
   },
@@ -3707,14 +3831,6 @@
   },
   {
     "type": "not",
-    "named": true
-  },
-  {
-    "type": "not_equals",
-    "named": true
-  },
-  {
-    "type": "or",
     "named": true
   },
   {
@@ -3754,6 +3870,10 @@
     "named": false
   },
   {
+    "type": "trait",
+    "named": false
+  },
+  {
     "type": "true",
     "named": false
   },
@@ -3778,7 +3898,15 @@
     "named": false
   },
   {
+    "type": "||",
+    "named": false
+  },
+  {
     "type": "}",
+    "named": false
+  },
+  {
+    "type": "~",
     "named": false
   }
 ]

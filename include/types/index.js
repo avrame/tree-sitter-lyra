@@ -7,13 +7,14 @@ const number_types = require('./number_types');
 const struct_type = require('./struct_type');
 const tuple_type = require('./tuple_type');
 const map_type = require('./map_type');
+const trait_declaration = require('./trait_declaration');
 
 module.exports = {
     type_notation: $ => seq(':', $.type),
 
     return_type_notation: $ => seq('->', $.type),
 
-    type_declaration: $ => choice($.struct_type, $.data_type, $.alias_type),
+    type_declaration: $ => choice($.struct_type, $.data_type, $.alias_type, $.trait_declaration),
     
     type: $ => prec(2, choice($._primitive_type, $.user_defined_type_name, $.array_type, $.generic_type, $.function_type, $.map_type)),
     
@@ -34,4 +35,5 @@ module.exports = {
     ...struct_type,
     ...tuple_type,
     ...map_type,
+    ...trait_declaration,
 }

@@ -1,0 +1,50 @@
+===========
+Basic Trait
+===========
+
+trait Show {
+  show: (type) -> String
+}
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type))
+          (string_type))))))
+
+===========================
+Trait with Binary Operators
+===========================
+
+trait Eq {
+  (==): (type, type) -> Bool
+  (!=): (type, type) -> Bool
+}
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type)
+            (generic_type))
+          (boolean_type)))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type)
+            (generic_type))
+          (boolean_type))))))

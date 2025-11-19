@@ -3299,6 +3299,36 @@
     }
   },
   {
+    "type": "trait_implementation",
+    "named": true,
+    "fields": {
+      "method": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "trait_method_implementation",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "trait_name",
+          "named": true
+        },
+        {
+          "type": "user_defined_type_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "trait_method",
     "named": true,
     "fields": {
@@ -3308,6 +3338,32 @@
         "types": [
           {
             "type": "function_type",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "method_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "trait_method_implementation",
+    "named": true,
+    "fields": {
+      "function_pattern": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "function_pattern",
             "named": true
           }
         ]
@@ -3430,6 +3486,10 @@
         },
         {
           "type": "trait_declaration",
+          "named": true
+        },
+        {
+          "type": "trait_implementation",
           "named": true
         }
       ]
@@ -3807,6 +3867,10 @@
   },
   {
     "type": "if",
+    "named": false
+  },
+  {
+    "type": "impl",
     "named": false
   },
   {

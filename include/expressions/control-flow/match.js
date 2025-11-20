@@ -18,7 +18,4 @@ module.exports = {
   ),
 
   guard: $ => seq('if', $.expression),
-
-  // Pattern matching in function parameters
-  function_pattern: $ => $.pattern,
 }

@@ -3,10 +3,17 @@ module.exports = {
     choice(
       // Empty tuple: ()
       seq('(',')'),
-      // Non-empty tuple: requires at least one comma to distinguish from parenthesized expressions
+      // Named tuple: allows single element without comma
       seq(
-        optional($._tuple_name),
+        $._tuple_name,
         optional($.generic_arguments),
+        '(',
+          $._tuple_value,
+          optional(seq(repeat1(seq($._comma, $._tuple_value)), optional($._comma))),
+        ')'
+      ),
+      // Anonymous tuple: requires at least one comma to distinguish from parenthesized expressions
+      seq(
         '(',
           $._tuple_value,
           choice(

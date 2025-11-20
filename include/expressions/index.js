@@ -16,6 +16,7 @@ module.exports = {
     $._literal,
     $.spread_expr,
     $.lambda_expression,
+    $.user_defined_type_name,
   ),
 
   identifier: $ => /[a-z][a-z0-9_]*/,

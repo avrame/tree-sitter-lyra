@@ -28,6 +28,8 @@ module.exports = grammar({
 
   conflicts: $ => [
     [$.struct_literal, $._tuple_name],
+    [$.struct_literal, $._tuple_name, $.expression],
+    [$.expression, $.data_pattern],
   ],
 
   reserved: {

@@ -1,0 +1,808 @@
+========================================
+Simple Generic Trait with Implementation
+========================================
+
+trait Show<t> {
+  show: (t) -> String
+}
+
+impl Show<Int> for Int {
+  show = (n) => int_to_string(n)
+}
+
+impl Show<String> for String {
+  show = (s) => s
+}
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (generic_parameters
+        (generic_type))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type))
+          (string_type)))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (signed_integer_type)
+      (signed_integer_type)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier)))
+          (postfix_expression
+            (identifier)
+            (function_call
+              (value
+                (identifier))))))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (string_type)
+      (string_type)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier)))
+          (identifier))))))
+
+=====================================================
+Two Generic Parameters Trait with Implementation
+=====================================================
+
+trait Converter<from, to> {
+  convert: (from) -> to
+}
+
+impl Converter<String, Int> for StringParser {
+  convert = (s) => parse_int(s)
+}
+
+impl Converter<Int, String> for IntFormatter {
+  convert = (n) => int_to_string(n)
+}
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (generic_parameters
+        (generic_type)
+        (generic_type))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type))
+          (generic_type)))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (string_type)
+      (signed_integer_type)
+      (user_defined_type_name)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier)))
+          (postfix_expression
+            (identifier)
+            (function_call
+              (value
+                (identifier))))))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (signed_integer_type)
+      (string_type)
+      (user_defined_type_name)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier)))
+          (postfix_expression
+            (identifier)
+            (function_call
+              (value
+                (identifier)))))))))
+
+====================================================
+Higher-Kinded Trait with Generic Type Implementation
+====================================================
+
+trait Functor<f> {
+  map: (f<a>, (a) -> b) -> f<b>
+}
+
+impl Functor<Array> for ArrayFunctor {
+  map = (arr, fn) => {
+    var result = []
+    for item in arr {
+      result = [...result, fn(item)]
+    }
+    result
+  }
+}
+
+impl Functor<Maybe> for MaybeFunctor {
+  map = (maybe, fn) => match maybe {
+    Some(x) => Some(fn(x)),
+    None => None
+  }
+}
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (generic_parameters
+        (generic_type))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type
+              (generic_type_parameter))
+            (function_type
+              (function_type_parameter_list
+                (generic_type))
+              (generic_type)))
+          (generic_type
+            (generic_type_parameter))))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (user_defined_type_name)
+      (user_defined_type_name)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (block
+            (declaration
+              (identifier)
+              (array_literal))
+            (for_in_loop
+              (for_in_condition
+                (for_variable_or_key)
+                (identifier))
+              (for_in_body
+                (var_reassignment
+                  (identifier)
+                  (array_literal
+                    (spread_expr
+                      (identifier))
+                    (postfix_expression
+                      (identifier)
+                      (function_call
+                        (value
+                          (identifier))))))))
+            (identifier))))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (user_defined_type_name)
+      (user_defined_type_name)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (match_expr
+            (identifier)
+            (match_arm
+              (data_pattern
+                (data_type_name)
+                (identifier))
+              (tuple_literal
+                (tuple_name)
+                (tuple_value
+                  (postfix_expression
+                    (identifier)
+                    (function_call
+                      (value
+                        (identifier)))))))
+            (match_arm
+              (data_pattern
+                (data_type_name))
+              (user_defined_type_name))))))))
+
+=========================================================
+Generic Trait Implemented for Generic Type
+=========================================================
+
+trait Eq<t> {
+  (==): (t, t) -> Bool,
+  (!=): (t, t) -> Bool
+}
+
+impl Eq<Array<t>> for Array<t> {
+  (==) = (a, b) => {
+    if a.length() != b.length() {
+      false
+    } else {
+      for i in 0..<a.length() {
+        if a[i] != b[i] then return false
+      }
+      true
+    }
+  },
+  (!=) = (a, b) => !(a == b)
+}
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (generic_parameters
+        (generic_type))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type)
+            (generic_type))
+          (boolean_type)))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type)
+            (generic_type))
+          (boolean_type)))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (array_type
+        (generic_type))
+      (array_type
+        (generic_type))
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (block
+            (if_block_expr
+              (if_condition
+                (boolean_expr
+                  (postfix_expression
+                    (postfix_expression
+                      (identifier)
+                      (identifier))
+                    (function_call))
+                  (equality_operator
+                    (not_equals))
+                  (postfix_expression
+                    (postfix_expression
+                      (identifier)
+                      (identifier))
+                    (function_call))))
+              (if_block
+                (boolean_literal))
+              (else)
+              (if_block
+                (for_in_loop
+                  (for_in_condition
+                    (for_variable_or_key)
+                    (range_expr
+                      (range_start
+                        (integer))
+                      (range_end_operator)
+                      (range_end
+                        (postfix_expression
+                          (postfix_expression
+                            (identifier)
+                            (identifier))
+                          (function_call)))))
+                  (for_in_body
+                    (if_then_expr
+                      (if_condition
+                        (boolean_expr
+                          (postfix_expression
+                            (identifier)
+                            (identifier))
+                          (equality_operator
+                            (not_equals))
+                          (postfix_expression
+                            (identifier)
+                            (identifier))))
+                      (identifier)
+                      (else
+                        (MISSING "else"))
+                      (boolean_literal))))
+                (boolean_literal))))))
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (boolean_expr
+            (not)
+            (parenthesized_expression
+              (boolean_expr
+                (identifier)
+                (equality_operator
+                  (equals))
+                (identifier)))))))))
+
+============================================
+Trait with Complex Nested Generic Arguments
+============================================
+
+trait Mappable<container, elem> {
+  map_elements: (container<elem>, (elem) -> elem) -> container<elem>
+}
+
+impl Mappable<Array, Int> for IntArrayMapper {
+  map_elements = (arr, fn) => map(arr, fn)
+}
+
+impl Mappable<Array, String> for StringArrayMapper {
+  map_elements = (arr, fn) => map(arr, fn)
+}
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (generic_parameters
+        (generic_type)
+        (generic_type))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type
+              (generic_type_parameter))
+            (function_type
+              (function_type_parameter_list
+                (generic_type))
+              (generic_type)))
+          (generic_type
+            (generic_type_parameter))))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (user_defined_type_name)
+      (signed_integer_type)
+      (user_defined_type_name)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (postfix_expression
+            (identifier)
+            (function_call
+              (value
+                (identifier))
+              (value
+                (identifier))))))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (user_defined_type_name)
+      (string_type)
+      (user_defined_type_name)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (postfix_expression
+            (identifier)
+            (function_call
+              (value
+                (identifier))
+              (value
+                (identifier)))))))))
+
+=============================================
+Trait with Function Type Generic Parameter
+=============================================
+
+trait Applicable<f> {
+  apply: (f, Int) -> Int
+}
+
+impl Applicable<(Int) -> Int> for UnaryOp {
+  apply = (fn, x) => fn(x)
+}
+
+impl Applicable<(Int, Int) -> Int> for BinaryOp {
+  apply = (fn, x) => fn(x, x)
+}
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (generic_parameters
+        (generic_type))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type)
+            (signed_integer_type))
+          (signed_integer_type)))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (function_type
+        (function_type_parameter_list
+          (signed_integer_type))
+        (signed_integer_type))
+      (user_defined_type_name)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (postfix_expression
+            (identifier)
+            (function_call
+              (value
+                (identifier))))))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (function_type
+        (function_type_parameter_list
+          (signed_integer_type)
+          (signed_integer_type))
+        (signed_integer_type))
+      (user_defined_type_name)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (postfix_expression
+            (identifier)
+            (function_call
+              (value
+                (identifier))
+              (value
+                (identifier)))))))))
+
+==========================================
+Trait with Map Type Generic Parameter
+==========================================
+
+trait Serializable<t> {
+  serialize: (t) -> String,
+  deserialize: (String) -> t
+}
+
+impl Serializable<Map<String, Int>> for ConfigSerializer {
+  serialize = (map) => json_encode(map),
+  deserialize = (json) => json_decode(json)
+}
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (generic_parameters
+        (generic_type))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type))
+          (string_type)))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (string_type))
+          (generic_type)))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (map_type
+        (key_type
+          (string_type))
+        (value_type
+          (signed_integer_type)))
+      (user_defined_type_name)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier)))
+          (postfix_expression
+            (identifier)
+            (function_call
+              (value
+                (identifier))))))
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier)))
+          (postfix_expression
+            (identifier)
+            (function_call
+              (value
+                (identifier)))))))))
+
+================================================
+Trait with Multiple Methods and Generic Types
+================================================
+
+trait Collection<c, e> {
+  add: (c<e>, e) -> c<e>,
+  remove: (c<e>, e) -> c<e>,
+  contains: (c<e>, e) -> Bool,
+  size: (c<e>) -> Int
+}
+
+impl Collection<Array, String> for StringList {
+  add = (arr, item) => [...arr, item],
+  remove = (arr, item) => filter(arr, (x) => x != item),
+  contains = (arr, item) => any(arr, (x) => x == item),
+  size = (arr) => arr.length()
+}
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (generic_parameters
+        (generic_type)
+        (generic_type))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type
+              (generic_type_parameter))
+            (generic_type))
+          (generic_type
+            (generic_type_parameter))))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type
+              (generic_type_parameter))
+            (generic_type))
+          (generic_type
+            (generic_type_parameter))))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type
+              (generic_type_parameter))
+            (generic_type))
+          (boolean_type)))
+      (trait_method
+        (method_name)
+        (function_type
+          (function_type_parameter_list
+            (generic_type
+              (generic_type_parameter)))
+          (signed_integer_type)))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (user_defined_type_name)
+      (string_type)
+      (user_defined_type_name)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (array_literal
+            (spread_expr
+              (identifier))
+            (identifier))))
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (postfix_expression
+            (identifier)
+            (function_call
+              (value
+                (identifier))
+              (value
+                (lambda_expression
+                  (function_pattern
+                    (parameter_list
+                      (parameter
+                        (identifier)))
+                    (boolean_expr
+                      (identifier)
+                      (equality_operator
+                        (not_equals))
+                      (identifier)))))))))
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (postfix_expression
+            (identifier)
+            (function_call
+              (value
+                (identifier))
+              (value
+                (lambda_expression
+                  (function_pattern
+                    (parameter_list
+                      (parameter
+                        (identifier)))
+                    (boolean_expr
+                      (identifier)
+                      (equality_operator
+                        (equals))
+                      (identifier)))))))))
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier)))
+          (postfix_expression
+            (postfix_expression
+              (identifier)
+              (identifier))
+            (function_call)))))))
+
+===================================================
+Trait Implementation for Primitive and Custom Types
+===================================================
+
+trait Default<t> {
+  default: () -> t
+}
+
+impl Default<Int> for Int {
+  default = () => 0
+}
+
+impl Default<String> for String {
+  default = () => ""
+}
+
+impl Default<Array<t>> for Array<t> {
+  default = () => []
+}
+
+impl Default<Person> for Person {
+  default = () => Person { name: "", age: 0 }
+}
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (generic_parameters
+        (generic_type))
+      (trait_method
+        (method_name)
+        (function_type
+          (generic_type)))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (signed_integer_type)
+      (signed_integer_type)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list)
+          (integer)))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (string_type)
+      (string_type)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list)
+          (string_literal)))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (array_type
+        (generic_type))
+      (array_type
+        (generic_type))
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list)
+          (array_literal)))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (user_defined_type_name)
+      (user_defined_type_name)
+      (trait_method_implementation
+        (method_name)
+        (function_pattern
+          (parameter_list)
+          (struct_literal
+            (struct_name)
+            (field_name)
+            (field_value
+              (string_literal))
+            (field_name)
+            (field_value
+              (integer))))))))

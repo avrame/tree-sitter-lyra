@@ -1014,7 +1014,7 @@
       "required": true,
       "types": [
         {
-          "type": "data_type_constructor_name",
+          "type": "data_type_constructor",
           "named": true
         },
         {
@@ -1024,16 +1024,44 @@
         {
           "type": "generic_parameters",
           "named": true
-        },
-        {
-          "type": "struct_type_body",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "data_type_constructor",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "struct_type_body",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "data_type_constructor_name",
+            "named": true
+          }
+        ]
+      },
+      "param": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {

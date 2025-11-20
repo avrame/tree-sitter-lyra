@@ -2463,7 +2463,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_data_type_constructor"
+          "name": "data_type_constructor"
         },
         {
           "type": "REPEAT",
@@ -2476,46 +2476,75 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_data_type_constructor"
+                "name": "data_type_constructor"
               }
             ]
           }
         }
       ]
     },
-    "_data_type_constructor": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
+    "data_type_constructor": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "data_type_constructor_name"
+              }
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "FIELD",
+              "name": "param",
+              "content": {
+                "type": "SYMBOL",
+                "name": "type"
+              }
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "data_type_constructor_name"
+              }
+            },
+            {
+              "type": "FIELD",
+              "name": "body",
+              "content": {
+                "type": "SYMBOL",
+                "name": "struct_type_body"
+              }
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
             "type": "SYMBOL",
             "name": "data_type_constructor_name"
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "type"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "struct_type_body"
-                  }
-                ]
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
           }
-        ]
-      }
+        }
+      ]
     },
     "data_type_constructor_name": {
       "type": "PATTERN",
@@ -5334,6 +5363,9 @@
     [
       "expression",
       "data_pattern"
+    ],
+    [
+      "data_type_constructor"
     ]
   ],
   "precedences": [],

@@ -9,7 +9,7 @@ module.exports = {
     repeat(seq('|', $.data_type_constructor))
   ),
 
-  data_type_constructor: $ => choice(
+  data_type_constructor: $ => prec.right(choice(
     seq(
       field('name', $.data_type_constructor_name),
       '(',
@@ -21,6 +21,6 @@ module.exports = {
       field('body', $.struct_type_body),
     ),
     field('name', $.data_type_constructor_name)
-  ),
+  )),
   data_type_constructor_name: $ => /[A-Z][a-zA-Z0-9]*/,
 }

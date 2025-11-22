@@ -659,6 +659,12 @@
     }
   },
   {
+    "type": "comment",
+    "named": true,
+    "extra": true,
+    "fields": {}
+  },
+  {
     "type": "const_declaration",
     "named": true,
     "fields": {
@@ -3940,11 +3946,6 @@
   {
     "type": "break",
     "named": false
-  },
-  {
-    "type": "comment",
-    "named": true,
-    "extra": true
   },
   {
     "type": "const",

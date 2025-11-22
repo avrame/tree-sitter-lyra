@@ -1,6 +1,7 @@
 module.exports = {
   comment: $ =>
-    token(
-      choice(seq("//", /.*/), seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/")),
+    choice(
+      token(seq("//", /.*/)),
+      $._BLOCK_COMMENT,
     ),
 }

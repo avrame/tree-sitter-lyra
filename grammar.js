@@ -24,6 +24,10 @@ module.exports = grammar({
 
   extras: $ => [/\s/, $.comment],
 
+  externals: $ => [
+    $._BLOCK_COMMENT,
+  ],
+
   inline: $ => [$._comma],
 
   conflicts: $ => [

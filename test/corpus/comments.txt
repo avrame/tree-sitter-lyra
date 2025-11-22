@@ -19,8 +19,7 @@ Mult-line comment
 
 /* This is a mult-line comment
 that spans a few lines. Here is
-some more text to fill up the lines */
-let x = 42
+some more text to fill up the lines */ let x = 42
 
 ---
 
@@ -31,13 +30,17 @@ let x = 42
     (integer)))
 
 ========================================
-Nested Mult-line comments don't work yet
-:error
+Nested Mult-line comments
 ========================================
 
 /* This is a mult-line comment
 that spans a few lines. /* Here is
-some more text */ to fill up the lines */
-let x = 42
+some more text */ to fill up the lines */ let x = 42
 
 ---
+
+(program
+  (comment)
+  (declaration
+    (identifier)
+    (integer)))

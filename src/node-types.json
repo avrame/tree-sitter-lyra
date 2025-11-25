@@ -2108,6 +2108,14 @@
           "named": true
         },
         {
+          "type": "const_identifier",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "postfix_expression",
           "named": true
         }

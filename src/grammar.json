@@ -1160,6 +1160,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "const_identifier"
+        },
+        {
+          "type": "SYMBOL",
           "name": "postfix_expression"
         }
       ]

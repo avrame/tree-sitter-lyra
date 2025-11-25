@@ -1,14 +1,18 @@
 module.exports = {
   string_literal: $ => seq(
-    '"',
+    alias($._string_start, '"'),
     repeat(choice(
       $.string_content,
       $.string_interpolation
     )),
-    '"'
+    alias($._string_end, '"')
   ),
   
-  string_content: $ => token.immediate(/[^"\\#]+|\\./),
+  string_content: $ => $._string_content,
   
-  string_interpolation: $ => seq('#{', $.expression, '}')
+  string_interpolation: $ => seq(
+    alias($._interpolation_start, '#{'),
+    $.expression,
+    alias($._interpolation_end, '}')
+  )
 }

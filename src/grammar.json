@@ -630,7 +630,12 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_string_start"
+          },
+          "named": false,
           "value": "\""
         },
         {
@@ -650,23 +655,30 @@
           }
         },
         {
-          "type": "STRING",
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_string_end"
+          },
+          "named": false,
           "value": "\""
         }
       ]
     },
     "string_content": {
-      "type": "IMMEDIATE_TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "[^\"\\\\#]+|\\\\."
-      }
+      "type": "SYMBOL",
+      "name": "_string_content"
     },
     "string_interpolation": {
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_interpolation_start"
+          },
+          "named": false,
           "value": "#{"
         },
         {
@@ -674,7 +686,12 @@
           "name": "expression"
         },
         {
-          "type": "STRING",
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_interpolation_end"
+          },
+          "named": false,
           "value": "}"
         }
       ]
@@ -5361,6 +5378,26 @@
     {
       "type": "SYMBOL",
       "name": "_BLOCK_COMMENT"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_string_start"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_string_content"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_interpolation_start"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_interpolation_end"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_string_end"
     }
   ],
   "inline": [

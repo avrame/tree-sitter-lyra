@@ -60,19 +60,38 @@ String Literal with escaped hash char
 (program
   (string_literal
     (string_content)
-    (string_content)
-    (string_content)
     (string_interpolation
       (identifier))))
 
 
 ========================================
 String Literal with nested interpolation
-:skip
 ========================================
 
-let greeting = "Hello, #{if is_male then "Mr. #{last_name}" else "Mrs. #{last_name}"}!"
+let greeting = "Hello, #{if gender == 1 then "Mr. #{last_name}" else "Mrs. #{last_name}"}!"
 
 ---
 
-(program)
+(program
+  (declaration
+    (identifier)
+    (string_literal
+      (string_content)
+      (string_interpolation
+        (if_then_expr
+          (if_condition
+            (boolean_expr
+              (identifier)
+              (equality_operator
+                (equals))
+              (integer)))
+          (string_literal
+            (string_content)
+            (string_interpolation
+              (identifier)))
+          (else)
+          (string_literal
+            (string_content)
+            (string_interpolation
+              (identifier)))))
+      (string_content))))

@@ -26,6 +26,11 @@ module.exports = grammar({
 
   externals: $ => [
     $._BLOCK_COMMENT,
+    $._string_start,
+    $._string_content,
+    $._interpolation_start,
+    $._interpolation_end,
+    $._string_end,
   ],
 
   inline: $ => [$._comma],

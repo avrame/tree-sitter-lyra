@@ -3061,6 +3061,11 @@
     }
   },
   {
+    "type": "string_content",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "string_interpolation",
     "named": true,
     "fields": {},
@@ -4058,10 +4063,6 @@
   {
     "type": "size=",
     "named": false
-  },
-  {
-    "type": "string_content",
-    "named": true
   },
   {
     "type": "string_type",

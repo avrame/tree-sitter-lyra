@@ -224,6 +224,110 @@ def map<t,u>:
         (comment)
         (comment)))))
 
+========================================
+Function with multiple function patterns
+========================================
+
+def fib: (Int) -> Int where {
+  (0) => 0,
+  (1) => 1,
+  (n) => fib(n-2) + fib(n-1)
+}
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (signed_integer_type))
+        (signed_integer_type)))
+    (function_pattern_list
+      (function_pattern
+        (parameter_list
+          (parameter
+            (literal_pattern
+              (integer))))
+        (integer))
+      (function_pattern
+        (parameter_list
+          (parameter
+            (literal_pattern
+              (integer))))
+        (integer))
+      (function_pattern
+        (parameter_list
+          (parameter
+            (identifier)))
+        (addition
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (subtraction
+                  (identifier)
+                  (integer)))))
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (subtraction
+                  (identifier)
+                  (integer))))))))))
+
+==================================================
+Function with multiple function patterns and guard
+==================================================
+
+def fib: (Int) -> Int where {
+  (n) if n < 2 => n,
+  (n) => fib(n-2) + fib(n-1)
+}
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (signed_integer_type))
+        (signed_integer_type)))
+    (function_pattern_list
+      (function_pattern
+        (parameter_list
+          (parameter
+            (identifier)))
+        (guard
+          (boolean_expr
+            (identifier)
+            (relational_operator
+              (less_than))
+            (integer)))
+        (identifier))
+      (function_pattern
+        (parameter_list
+          (parameter
+            (identifier)))
+        (addition
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (subtraction
+                  (identifier)
+                  (integer)))))
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (subtraction
+                  (identifier)
+                  (integer))))))))))
+
 ===================================
 Function without body is an error
 :error

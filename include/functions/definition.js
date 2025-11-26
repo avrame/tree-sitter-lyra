@@ -15,6 +15,7 @@ module.exports = {
 
   function_pattern: $ => seq(
     field('parameters', $.parameter_list),
+    optional($.guard),
     '=>',
     field('body', choice(
       $.block,

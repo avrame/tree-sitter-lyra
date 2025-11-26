@@ -2022,6 +2022,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "guard",
+          "named": true
+        }
+      ]
     }
   },
   {

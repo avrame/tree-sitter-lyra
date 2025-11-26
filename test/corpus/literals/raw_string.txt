@@ -1,0 +1,41 @@
+==================
+Raw String Literal
+==================
+
+const URL = `http:\\www.example.com`
+
+---
+
+(program
+  (const_declaration
+    (const_identifier)
+    (raw_string_literal)))
+
+=====================================
+Raw String Literal with escaped tilde
+=====================================
+
+const URL = `a tilde: \``
+
+---
+
+(program
+  (const_declaration
+    (const_identifier)
+    (raw_string_literal)))
+
+======================================================
+Raw String Literal with an unescaped tilde is an error
+:error
+======================================================
+
+const URL = `a tilde: ``
+
+---
+
+(program
+  (const_declaration
+    (const_identifier)
+    (raw_string_literal))
+  (raw_string_literal
+    (MISSING "`")))

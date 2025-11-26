@@ -86,6 +86,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "raw_string_literal"
+          },
+          {
+            "type": "SYMBOL",
             "name": "struct_literal"
           },
           {
@@ -441,6 +445,23 @@
           },
           "named": false,
           "value": "\""
+        }
+      ]
+    },
+    "raw_string_literal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "`"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\`]*(?:\\\\.[^\\`]*)*"
+        },
+        {
+          "type": "STRING",
+          "value": "`"
         }
       ]
     },

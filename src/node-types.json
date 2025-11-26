@@ -108,6 +108,10 @@
         "named": true
       },
       {
+        "type": "raw_string_literal",
+        "named": true
+      },
+      {
         "type": "regex_literal",
         "named": true
       },
@@ -3399,6 +3403,11 @@
     }
   },
   {
+    "type": "raw_string_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "regex_constraint",
     "named": true,
     "fields": {},
@@ -4502,6 +4511,10 @@
   },
   {
     "type": "_",
+    "named": false
+  },
+  {
+    "type": "`",
     "named": false
   },
   {

@@ -4,7 +4,7 @@ const char_literal = require('./char');
 const map_literal = require('./map');
 const number_literals = require('./numbers');
 const regex_literal = require('./regex');
-const string_literal = require('./string');
+const string_literals = require('./string');
 const struct_literal = require('./struct');
 const tuple_literal = require('./tuple');
 
@@ -19,6 +19,7 @@ module.exports = {
       $.map_literal,
       $.regex_literal,
       $.string_literal,
+      $.raw_string_literal,
       $.struct_literal,
       $.tuple_literal,
     )
@@ -29,7 +30,7 @@ module.exports = {
   ...map_literal,
   ...number_literals,
   ...regex_literal,
-  ...string_literal,
+  ...string_literals,
   ...struct_literal,
   ...tuple_literal,
 }

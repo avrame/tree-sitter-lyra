@@ -90,3 +90,18 @@ let greeting = "Hello, #{if is_male then "Mr. #{last_name}" else "Mrs. #{last_na
             (string_interpolation
               (identifier)))))
       (string_content))))
+
+=============================================================
+String interpolation with missing closing bracket is an error
+:error
+=============================================================
+
+"Phone \#: #{phone_num"
+
+---
+
+(program
+  (ERROR
+    (string_content)
+    (ERROR
+      (identifier))))

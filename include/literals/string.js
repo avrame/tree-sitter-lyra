@@ -7,6 +7,12 @@ module.exports = {
     )),
     alias($._string_end, '"')
   ),
+
+  raw_string_literal: $ => seq(
+    '`',
+    /[^\`]*(?:\\.[^\`]*)*/,
+    '`',
+  ),
   
   string_content: $ => $._string_content,
   

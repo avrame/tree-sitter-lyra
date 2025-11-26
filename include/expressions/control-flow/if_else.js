@@ -44,9 +44,7 @@ module.exports = {
 
   if_condition: $ => choice(
     $.boolean_expr, 
-    $.identifier, 
-    $.const_identifier, 
-    $.postfix_expression,
+    $._postfix_expression,
   ),
   
   if_block: $ => seq('{', repeat($.statement), '}'),

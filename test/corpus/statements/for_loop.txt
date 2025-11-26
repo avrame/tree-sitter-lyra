@@ -11,9 +11,9 @@ for {
 (program
   (for_loop
     (for_body
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content))))))))
@@ -41,9 +41,9 @@ for i < 10 {
           (less_than))
         (integer)))
     (for_body
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content)
@@ -73,9 +73,9 @@ for var i = 0; i < 10 {
           (less_than))
         (integer)))
     (for_body
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content)
@@ -112,9 +112,9 @@ for i < 10; i += 1 {
           (identifier)
           (integer))))
     (for_body
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content)
@@ -147,9 +147,9 @@ for var i = 0; i < 10; i += 1 {
           (identifier)
           (integer))))
     (for_body
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content)

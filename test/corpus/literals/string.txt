@@ -42,11 +42,11 @@ let greeting = "Hello, #{employee.get_name()}!"
     (string_literal
       (string_content)
       (string_interpolation
-        (postfix_expression
-          (postfix_expression
+        (call_expression
+          (member_expression
             (identifier)
             (identifier))
-          (function_call)))
+          (argument_list)))
       (string_content))))
 
 =====================================
@@ -62,7 +62,6 @@ String Literal with escaped hash char
     (string_content)
     (string_interpolation
       (identifier))))
-
 
 ========================================
 String Literal with nested interpolation

@@ -42,48 +42,17 @@ def fib: (Int) -> Int where
           (integer)
           (else)
           (addition
-            (postfix_expression
+            (call_expression
               (identifier)
-              (function_call
+              (argument_list
                 (value
                   (subtraction
                     (identifier)
                     (integer)))))
-            (postfix_expression
+            (call_expression
               (identifier)
-              (function_call
+              (argument_list
                 (value
                   (subtraction
                     (identifier)
                     (integer)))))))))))
-
-==================================================================
-Recursive Fibonacci with function pattern matching and memoization
-:skip
-==================================================================
-
-def memoize: ((Int) -> Int) -> (Int) -> Int where
-(fn) => {
-  let cache = Map<Int, Int>
-  return (arg) => {
-    match cache[arg] {
-      Some(x) => return x,
-      None => {
-        cache[arg] = fn(arg)
-        return cache[arg]
-      }
-    }
-  }
-}
-
-def fib: (Int) -> Int where {
-  0 => 0,
-  1 => 1,
-  x => fib(x - 1) + fib(x - 2),
-}
-
-let memoized_fib = memoize(fib)
-
-assert(memoized_fib(10) == 55)
-
----

@@ -21,8 +21,7 @@ module.exports = {
       $.array_literal,
       $.tuple_literal,
       $.map_literal,
-      $.identifier,
-      $.postfix_expression,
+      $._postfix_expression,
     )
   )),
 }

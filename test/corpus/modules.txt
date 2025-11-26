@@ -213,65 +213,65 @@ def helper where
 
 (program
   (module_declaration
-    (module_path
+    path: (module_path
       (module_name)
       (module_name)))
   (import_statement
-    (module_path
+    path: (module_path
       (module_name)
       (module_name))
-    (import_alias
-      (identifier)))
+    alias: (import_alias
+      name: (identifier)))
   (import_statement
-    (module_path
+    path: (module_path
       (module_name)
       (module_name))
-    (import_members
+    members: (import_members
       (import_member
-        (importable_name
+        name: (importable_name
           (identifier)))
       (import_member
-        (importable_name
+        name: (importable_name
           (identifier)))))
   (type_declaration
     (struct_type
       (visibility)
-      (struct_name)
+      struct_name: (struct_name)
       (struct_type_body
-        (field_name)
-        (field_type
+        field_name: (field_name)
+        field_type: (field_type
           (string_type)))))
   (function_definition
     (visibility)
     (function_signature
-      (identifier)
+      name: (identifier)
       (ERROR)
-      (function_type
+      function_type: (function_type
         (function_type_parameter_list
           (string_type))
         (user_defined_type_name)))
     (function_pattern
-      (parameter_list
+      parameters: (parameter_list
         (parameter
-          (identifier)))
-      (block
+          pattern: (identifier)))
+      body: (block
         (declaration
-          (identifier)
-          (postfix_expression
-            (identifier)
-            (identifier)))
+          name: (identifier)
+          value: (member_expression
+            object: (identifier)
+            property: (identifier)))
         (tuple_literal
-          (tuple_name)
+          tuple_name: (tuple_name)
           (tuple_value
             (identifier)))
-        (postfix_expression
-          (identifier)
-          (function_call
-            (value
+        (call_expression
+          function: (identifier)
+          arguments: (argument_list
+            value: (value
               (identifier)))))))
   (function_definition
     (function_signature
-      (identifier))
+      name: (identifier))
     (function_pattern
-      (parameter_list)
-      (integer))))
+      parameters: (parameter_list)
+      body: (integer))))

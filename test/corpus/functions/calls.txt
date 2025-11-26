@@ -9,9 +9,9 @@ let result = sum(a=1, b=2)
 (program
   (declaration
     (identifier)
-    (postfix_expression
+    (call_expression
       (identifier)
-      (function_call
+      (argument_list
         (named_argument
           (argument_name)
           (value
@@ -34,17 +34,17 @@ let result = add_one(b=2)
 (program
   (declaration
     (identifier)
-    (postfix_expression
+    (call_expression
       (identifier)
-      (function_call
+      (argument_list
         (value
           (integer))
         (wildcard))))
   (declaration
     (identifier)
-    (postfix_expression
+    (call_expression
       (identifier)
-      (function_call
+      (argument_list
         (named_argument
           (argument_name)
           (value
@@ -60,9 +60,9 @@ f ()
 ---
 
 (program
-  (postfix_expression
+  (call_expression
     (identifier)
-    (function_call)))
+    (argument_list)))
 
 ===
 qualified call with space
@@ -73,8 +73,8 @@ ns.f ()
 ---
 
 (program
-  (postfix_expression
-    (postfix_expression
+  (call_expression
+    (member_expression
       (identifier)
       (identifier))
-    (function_call)))
+    (argument_list)))

@@ -5,7 +5,7 @@ const range = require('./range');
 
 module.exports = {
   expression: $ => choice(
-    $.postfix_expression,
+    $._postfix_expression,
     $._math_expr,
     $.boolean_expr,
     $.range_expr,
@@ -32,27 +32,37 @@ module.exports = {
     // $.lambda_expression, // TODO: add lambda expression
   ),
 
-  _postfix_op: $ => choice(
-    // function call
-    seq(
-      optional($.generic_arguments),
-      field('call', alias($.argument_list, $.function_call))
-    ),
-    // .prop
-    seq('.', field('property', choice($.identifier, $.const_identifier))),
-    // [index] or [key]
-    seq('[', field('index', $.expression), ']'),
+  // Postfix expressions with binary nesting - each operation wraps the previous
+  _postfix_expression: $ => choice(
+    $.call_expression,
+    $.member_expression,
+    $.index_expression,
+    $.try_expression,
+    $._primary_expression,
   ),
-  
-  postfix_expression: $ => prec.right(300, choice(
-    seq(
-      choice($.identifier, $.const_identifier),
-      repeat1($._postfix_op)
-    ),
-    seq(
-      $.postfix_expression,
-      $._postfix_op
-    )
+
+  call_expression: $ => prec.left(300, seq(
+    field('function', $._postfix_expression),
+    optional($.generic_arguments),
+    field('arguments', $.argument_list)
+  )),
+
+  member_expression: $ => prec.left(300, seq(
+    field('object', $._postfix_expression),
+    '.',
+    field('property', choice($.identifier, $.const_identifier))
+  )),
+
+  index_expression: $ => prec.left(300, seq(
+    field('object', $._postfix_expression),
+    '[',
+    field('index', $.expression),
+    ']'
+  )),
+
+  try_expression: $ => prec.left(300, seq(
+    field('operand', $._postfix_expression),
+    '?'
   )),
 
   spread_expr: $ => prec.right(20, seq('...', $.identifier)),

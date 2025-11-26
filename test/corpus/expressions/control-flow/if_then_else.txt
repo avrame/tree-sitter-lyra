@@ -17,9 +17,9 @@ if x == 3 {
           (equals))
         (integer)))
     (if_block
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content))))))))
@@ -45,17 +45,17 @@ if x == 3 {
           (equals))
         (integer)))
     (if_block
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content))))))
     (else)
     (if_block
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content))))))))
@@ -106,9 +106,9 @@ end
         (equality_operator
           (equals))
         (integer)))
-    (postfix_expression
+    (call_expression
       (identifier)
-      (function_call
+      (argument_list
         (value
           (string_literal
             (string_content)))))
@@ -119,16 +119,16 @@ end
         (relational_operator
           (less_than))
         (integer)))
-    (postfix_expression
+    (call_expression
       (identifier)
-      (function_call
+      (argument_list
         (value
           (string_literal
             (string_content)))))
     (else)
-    (postfix_expression
+    (call_expression
       (identifier)
-      (function_call
+      (argument_list
         (value
           (string_literal
             (string_content)))))))
@@ -170,17 +170,17 @@ if x == 0 {
               (equals))
             (integer)))
         (if_block
-          (postfix_expression
+          (call_expression
             (identifier)
-            (function_call
+            (argument_list
               (value
                 (string_literal
                   (string_content))))))
         (else)
         (if_block
-          (postfix_expression
+          (call_expression
             (identifier)
-            (function_call
+            (argument_list
               (value
                 (string_literal
                   (string_content))))))))
@@ -194,17 +194,17 @@ if x == 0 {
               (equals))
             (integer)))
         (if_block
-          (postfix_expression
+          (call_expression
             (identifier)
-            (function_call
+            (argument_list
               (value
                 (string_literal
                   (string_content))))))
         (else)
         (if_block
-          (postfix_expression
+          (call_expression
             (identifier)
-            (function_call
+            (argument_list
               (value
                 (string_literal
                   (string_content)
@@ -226,6 +226,7 @@ if {
 ---
 
 
+
 ===================================
 If without body is an error
 :error
@@ -234,4 +235,5 @@ If without body is an error
 if foo
 
 ---
-           
+
+

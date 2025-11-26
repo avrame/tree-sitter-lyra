@@ -107,7 +107,7 @@ let { a, b, c } = some_struct
         (identifier)
         (identifier)
         (identifier)))
-      (identifier))
+    (identifier))
   (comment))
 
 ======================================
@@ -187,9 +187,9 @@ let () = do_something()
     (destructuring_pattern
       (tuple_pattern
         (unit_pattern)))
-    (postfix_expression
+    (call_expression
       (identifier)
-      (function_call))))
+      (argument_list))))
 
 =====================================
 Tuple destructuring with rest pattern
@@ -229,13 +229,13 @@ if let Some(num) = get_num() {
         (data_pattern
           (data_type_name)
           (identifier)))
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call)))
+        (argument_list)))
     (block
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content)
@@ -261,22 +261,22 @@ if let Some(num) = get_num() {
         (data_pattern
           (data_type_name)
           (identifier)))
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call)))
+        (argument_list)))
     (block
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content)
               (string_interpolation
                 (identifier)))))))
     (block
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content))))))))
@@ -299,19 +299,19 @@ println("We got the number: #{num}")
         (data_pattern
           (data_type_name)
           (identifier)))
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call)))
+        (argument_list)))
     (block
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content)))))))
-  (postfix_expression
+  (call_expression
     (identifier)
-    (function_call
+    (argument_list
       (value
         (string_literal
           (string_content)

@@ -13,7 +13,7 @@ module.exports = {
     ),
 
     // Primary math expression - base elements without arithmetic operators or negation to avoid circular dependency
-    _primary_math_expr: $ => prec.right(130, choice($._number_literal, $._primary_expression, $.postfix_expression, $.group, $.negation)),
+    _primary_math_expr: $ => prec.right(130, choice($._number_literal, $._postfix_expression, $.group, $.negation)),
 
     // Math expression for constraints that can include const_identifier without circular dependency
     _constraint_math_expr: $ => choice($._number_literal, $._constraint_arithmetic_operator, $.constraint_negation, $.identifier, $.const_identifier),

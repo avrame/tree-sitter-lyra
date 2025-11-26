@@ -139,18 +139,18 @@ Match with range arms
         (integer)
         (range_end_operator)
         (integer))
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content))))))
     (match_arm
       (literal_pattern
         (integer))
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content))))))
@@ -159,17 +159,17 @@ Match with range arms
         (integer)
         (range_end_operator)
         (integer))
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content))))))
     (match_arm
       (wildcard_pattern)
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content))))))))
@@ -206,9 +206,9 @@ match foo {
             (relational_operator
               (less_than))
             (integer))))
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content))))))
@@ -229,18 +229,18 @@ match foo {
             (relational_operator
               (less_than))
             (integer))))
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content))))))
     (match_arm
       (data_pattern
         (data_type_name))
-      (postfix_expression
+      (call_expression
         (identifier)
-        (function_call
+        (argument_list
           (value
             (string_literal
               (string_content))))))))

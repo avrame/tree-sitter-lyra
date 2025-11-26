@@ -278,6 +278,10 @@
         "named": true
       },
       {
+        "type": "parameterized_type",
+        "named": true
+      },
+      {
         "type": "self_type",
         "named": true
       },
@@ -3336,6 +3340,40 @@
     }
   },
   {
+    "type": "parameterized_type",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "Self",
+            "named": false
+          },
+          {
+            "type": "user_defined_type_name",
+            "named": true
+          }
+        ]
+      },
+      "type_arguments": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "parenthesized_expression",
     "named": true,
     "fields": {},
@@ -3581,6 +3619,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "self_type",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "signed_integer_type",
@@ -4649,6 +4692,10 @@
     "named": false
   },
   {
+    "type": "Self",
+    "named": false
+  },
+  {
     "type": "UInt",
     "named": false
   },
@@ -4827,10 +4874,6 @@
   {
     "type": "return",
     "named": false
-  },
-  {
-    "type": "self_type",
-    "named": true
   },
   {
     "type": "size=",

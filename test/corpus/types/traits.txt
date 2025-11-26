@@ -124,11 +124,11 @@ impl Converter<Int, String> for IntFormatter {
 Higher-Kinded Trait with Generic Type Implementation
 ====================================================
 
-trait Functor<f> {
-  map: (f<a>, (a) -> b) -> f<b>
+trait Functor {
+  map: (Self<a>, (a) -> b) -> Self<b>
 }
 
-impl Functor<Array> for ArrayFunctor {
+impl Functor for Array {
   map = (arr, fn) => {
     var result = []
     for item in arr {
@@ -138,7 +138,7 @@ impl Functor<Array> for ArrayFunctor {
   }
 }
 
-impl Functor<Maybe> for MaybeFunctor {
+impl Functor for Maybe {
   map = (maybe, fn) => match maybe {
     Some(x) => Some(fn(x)),
     None => None
@@ -151,24 +151,21 @@ impl Functor<Maybe> for MaybeFunctor {
   (type_declaration
     (trait_declaration
       (trait_name)
-      (generic_parameters
-        (generic_type))
       (trait_method
         (method_name)
         (function_type
           (function_type_parameter_list
-            (generic_type
-              (generic_type_parameter))
+            (parameterized_type
+              (generic_type))
             (function_type
               (function_type_parameter_list
                 (generic_type))
               (generic_type)))
-          (generic_type
-            (generic_type_parameter))))))
+          (parameterized_type
+            (generic_type))))))
   (type_declaration
     (trait_implementation
       (trait_name)
-      (user_defined_type_name)
       (user_defined_type_name)
       (trait_method_implementation
         (method_name)
@@ -201,7 +198,6 @@ impl Functor<Maybe> for MaybeFunctor {
   (type_declaration
     (trait_implementation
       (trait_name)
-      (user_defined_type_name)
       (user_defined_type_name)
       (trait_method_implementation
         (method_name)

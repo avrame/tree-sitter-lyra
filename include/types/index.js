@@ -19,6 +19,7 @@ module.exports = {
     
     type: $ => prec(2, choice(
         $._primitive_type,
+        $.parameterized_type,
         $.self_type,
         $.user_defined_type_name,
         $.array_type,
@@ -30,6 +31,18 @@ module.exports = {
     user_defined_type_name: $ => /[A-Z][a-zA-Z0-9]*/,
 
     self_type: $ => 'Self',
+
+    // Parameterized types like Maybe<Int>, Tree<a>, Self<a>
+    parameterized_type: $ => seq(
+        field('name', choice('Self', $.user_defined_type_name)),
+        '<',
+        field('type_arguments', seq(
+            $.type,
+            repeat(seq(',', $.type)),
+            optional(','),
+        )),
+        '>'
+    ),
 
     _primitive_type: $ => choice($._integer_type, $.float_type, $.string_type, $.boolean_type),
 

@@ -2416,6 +2416,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "parameterized_type"
+          },
+          {
+            "type": "SYMBOL",
             "name": "self_type"
           },
           {
@@ -2448,6 +2452,77 @@
     "self_type": {
       "type": "STRING",
       "value": "Self"
+    },
+    "parameterized_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "Self"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "user_defined_type_name"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "<"
+        },
+        {
+          "type": "FIELD",
+          "name": "type_arguments",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "type"
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ","
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "type"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        }
+      ]
     },
     "_primitive_type": {
       "type": "CHOICE",

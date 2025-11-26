@@ -20,13 +20,33 @@ module.exports = {
   ),
   
   trait_method: $ => seq(
-    alias(choice($.identifier, $.binary_operator), $.method_name),
+    alias(
+      choice($.identifier, $.unary_operator, $.binary_operator),
+      $.method_name
+    ),
     ':',
     field('function_type', $.function_type),
   ),
 
+  unary_operator: $ => prec(1, seq(
+    '(',
+    choice($.prefix_operator, $.suffix_operator),
+    ')',
+  )),
+
+  prefix_operator: $ => prec(1, seq(
+    choice('-', '!', '~'),
+    '_',
+  )),
+
+  suffix_operator: $ => prec(1, seq(
+    '_',
+    choice('++', '--', '!'),
+  )),
+
   binary_operator: $ => prec(1, seq(
     '(',
+    '_',
     choice(
       token('=='),
       token('!='),
@@ -50,6 +70,7 @@ module.exports = {
       token('^'),
       token('~'),
     ),
+    '_',
     ')'
   )),
 }

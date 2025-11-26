@@ -1139,6 +1139,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "suffix_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_primary_expression"
         }
       ]
@@ -1268,6 +1272,40 @@
           {
             "type": "STRING",
             "value": "?"
+          }
+        ]
+      }
+    },
+    "suffix_expression": {
+      "type": "PREC_LEFT",
+      "value": 300,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "operand",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_postfix_expression"
+            }
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "++"
+              },
+              {
+                "type": "STRING",
+                "value": "--"
+              },
+              {
+                "type": "STRING",
+                "value": "!"
+              }
+            ]
           }
         ]
       }
@@ -3617,6 +3655,10 @@
               },
               {
                 "type": "SYMBOL",
+                "name": "unary_operator"
+              },
+              {
+                "type": "SYMBOL",
                 "name": "binary_operator"
               }
             ]
@@ -3638,6 +3680,96 @@
         }
       ]
     },
+    "unary_operator": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "("
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "prefix_operator"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "suffix_operator"
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": ")"
+          }
+        ]
+      }
+    },
+    "prefix_operator": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "-"
+              },
+              {
+                "type": "STRING",
+                "value": "!"
+              },
+              {
+                "type": "STRING",
+                "value": "~"
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": "_"
+          }
+        ]
+      }
+    },
+    "suffix_operator": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "_"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "++"
+              },
+              {
+                "type": "STRING",
+                "value": "--"
+              },
+              {
+                "type": "STRING",
+                "value": "!"
+              }
+            ]
+          }
+        ]
+      }
+    },
     "binary_operator": {
       "type": "PREC",
       "value": 1,
@@ -3647,6 +3779,10 @@
           {
             "type": "STRING",
             "value": "("
+          },
+          {
+            "type": "STRING",
+            "value": "_"
           },
           {
             "type": "CHOICE",
@@ -3799,6 +3935,10 @@
                 }
               }
             ]
+          },
+          {
+            "type": "STRING",
+            "value": "_"
           },
           {
             "type": "STRING",
@@ -4031,6 +4171,10 @@
               {
                 "type": "SYMBOL",
                 "name": "identifier"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "unary_operator"
               },
               {
                 "type": "SYMBOL",

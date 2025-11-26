@@ -233,17 +233,131 @@ impl Functor<Maybe> for MaybeFunctor {
                 (data_type_name))
               (user_defined_type_name))))))))
 
-=========================================================
-Generic Trait Implemented for Generic Type
-=========================================================
+=====================
+Unary Prefix Operator
+=====================
+
+trait Neg<t> {
+  (-_): (t) -> t
+}
+
+impl Neg<Point> for Point {
+  (-_) = (p) => Point { x: -p.x, y: -p.y }
+}
+
+let inverted: Point = -my_point // usees the overloaded prefix -
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (generic_parameters
+        (generic_type))
+      (trait_method
+        (method_name
+          (prefix_operator))
+        (function_type
+          (function_type_parameter_list
+            (generic_type))
+          (generic_type)))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (user_defined_type_name)
+      (user_defined_type_name)
+      (trait_method_implementation
+        (method_name
+          (prefix_operator))
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier)))
+          (struct_literal
+            (struct_name)
+            (field_name)
+            (field_value
+              (negation
+                (member_expression
+                  (identifier)
+                  (identifier))))
+            (field_name)
+            (field_value
+              (negation
+                (member_expression
+                  (identifier)
+                  (identifier)))))))))
+  (declaration
+    (identifier)
+    (type_notation
+      (user_defined_type_name))
+    (negation
+      (identifier)))
+  (comment))
+
+=====================
+Unary Suffix Operator
+=====================
+
+trait Inc<t> {
+  (_++): (t) -> t 
+}
+
+impl Inc<Int> for Int {
+  (_++) = (n) => n + 1
+}
+
+let result: Int = my_num++
+
+---
+
+(program
+  (type_declaration
+    (trait_declaration
+      (trait_name)
+      (generic_parameters
+        (generic_type))
+      (trait_method
+        (method_name
+          (suffix_operator))
+        (function_type
+          (function_type_parameter_list
+            (generic_type))
+          (generic_type)))))
+  (type_declaration
+    (trait_implementation
+      (trait_name)
+      (signed_integer_type)
+      (signed_integer_type)
+      (trait_method_implementation
+        (method_name
+          (suffix_operator))
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier)))
+          (addition
+            (identifier)
+            (integer))))))
+  (declaration
+    (identifier)
+    (type_notation
+      (signed_integer_type))
+    (suffix_expression
+      (identifier))))
+
+================================================================
+Generic Trait Implemented for Generic Type with binary operators
+================================================================
 
 trait Eq<t> {
-  (==): (t, t) -> Bool,
-  (!=): (t, t) -> Bool
+  (_==_): (t, t) -> Bool,
+  (_!=_): (t, t) -> Bool
 }
 
 impl Eq<Array<t>> for Array<t> {
-  (==) = (a, b) => {
+  (_==_) = (a, b) => {
     if a.length() != b.length() {
       false
     } else {
@@ -253,7 +367,7 @@ impl Eq<Array<t>> for Array<t> {
       true
     }
   },
-  (!=) = (a, b) => !(a == b)
+  (_!=_) = (a, b) => !(a == b)
 }
 
 ---

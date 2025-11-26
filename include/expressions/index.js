@@ -38,6 +38,7 @@ module.exports = {
     $.member_expression,
     $.index_expression,
     $.try_expression,
+    $.suffix_expression,
     $._primary_expression,
   ),
 
@@ -63,6 +64,11 @@ module.exports = {
   try_expression: $ => prec.left(300, seq(
     field('operand', $._postfix_expression),
     '?'
+  )),
+
+  suffix_expression: $ => prec.left(300, seq(
+    field('operand', $._postfix_expression),
+    choice('++', '--', '!')
   )),
 
   spread_expr: $ => prec.right(20, seq('...', $.identifier)),

@@ -30,7 +30,10 @@ module.exports = {
   ),
   
   trait_method_implementation: $ => seq(
-    alias(choice($.identifier, $.binary_operator), $.method_name),
+    alias(
+      choice($.identifier, $.unary_operator, $.binary_operator),
+      $.method_name
+    ),
     '=',
     field('function_pattern', $.function_pattern)
   ),

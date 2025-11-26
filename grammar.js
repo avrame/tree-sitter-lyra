@@ -45,7 +45,7 @@ module.exports = grammar({
   reserved: {
     identifier: () => [
       'for', 'if', 'else', 'match', 'let', 'var', 'const', 'def', 'true', 'false', 'where', 'import',
-      'module', 'as', 'pub'
+      'module', 'as', 'pub', 'Self'
     ],
   },
 

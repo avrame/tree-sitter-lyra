@@ -2416,6 +2416,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "self_type"
+          },
+          {
+            "type": "SYMBOL",
             "name": "user_defined_type_name"
           },
           {
@@ -2440,6 +2444,10 @@
     "user_defined_type_name": {
       "type": "PATTERN",
       "value": "[A-Z][a-zA-Z0-9]*"
+    },
+    "self_type": {
+      "type": "STRING",
+      "value": "Self"
     },
     "_primitive_type": {
       "type": "CHOICE",
@@ -6011,6 +6019,10 @@
       {
         "type": "STRING",
         "value": "pub"
+      },
+      {
+        "type": "STRING",
+        "value": "Self"
       }
     ]
   }

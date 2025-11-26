@@ -278,6 +278,10 @@
         "named": true
       },
       {
+        "type": "self_type",
+        "named": true
+      },
+      {
         "type": "signed_integer_type",
         "named": true
       },
@@ -4823,6 +4827,10 @@
   {
     "type": "return",
     "named": false
+  },
+  {
+    "type": "self_type",
+    "named": true
   },
   {
     "type": "size=",

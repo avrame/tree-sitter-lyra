@@ -2,11 +2,11 @@
 Simple Generic Trait with Implementation
 ========================================
 
-trait Show<t> {
-  show: (t) -> String
+trait Show {
+  show: (Self) -> String
 }
 
-impl Show<Int> for Int {
+impl Show for Int {
   show = (n) => int_to_string(n)
 }
 
@@ -20,18 +20,15 @@ impl Show<String> for String {
   (type_declaration
     (trait_declaration
       (trait_name)
-      (generic_parameters
-        (generic_type))
       (trait_method
         (method_name)
         (function_type
           (function_type_parameter_list
-            (generic_type))
+            (self_type))
           (string_type)))))
   (type_declaration
     (trait_implementation
       (trait_name)
-      (signed_integer_type)
       (signed_integer_type)
       (trait_method_implementation
         (method_name)
@@ -237,15 +234,15 @@ impl Functor<Maybe> for MaybeFunctor {
 Unary Prefix Operator
 =====================
 
-trait Neg<t> {
-  (-_): (t) -> t
+trait Neg {
+  (-_): (Self) -> Self
 }
 
-impl Neg<Point> for Point {
+impl Neg for Point {
   (-_) = (p) => Point { x: -p.x, y: -p.y }
 }
 
-let inverted: Point = -my_point // usees the overloaded prefix -
+let inverted: Point = -my_point // uses the overloaded prefix -
 
 ---
 
@@ -253,19 +250,16 @@ let inverted: Point = -my_point // usees the overloaded prefix -
   (type_declaration
     (trait_declaration
       (trait_name)
-      (generic_parameters
-        (generic_type))
       (trait_method
         (method_name
           (prefix_operator))
         (function_type
           (function_type_parameter_list
-            (generic_type))
-          (generic_type)))))
+            (self_type))
+          (self_type)))))
   (type_declaration
     (trait_implementation
       (trait_name)
-      (user_defined_type_name)
       (user_defined_type_name)
       (trait_method_implementation
         (method_name
@@ -300,11 +294,11 @@ let inverted: Point = -my_point // usees the overloaded prefix -
 Unary Suffix Operator
 =====================
 
-trait Inc<t> {
-  (_++): (t) -> t 
+trait Inc {
+  (_++): (Self) -> Self 
 }
 
-impl Inc<Int> for Int {
+impl Inc for Int {
   (_++) = (n) => n + 1
 }
 
@@ -316,19 +310,16 @@ let result: Int = my_num++
   (type_declaration
     (trait_declaration
       (trait_name)
-      (generic_parameters
-        (generic_type))
       (trait_method
         (method_name
           (suffix_operator))
         (function_type
           (function_type_parameter_list
-            (generic_type))
-          (generic_type)))))
+            (self_type))
+          (self_type)))))
   (type_declaration
     (trait_implementation
       (trait_name)
-      (signed_integer_type)
       (signed_integer_type)
       (trait_method_implementation
         (method_name

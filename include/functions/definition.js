@@ -7,6 +7,7 @@ module.exports = {
   ),
 
   function_signature: $ => seq(
+    optional(token('async')),
     'def',
     field('name', $.identifier),
     optional(field('generic_parameters', $.generic_parameters)),

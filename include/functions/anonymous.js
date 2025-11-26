@@ -1,5 +1,6 @@
 module.exports = {
   anonymous_function: $ => seq(
+    optional(token('async')),
     choice($.parameter, $.parameter_list),
     '=>',
     field('body', choice(

@@ -5,6 +5,7 @@ const range = require('./range');
 
 module.exports = {
   expression: $ => choice(
+    $.await_expression,
     $._postfix_expression,
     $._math_expr,
     $.boolean_expr,
@@ -18,6 +19,12 @@ module.exports = {
     $.lambda_expression,
     $.user_defined_type_name,
   ),
+
+  // Await expression for async operations
+  await_expression: $ => prec.right(250, seq(
+    'await',
+    field('operand', $.expression)
+  )),
 
   identifier: $ => /[a-z][a-z0-9_]*/,
   const_identifier: $ => /[A-Z][A-Z0-9_]*/,

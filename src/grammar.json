@@ -1032,6 +1032,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "await_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_postfix_expression"
         },
         {
@@ -1075,6 +1079,27 @@
           "name": "user_defined_type_name"
         }
       ]
+    },
+    "await_expression": {
+      "type": "PREC_RIGHT",
+      "value": 250,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "await"
+          },
+          {
+            "type": "FIELD",
+            "name": "operand",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
+          }
+        ]
+      }
     },
     "identifier": {
       "type": "PATTERN",
@@ -4962,6 +4987,21 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "async"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "STRING",
           "value": "def"
         },
@@ -6094,6 +6134,14 @@
       {
         "type": "STRING",
         "value": "pub"
+      },
+      {
+        "type": "STRING",
+        "value": "async"
+      },
+      {
+        "type": "STRING",
+        "value": "await"
       },
       {
         "type": "STRING",

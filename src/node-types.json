@@ -16,6 +16,10 @@
         "named": true
       },
       {
+        "type": "await_expression",
+        "named": true
+      },
+      {
         "type": "boolean_expr",
         "named": true
       },
@@ -719,6 +723,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "await_expression",
+    "named": true,
+    "fields": {
+      "operand": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -4745,6 +4765,14 @@
   },
   {
     "type": "as",
+    "named": false
+  },
+  {
+    "type": "async",
+    "named": false
+  },
+  {
+    "type": "await",
     "named": false
   },
   {

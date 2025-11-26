@@ -28,6 +28,10 @@
         "named": true
       },
       {
+        "type": "char_literal",
+        "named": true
+      },
+      {
         "type": "const_identifier",
         "named": true
       },
@@ -4519,6 +4523,10 @@
   {
     "type": "break",
     "named": false
+  },
+  {
+    "type": "char_literal",
+    "named": true
   },
   {
     "type": "const",

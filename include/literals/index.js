@@ -1,39 +1,35 @@
 const array_literal = require('./array');
-const struct_literal = require('./struct');
+const boolean_literal = require('./boolean');
+const char_literal = require('./char');
 const map_literal = require('./map');
 const number_literals = require('./numbers');
-const tuple_literal = require('./tuple');
+const regex_literal = require('./regex');
 const string_literal = require('./string');
+const struct_literal = require('./struct');
+const tuple_literal = require('./tuple');
 
 module.exports = {
   _literal: $ => prec.right(
     1,
     choice(
       $._number_literal,
+      $.array_literal,
       $.boolean_literal,
+      $.char_literal,
+      $.map_literal,
       $.regex_literal,
       $.string_literal,
-      $.array_literal,
       $.struct_literal,
-      $.map_literal,
       $.tuple_literal,
     )
   ),
   ...array_literal,
-  ...struct_literal,
+  ...boolean_literal,
+  ...char_literal,
   ...map_literal,
   ...number_literals,
-  ...tuple_literal,
+  ...regex_literal,
   ...string_literal,
-
-  boolean_literal: $ => choice('true', 'false'),
-
-  regex_literal: $ => /r\/[^\/\\]*(?:\\.[^\/\\]*)*\//,
-
-  generic_arguments: $ => seq(
-    '::',
-    '<',
-    $.type, repeat(seq(',', $.type)), optional(','),
-    '>'
-  ),
+  ...struct_literal,
+  ...tuple_literal,
 }

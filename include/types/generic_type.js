@@ -32,4 +32,11 @@ module.exports = {
       '>'
     )
   ),
+
+  generic_arguments: $ => seq(
+    '::',
+    '<',
+    $.type, repeat(seq(',', $.type)), optional(','),
+    '>'
+  ),
 }

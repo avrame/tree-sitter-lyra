@@ -1,5 +1,6 @@
 module.exports = {
   function_definition: $ => seq(
+    optional($.visibility),
     $.function_signature,
     'where',
     choice($.function_pattern, $.function_pattern_list),

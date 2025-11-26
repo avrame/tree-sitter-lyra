@@ -1,0 +1,277 @@
+==================
+Module Declaration
+==================
+
+module myapp.utils
+
+---
+
+(program
+  (module_declaration
+    (module_path
+      (module_name)
+      (module_name))))
+
+=============
+Simple Import
+=============
+
+import std.io
+
+---
+
+(program
+  (import_statement
+    (module_path
+      (module_name)
+      (module_name))))
+
+=================
+Import with Alias
+=================
+
+import std.collections.hashmap as hm
+
+---
+
+(program
+  (import_statement
+    (module_path
+      (module_name)
+      (module_name)
+      (module_name))
+    (import_alias
+      (identifier))))
+
+===================
+Import with Members
+===================
+
+import std.collections.{ Map, Set, HashMap }
+
+---
+
+(program
+  (import_statement
+    (module_path
+      (module_name)
+      (module_name))
+    (import_members
+      (import_member
+        (importable_name
+          (user_defined_type_name)))
+      (import_member
+        (importable_name
+          (user_defined_type_name)))
+      (import_member
+        (importable_name
+          (user_defined_type_name))))))
+
+==========================
+Import with Member Aliases
+==========================
+
+import std.collections.{ HashMap as HM, Set }
+
+---
+
+(program
+  (import_statement
+    (module_path
+      (module_name)
+      (module_name))
+    (import_members
+      (import_member
+        (importable_name
+          (user_defined_type_name))
+        (alias_name
+          (user_defined_type_name)))
+      (import_member
+        (importable_name
+          (user_defined_type_name))))))
+
+================
+Multiple Imports
+================
+
+module myapp.main
+
+import std.io as io
+import std.collections.{ Map, Set }
+import math.{ sin, cos, PI }
+
+---
+
+(program
+  (module_declaration
+    (module_path
+      (module_name)
+      (module_name)))
+  (import_statement
+    (module_path
+      (module_name)
+      (module_name))
+    (import_alias
+      (identifier)))
+  (import_statement
+    (module_path
+      (module_name)
+      (module_name))
+    (import_members
+      (import_member
+        (importable_name
+          (user_defined_type_name)))
+      (import_member
+        (importable_name
+          (user_defined_type_name)))))
+  (import_statement
+    (module_path
+      (module_name))
+    (import_members
+      (import_member
+        (importable_name
+          (identifier)))
+      (import_member
+        (importable_name
+          (identifier)))
+      (import_member
+        (importable_name
+          (user_defined_type_name))))))
+
+==========================
+Public Function Definition
+==========================
+
+pub def greet: (String) -> String where
+(name) => "Hello, ${name}!"
+
+---
+
+(program
+  (function_definition
+    (visibility)
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (string_type))
+        (string_type)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier)))
+      (string_literal
+        (string_content)))))
+
+=============
+Public Struct
+=============
+
+pub struct Config {
+  name: String,
+  debug: Bool
+}
+
+---
+
+(program
+  (type_declaration
+    (struct_type
+      (visibility)
+      (struct_name)
+      (struct_type_body
+        (field_name)
+        (field_type
+          (string_type))
+        (field_name)
+        (field_type
+          (boolean_type))))))
+
+===================
+Full Module Example
+===================
+
+module myapp.config
+
+import std.io as io
+import std.json.{ parse, stringify }
+
+pub struct Config {
+  path: String
+}
+
+pub def loadConfig: (String) -> Config where
+(path) => {
+  let contents = io.readFile(path)
+  parse(contents)
+}
+
+def helper where
+() => 42
+
+---
+
+(program
+  (module_declaration
+    (module_path
+      (module_name)
+      (module_name)))
+  (import_statement
+    (module_path
+      (module_name)
+      (module_name))
+    (import_alias
+      (identifier)))
+  (import_statement
+    (module_path
+      (module_name)
+      (module_name))
+    (import_members
+      (import_member
+        (importable_name
+          (identifier)))
+      (import_member
+        (importable_name
+          (identifier)))))
+  (type_declaration
+    (struct_type
+      (visibility)
+      (struct_name)
+      (struct_type_body
+        (field_name)
+        (field_type
+          (string_type)))))
+  (function_definition
+    (visibility)
+    (function_signature
+      (identifier)
+      (ERROR)
+      (function_type
+        (function_type_parameter_list
+          (string_type))
+        (user_defined_type_name)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier)))
+      (block
+        (declaration
+          (identifier)
+          (postfix_expression
+            (identifier)
+            (identifier)))
+        (tuple_literal
+          (tuple_name)
+          (tuple_value
+            (identifier)))
+        (postfix_expression
+          (identifier)
+          (function_call
+            (value
+              (identifier)))))))
+  (function_definition
+    (function_signature
+      (identifier))
+    (function_pattern
+      (parameter_list)
+      (integer))))

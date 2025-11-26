@@ -1,21 +1,17 @@
 module.exports = {
-  const_declaration: $ => prec.left(choice(
+  const_declaration: $ => prec.left(
     seq(
+      optional($.visibility),
       field('keyword', 'const'),
       field('name', $.const_identifier),
-      field('type', $.type_notation),
+      optional(field('type', $.type_notation)),
       '=',
       field('value', $.expression)
     ),
-    seq(
-      field('keyword', 'const'),
-      field('name', $.const_identifier),
-      '=',
-      field('value', $.expression)
-    )
-  )),
+  ),
 
   declaration: $ => prec.left(seq(
+    optional($.visibility),
     field('keyword', choice('let', 'var')),
     field('name', $.identifier),
     optional(field('type', $.type_notation)),
@@ -24,6 +20,7 @@ module.exports = {
   )),
 
   destructuring_declaration: $ => seq(
+    optional($.visibility),
     field('keyword', choice('let', 'var')),
     field('pattern', $.destructuring_pattern),
     '=',

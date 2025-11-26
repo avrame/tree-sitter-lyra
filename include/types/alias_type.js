@@ -1,5 +1,6 @@
 module.exports = {
   alias_type: $ => seq(
+    optional($.visibility),
     'alias',
     alias($.user_defined_type_name, $.alias_type_name),
     '=',

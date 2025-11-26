@@ -1,5 +1,6 @@
 module.exports = {
   trait_declaration: $ => seq(
+    optional($.visibility),
     'trait',
     field('name', $.trait_name),
     optional(field('generic_parameters', $.generic_parameters)),

@@ -7,6 +7,7 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+const modules = require('./include/modules/');
 const literals = require('./include/literals/');
 const numbers = require('./include/literals/numbers');
 const expressions = require('./include/expressions/');
@@ -42,16 +43,25 @@ module.exports = grammar({
   ],
 
   reserved: {
-    identifier: () => ['for', 'if', 'else', 'match', 'let', 'var', 'const', 'def', 'true', 'false', 'where'],
+    identifier: () => [
+      'for', 'if', 'else', 'match', 'let', 'var', 'const', 'def', 'true', 'false', 'where', 'import',
+      'module', 'as', 'pub'
+    ],
   },
 
   rules: {
-    program: $ => repeat(choice($.statement, $.type_declaration)),
+    // Updated program rule
+    program: $ => seq(
+      optional($.module_declaration),
+      repeat($.import_statement),
+      repeat(choice($.statement, $.type_declaration))
+    ),
 
     _comma: $ => prec.left(10, ','),
 
     ...literals,
     ...numbers,
+    ...modules,
     ...expressions,
     ...types,
     ...statements,

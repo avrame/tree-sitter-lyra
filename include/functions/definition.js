@@ -2,8 +2,7 @@ module.exports = {
   function_definition: $ => seq(
     optional($.visibility),
     $.function_signature,
-    'where',
-    choice($.function_pattern, $.function_pattern_list),
+    field('body', $.function_pattern_list),
   ),
 
   function_signature: $ => seq(
@@ -29,7 +28,7 @@ module.exports = {
   function_pattern_list: $ => seq(
     '{',
     $.function_pattern,
-    repeat1(seq($._comma, $.function_pattern)),
+    repeat(seq($._comma, $.function_pattern)),
     optional($._comma),
     '}',
   ),

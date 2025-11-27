@@ -1103,7 +1103,7 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[a-z][a-z0-9_]*"
+      "value": "[a-z][a-zA-Z0-9_]*"
     },
     "const_identifier": {
       "type": "PATTERN",
@@ -4965,21 +4965,12 @@
           "name": "function_signature"
         },
         {
-          "type": "STRING",
-          "value": "where"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "function_pattern"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "function_pattern_list"
-            }
-          ]
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "function_pattern_list"
+          }
         }
       ]
     },
@@ -5118,7 +5109,7 @@
           "name": "function_pattern"
         },
         {
-          "type": "REPEAT1",
+          "type": "REPEAT",
           "content": {
             "type": "SEQ",
             "members": [
@@ -6114,10 +6105,6 @@
       {
         "type": "STRING",
         "value": "false"
-      },
-      {
-        "type": "STRING",
-        "value": "where"
       },
       {
         "type": "STRING",

@@ -26,7 +26,7 @@ module.exports = {
     field('operand', $.expression)
   )),
 
-  identifier: $ => /[a-z][a-z0-9_]*/,
+  identifier: $ => /[a-z][a-zA-Z0-9_]*/,
   const_identifier: $ => /[A-Z][A-Z0-9_]*/,
 
   // Grouping

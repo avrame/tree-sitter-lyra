@@ -1,8 +1,19 @@
 ## To-Dos
-- Parse nested block comments
-- Parse nested String interpolation
+- add mut keyword for mutable data
+- list comprehension
+- doc comments
+- pipe operator?
 
 ## Completed
+
+### 11/26/25
+- Parse nested block comments
+- Parse nested String interpolation
+- Modules
+- raw strings
+- async/await
+- guards in function defs
+- prefix/suffix operator overloading
 
 ### 11/19/25
 - Add Trait Implementations

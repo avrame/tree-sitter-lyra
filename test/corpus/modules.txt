@@ -142,8 +142,9 @@ import math.{ sin, cos, PI }
 Public Function Definition
 ==========================
 
-pub def greet: (String) -> String where
-(name) => "Hello, ${name}!"
+pub def greet: (String) -> String {
+  (name) => "Hello, ${name}!"
+}
 
 ---
 
@@ -156,12 +157,13 @@ pub def greet: (String) -> String where
         (function_type_parameter_list
           (string_type))
         (string_type)))
-    (function_pattern
-      (parameter_list
-        (parameter
-          (identifier)))
-      (string_literal
-        (string_content)))))
+        (function_pattern_list
+          (function_pattern
+            (parameter_list
+              (parameter
+                (identifier)))
+            (string_literal
+              (string_content))))))
 
 =============
 Public Struct
@@ -200,78 +202,79 @@ pub struct Config {
   path: String
 }
 
-pub def loadConfig: (String) -> Config where
-(path) => {
-  let contents = io.readFile(path)
-  parse(contents)
+pub def loadConfig: (String) -> Config {
+  (path) => {
+    let contents = io.readFile(path)
+    parse(contents)
+  }
 }
 
-def helper where
-() => 42
+def helper { () => 42 }
 
 ---
 
 (program
   (module_declaration
-    path: (module_path
+    (module_path
       (module_name)
       (module_name)))
   (import_statement
-    path: (module_path
+    (module_path
       (module_name)
       (module_name))
-    alias: (import_alias
-      name: (identifier)))
+    (import_alias
+      (identifier)))
   (import_statement
-    path: (module_path
+    (module_path
       (module_name)
       (module_name))
-    members: (import_members
+    (import_members
       (import_member
-        name: (importable_name
+        (importable_name
           (identifier)))
       (import_member
-        name: (importable_name
+        (importable_name
           (identifier)))))
   (type_declaration
     (struct_type
       (visibility)
-      struct_name: (struct_name)
+      (struct_name)
       (struct_type_body
-        field_name: (field_name)
-        field_type: (field_type
+        (field_name)
+        (field_type
           (string_type)))))
   (function_definition
     (visibility)
     (function_signature
-      name: (identifier)
-      (ERROR)
-      function_type: (function_type
+      (identifier)
+      (function_type
         (function_type_parameter_list
           (string_type))
         (user_defined_type_name)))
-    (function_pattern
-      parameters: (parameter_list
-        (parameter
-          pattern: (identifier)))
-      body: (block
-        (declaration
-          name: (identifier)
-          value: (member_expression
-            object: (identifier)
-            property: (identifier)))
-        (tuple_literal
-          tuple_name: (tuple_name)
-          (tuple_value
+    (function_pattern_list
+      (function_pattern
+        (parameter_list
+          (parameter
             (identifier)))
-        (call_expression
-          function: (identifier)
-          arguments: (argument_list
-            value: (value
-              (identifier)))))))
+        (block
+          (declaration
+            (identifier)
+            (call_expression
+              (member_expression
+                (identifier)
+                (identifier))
+              (argument_list
+                (value
+                  (identifier)))))
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (identifier))))))))
   (function_definition
     (function_signature
-      name: (identifier))
-    (function_pattern
-      parameters: (parameter_list)
-      body: (integer))))
+      (identifier))
+    (function_pattern_list
+      (function_pattern
+        (parameter_list)
+        (integer)))))

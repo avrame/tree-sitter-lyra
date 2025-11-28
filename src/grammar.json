@@ -4965,12 +4965,21 @@
           "name": "function_signature"
         },
         {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "SYMBOL",
-            "name": "function_pattern_list"
-          }
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "function_pattern"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "function_pattern_list"
+            }
+          ]
         }
       ]
     },

@@ -2,10 +2,8 @@
 Basic Function declaration without parameters
 =============================================
 
-def foo {
-  () => {
-    // do stuff
-  }
+def foo = () => {
+  // do stuff
 }
 
 ---
@@ -14,20 +12,18 @@ def foo {
   (function_definition
     (function_signature
       (identifier))
-        (function_pattern_list
-          (function_pattern
-            (parameter_list)
-            (block
-              (comment))))))
+        (function_pattern
+          (parameter_list)
+          (block
+            (comment)))))
 
 ==============================================================
 Basic Function declaration without parameters with return type
 ==============================================================
 
-def foo: () -> Int {
-  () => {
-    return 42
-  }
+def foo: () -> Int =
+() => {
+  return 42
 }
 
 ---
@@ -38,20 +34,17 @@ def foo: () -> Int {
       (identifier)
       (function_type
         (signed_integer_type)))
-        (function_pattern_list
-          (function_pattern
-            (parameter_list)
-            (block
-              (return_statement
-                (integer)))))))
+        (function_pattern
+          (parameter_list)
+          (block
+            (return_statement
+              (integer))))))
 
 ==========================================
 Basic Function declaration with parameters
 ==========================================
 
-def sum: (Int, Int) -> Int {
-  (a, b) => a + b
-}
+def sum: (Int, Int) -> Int = (a, b) => a + b
 
 ---
 
@@ -64,24 +57,21 @@ def sum: (Int, Int) -> Int {
           (signed_integer_type)
           (signed_integer_type))
         (signed_integer_type)))
-        (function_pattern_list
-          (function_pattern
-            (parameter_list
-              (parameter
-                (identifier))
-              (parameter
-                (identifier)))
-            (addition
-              (identifier)
-              (identifier))))))
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (addition
+            (identifier)
+            (identifier)))))
 
 ==================================================
 Basic Function declaration with generic parameters
 ==================================================
 
-def sum<n>: (n, n) -> n {
-  (a, b) => a + b
-}
+def sum<n>: (n, n) -> n = (a, b) => a + b
 
 ---
 
@@ -96,24 +86,21 @@ def sum<n>: (n, n) -> n {
           (generic_type)
           (generic_type))
         (generic_type)))
-        (function_pattern_list
-          (function_pattern
-            (parameter_list
-              (parameter
-                (identifier))
-              (parameter
-                (identifier)))
-            (addition
-              (identifier)
-              (identifier))))))
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (addition
+            (identifier)
+            (identifier)))))
 
 ==================================
 Function declaration with defaults
 ==================================
 
-def product: (Int, Int) -> Int {
-  (a, b = 10) => a * b
-}
+def product: (Int, Int) -> Int = (a, b = 10) => a * b
 
 ---
 
@@ -126,7 +113,6 @@ def product: (Int, Int) -> Int {
           (signed_integer_type)
           (signed_integer_type))
         (signed_integer_type)))
-    (function_pattern_list
       (function_pattern
         (parameter_list
           (parameter
@@ -137,16 +123,15 @@ def product: (Int, Int) -> Int {
               (integer))))
         (multiplication
           (identifier)
-          (identifier))))))
+          (identifier)))))
 
 =====================================
 Function with patterns for parameters
 =====================================
 
-def foo: (String, Int, Point, Array<String>, SomeTuple) -> void {
-  (bar, 42, { x, y }, [one, two, three, ...rest], (alpha, beta)) => {
-    // do stuff
-  }
+def foo: (String, Int, Point, Array<String>, SomeTuple) -> void =
+(bar, 42, { x, y }, [one, two, three, ...rest], (alpha, beta)) => {
+  // do stuff
 }
 
 ---
@@ -164,7 +149,6 @@ def foo: (String, Int, Point, Array<String>, SomeTuple) -> void {
             (string_type))
           (user_defined_type_name))
         (generic_type)))
-    (function_pattern_list
       (function_pattern
         (parameter_list
           (parameter
@@ -188,21 +172,19 @@ def foo: (String, Int, Point, Array<String>, SomeTuple) -> void {
               (identifier)
               (identifier))))
         (block
-          (comment))))))
+          (comment)))))
 
 =====================
 Higher order function
 =====================
 
-def map<t,u>:
-(Array<t>, (t) -> u) -> Array<u> {
-  (array, func) => {
+def map<t,u>: (Array<t>, (t) -> u) -> Array<u> =
+(array, func) => {
   //  new_array: Array<u,array.len()> = []
   //  for item in array {
   //    new_array.push(func(item))
   //  }
   //  new_array
-  }
 }
 
 ---
@@ -224,28 +206,27 @@ def map<t,u>:
             (generic_type)))
         (array_type
           (generic_type))))
-        (function_pattern_list
-          (function_pattern
-            (parameter_list
-              (parameter
-                (identifier))
-              (parameter
-                (identifier)))
-            (block
-              (comment)
-              (comment)
-              (comment)
-              (comment)
-              (comment))))))
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier))
+            (parameter
+              (identifier)))
+          (block
+            (comment)
+            (comment)
+            (comment)
+            (comment)
+            (comment)))))
 
 ========================================
 Function with multiple function patterns
 ========================================
 
-def fib: (Int) -> Int {
+def fib: (Int) -> Int = {
   (0) => 0,
   (1) => 1,
-  (n) => fib(n-2) + fib(n-1)
+  (n) => fib(n-2) + fib(n-1),
 }
 
 ---
@@ -295,9 +276,9 @@ def fib: (Int) -> Int {
 Function with multiple function patterns and guard
 ==================================================
 
-def fib: (Int) -> Int {
+def fib: (Int) -> Int = {
   (n) if n < 2 => n,
-  (n) => fib(n-2) + fib(n-1)
+  (n) => fib(n-2) + fib(n-1),
 }
 
 ---

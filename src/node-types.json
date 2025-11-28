@@ -2030,22 +2030,19 @@
   {
     "type": "function_definition",
     "named": true,
-    "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "function_pattern_list",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "function_pattern",
+          "named": true
+        },
+        {
+          "type": "function_pattern_list",
+          "named": true
+        },
         {
           "type": "function_signature",
           "named": true

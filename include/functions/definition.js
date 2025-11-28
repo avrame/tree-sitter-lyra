@@ -2,7 +2,8 @@ module.exports = {
   function_definition: $ => seq(
     optional($.visibility),
     $.function_signature,
-    field('body', $.function_pattern_list),
+    '=',
+    choice($.function_pattern, $.function_pattern_list),
   ),
 
   function_signature: $ => seq(

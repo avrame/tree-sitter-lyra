@@ -30,9 +30,8 @@ let sum: (Int, Int) -> Int = (a, b) => a + b
 Function that returns a lambda
 ==============================
 
-def make_sum_fn: (Int) -> (Int) -> Int {
-  (a) => (b) => a + b
-}
+def make_sum_fn: (Int) -> (Int) -> Int =
+(a) => (b) => a + b
 
 ---
 
@@ -47,19 +46,18 @@ def make_sum_fn: (Int) -> (Int) -> Int {
           (function_type_parameter_list
             (signed_integer_type))
           (signed_integer_type))))
-    (function_pattern_list
-      (function_pattern
-        (parameter_list
-          (parameter
-            (identifier)))
-        (lambda_expression
-          (function_pattern
-            (parameter_list
-              (parameter
-                (identifier)))
-            (addition
-              (identifier)
-              (identifier))))))))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier)))
+      (lambda_expression
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier)))
+          (addition
+            (identifier)
+            (identifier)))))))
 
 ==============================
 Function that accepts a lambda

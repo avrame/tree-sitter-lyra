@@ -142,9 +142,8 @@ import math.{ sin, cos, PI }
 Public Function Definition
 ==========================
 
-pub def greet: (String) -> String {
-  (name) => "Hello, ${name}!"
-}
+pub def greet: (String) -> String =
+(name) => "Hello, ${name}!"
 
 ---
 
@@ -157,13 +156,12 @@ pub def greet: (String) -> String {
         (function_type_parameter_list
           (string_type))
         (string_type)))
-        (function_pattern_list
-          (function_pattern
-            (parameter_list
-              (parameter
-                (identifier)))
-            (string_literal
-              (string_content))))))
+        (function_pattern
+          (parameter_list
+            (parameter
+              (identifier)))
+          (string_literal
+            (string_content)))))
 
 =============
 Public Struct
@@ -202,14 +200,13 @@ pub struct Config {
   path: String
 }
 
-pub def loadConfig: (String) -> Config {
-  (path) => {
-    let contents = io.readFile(path)
-    parse(contents)
-  }
+pub def loadConfig: (String) -> Config =
+(path) => {
+  let contents = io.readFile(path)
+  parse(contents)
 }
 
-def helper { () => 42 }
+def helper = () => 42
 
 ---
 
@@ -251,30 +248,28 @@ def helper { () => 42 }
         (function_type_parameter_list
           (string_type))
         (user_defined_type_name)))
-    (function_pattern_list
-      (function_pattern
-        (parameter_list
-          (parameter
-            (identifier)))
-        (block
-          (declaration
-            (identifier)
-            (call_expression
-              (member_expression
-                (identifier)
-                (identifier))
-              (argument_list
-                (value
-                  (identifier)))))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier)))
+      (block
+        (declaration
+          (identifier)
           (call_expression
-            (identifier)
+            (member_expression
+              (identifier)
+              (identifier))
             (argument_list
               (value
-                (identifier))))))))
+                (identifier)))))
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (identifier)))))))
   (function_definition
     (function_signature
       (identifier))
-    (function_pattern_list
-      (function_pattern
-        (parameter_list)
-        (integer)))))
+    (function_pattern
+      (parameter_list)
+      (integer))))

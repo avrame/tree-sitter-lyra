@@ -3757,7 +3757,7 @@
     "fields": {
       "field_name": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "field_name",
@@ -3883,6 +3883,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "mut_keyword",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -4881,6 +4891,10 @@
   },
   {
     "type": "module_name",
+    "named": true
+  },
+  {
+    "type": "mut_keyword",
     "named": true
   },
   {

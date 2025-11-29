@@ -41,6 +41,24 @@ let origin = Point {
       (field_value
         (float)))))
 
+=========================
+Struct Instance Shorthand
+=========================
+
+let origin = Point { 0.0, 0.0 }
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (struct_literal
+      (struct_name)
+      (field_value
+        (float))
+      (field_value
+        (float)))))
+
 ======================================
 Struct Declaration with Generic Params
 ======================================
@@ -62,6 +80,60 @@ struct Point<n> { x: n, y: n }
         (field_name)
         (field_type
           (generic_type))))))
+
+=================================
+Struct Instance with Generic Args
+=================================
+
+let position = Point::<Float32> {
+  x: 3.124,
+  y: 78.093,
+}
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (struct_literal
+      (struct_name)
+      (generic_arguments
+        (float_type))
+      (field_name)
+      (field_value
+        (float))
+      (field_name)
+      (field_value
+        (float)))))
+
+==========================
+Struct with mutable fields
+==========================
+
+struct Person {
+  name: String,
+[mut]:
+  age: Int8,
+  title: String,
+}
+
+---
+
+(program
+  (type_declaration
+    (struct_type
+      (struct_name)
+      (struct_type_body
+        (field_name)
+        (field_type
+          (string_type))
+        (mut_keyword)
+        (field_name)
+        (field_type
+          (signed_integer_type))
+        (field_name)
+        (field_type
+          (string_type))))))
 
 ===========================
 Struct with no comma Errors

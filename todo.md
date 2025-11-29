@@ -1,10 +1,12 @@
 ## To-Dos
-- add mut keyword for mutable data
 - list comprehension
 - doc comments
 - pipe operator?
 
 ## Completed
+
+### 11/28/25
+- added [mut]: keyword for mutable data
 
 ### 11/26/25
 - Parse nested block comments

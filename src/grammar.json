@@ -660,20 +660,16 @@
       ]
     },
     "_field_value": {
-      "type": "PREC_DYNAMIC",
-      "value": -1,
+      "type": "FIELD",
+      "name": "field_value",
       "content": {
-        "type": "FIELD",
-        "name": "field_value",
+        "type": "ALIAS",
         "content": {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "expression"
-          },
-          "named": true,
-          "value": "field_value"
-        }
+          "type": "SYMBOL",
+          "name": "expression"
+        },
+        "named": true,
+        "value": "field_value"
       }
     },
     "tuple_literal": {
@@ -3549,6 +3545,31 @@
             "named": true,
             "value": "field_type"
           }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "default_field_value"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "default_field_value": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
         }
       ]
     },

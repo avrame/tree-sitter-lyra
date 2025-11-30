@@ -59,6 +59,37 @@ let origin = Point { 0.0, 0.0 }
       (field_value
         (float)))))
 
+=====================
+Struct Default Values
+=====================
+
+struct Person {
+  name: String,
+  age: Int8 = 0,
+  hitpoints: Int8 = 100
+}
+
+---
+
+(program
+  (type_declaration
+    (struct_type
+      (struct_name)
+      (struct_type_body
+        (field_name)
+        (field_type
+          (string_type))
+        (field_name)
+        (field_type
+          (signed_integer_type))
+        (default_field_value
+          (integer))
+        (field_name)
+        (field_type
+          (signed_integer_type))
+        (default_field_value
+          (integer))))))
+
 ======================================
 Struct Declaration with Generic Params
 ======================================

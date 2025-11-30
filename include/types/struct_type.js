@@ -19,6 +19,9 @@ module.exports = {
     optional(alias('[mut]:', $.mut_keyword)), // all fields following this are mutable
     field('field_name', alias($.identifier, $.field_name)),
     ':',
-    field('field_type', alias($.type, $.field_type))
+    field('field_type', alias($.type, $.field_type)),
+    optional($.default_field_value)
   ),
+
+  default_field_value: $ => seq('=', $.expression)
 }

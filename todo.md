@@ -5,6 +5,9 @@
 
 ## Completed
 
+### 11/29/25
+- struct default values added
+
 ### 11/28/25
 - added [mut]: keyword for mutable data
 

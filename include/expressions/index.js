@@ -1,4 +1,4 @@
-const control_flow = require('./control-flow/');
+const control_flow = require('./control_flow/');
 const boolean = require('./boolean');
 const math = require('./math');
 const range = require('./range');

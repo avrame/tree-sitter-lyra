@@ -1,6 +1,6 @@
 const assignments = require('./assignments');
-const for_loop = require('./control-flow/for_loop');
-const for_in_loop = require('./control-flow/for_in_loop');
+const for_loop = require('./control_flow/for_loop');
+const for_in_loop = require('./control_flow/for_in_loop');
 
 module.exports = {
   statement: $ => seq(

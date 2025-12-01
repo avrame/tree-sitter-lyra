@@ -1,5 +1,6 @@
 const control_flow = require('./control_flow/');
 const boolean = require('./boolean');
+const array_comprehension = require('./array_comprehension');
 const math = require('./math');
 const range = require('./range');
 
@@ -9,7 +10,7 @@ module.exports = {
     $._postfix_expression,
     $._math_expr,
     $.boolean_expr,
-    $.range_expr,
+    $.range_expression,
     $.if_then_expr,
     $.if_block_expr,
     // $.if_let_expr,
@@ -18,6 +19,7 @@ module.exports = {
     $.spread_expr,
     $.lambda_expression,
     $.user_defined_type_name,
+    $.array_comprehension,
   ),
 
   // Await expression for async operations
@@ -84,4 +86,5 @@ module.exports = {
   ...boolean,
   ...math,
   ...range,
+  ...array_comprehension,
 }

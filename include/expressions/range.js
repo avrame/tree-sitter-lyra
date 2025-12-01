@@ -1,5 +1,5 @@
 module.exports = {
-  range_expr: $ => prec.right(
+  range_expression: $ => prec.right(
     20,
     seq(
       alias($.expression, $.range_start),

@@ -17,7 +17,7 @@ module.exports = {
     optional(seq(',', alias($.identifier, $.for_index_or_value))),
     'in',
     choice(
-      $.range_expr,
+      $.range_expression,
       $.array_literal,
       $.tuple_literal,
       $.map_literal,

@@ -68,10 +68,10 @@ module.exports = {
   )),
 
   // Data pattern
-  data_pattern: $ => seq(
+  data_pattern: $ => prec.left(seq(
     alias($.user_defined_type_name, $.data_type_name),
     optional(seq('(', $.pattern, ')')),
-  ),
+  )),
 
   // Literal patterns (for pattern matching)
   literal_pattern: $ => choice(

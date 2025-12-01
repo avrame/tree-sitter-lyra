@@ -12,7 +12,7 @@ for i in 0..=10 {
   (for_in_loop
     (for_in_condition
       (for_variable_or_key)
-      (range_expr
+      (range_expression
         (range_start
           (integer))
         (range_end_operator)
@@ -38,7 +38,7 @@ outer: for x in 0..=10 {
     (label)
     (for_in_condition
       (for_variable_or_key)
-      (range_expr
+      (range_expression
         (range_start
           (integer))
         (range_end_operator)
@@ -48,7 +48,7 @@ outer: for x in 0..=10 {
       (for_in_loop
         (for_in_condition
           (for_variable_or_key)
-          (range_expr
+          (range_expression
             (range_start
               (integer))
             (range_end_operator)
@@ -75,7 +75,7 @@ for i in 0..=10 {
   (for_in_loop
     (for_in_condition
       (for_variable_or_key)
-      (range_expr
+      (range_expression
         (range_start
           (integer))
         (range_end_operator)

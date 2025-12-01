@@ -7,7 +7,7 @@ Simple Range w/ Int literals, less than
 ---
 
 (program
-  (range_expr
+  (range_expression
     (range_start
       (integer))
     (range_end_operator)
@@ -23,7 +23,7 @@ Simple Range w/ Int literals, equals
 ---
 
 (program
-  (range_expr
+  (range_expression
     (range_start
       (integer))
     (range_end_operator)

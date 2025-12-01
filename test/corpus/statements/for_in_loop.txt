@@ -12,7 +12,7 @@ for i in 1..=3 {
   (for_in_loop
     (for_in_condition
       (for_variable_or_key)
-      (range_expr
+      (range_expression
         (range_start
           (integer))
         (range_end_operator)

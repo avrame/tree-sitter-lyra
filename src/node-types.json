@@ -12,6 +12,10 @@
         "named": true
       },
       {
+        "type": "array_comprehension",
+        "named": true
+      },
+      {
         "type": "array_literal",
         "named": true
       },
@@ -108,7 +112,7 @@
         "named": true
       },
       {
-        "type": "range_expr",
+        "type": "range_expression",
         "named": true
       },
       {
@@ -673,6 +677,29 @@
     }
   },
   {
+    "type": "array_comprehension",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comprehension_guard",
+          "named": true
+        },
+        {
+          "type": "generator",
+          "named": true
+        },
+        {
+          "type": "result_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "array_literal",
     "named": true,
     "fields": {},
@@ -886,6 +913,29 @@
     "named": true,
     "extra": true,
     "fields": {}
+  },
+  {
+    "type": "comprehension_guard",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "boolean_expr",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "const_declaration",
@@ -1918,7 +1968,7 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "range_expression",
           "named": true
         },
         {
@@ -2189,6 +2239,33 @@
       "types": [
         {
           "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "generator",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "range_expression",
+          "named": true
+        },
+        {
+          "type": "string_literal",
           "named": true
         }
       ]
@@ -3524,7 +3601,7 @@
     "fields": {}
   },
   {
-    "type": "range_expr",
+    "type": "range_expression",
     "named": true,
     "fields": {},
     "children": {
@@ -3634,6 +3711,109 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "result_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "addition",
+          "named": true
+        },
+        {
+          "type": "addition_assignment",
+          "named": true
+        },
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "const_identifier",
+          "named": true
+        },
+        {
+          "type": "division",
+          "named": true
+        },
+        {
+          "type": "division_assignment",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "member_expression",
+          "named": true
+        },
+        {
+          "type": "multiplication",
+          "named": true
+        },
+        {
+          "type": "multiplication_assignment",
+          "named": true
+        },
+        {
+          "type": "negation",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "struct_literal",
+          "named": true
+        },
+        {
+          "type": "subtraction",
+          "named": true
+        },
+        {
+          "type": "subtraction_assignment",
+          "named": true
+        },
+        {
+          "type": "suffix_expression",
+          "named": true
+        },
+        {
+          "type": "try_expression",
+          "named": true
+        },
+        {
+          "type": "tuple_literal",
           "named": true
         }
       ]

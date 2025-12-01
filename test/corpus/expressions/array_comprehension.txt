@@ -1,0 +1,112 @@
+========================
+Basic array comprehension
+========================
+
+let squares = [ 1..=5 -> x | x * x ]
+// squares == [1, 4, 9, 16, 25]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (array_comprehension
+      (generator
+        (range_expression
+          (range_start
+            (integer))
+          (range_end_operator)
+          (range_end
+            (integer)))
+        (identifier))
+      (result_expression
+        (multiplication
+          (identifier)
+          (identifier)))))
+  (comment))
+
+===================================
+Basic array comprehension with guard
+===================================
+
+let even_squares = [ 1..=10 -> x | even(x) | x * x ]
+// even_squares == [4, 16, 36, 64, 100]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (array_comprehension
+      (generator
+        (range_expression
+          (range_start
+            (integer))
+          (range_end_operator)
+          (range_end
+            (integer)))
+        (identifier))
+      (comprehension_guard
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (identifier)))))
+      (result_expression
+        (multiplication
+          (identifier)
+          (identifier)))))
+  (comment))
+
+===========================================
+Array comprehension with multiple generators
+===========================================
+
+let foo = [ 1..=5 -> x, 1..=5 -> y | odd(x), even(y) | (x, y, x * y) ]
+// foo == [(1, 2, 2), (1, 4, 4), (3, 2, 6), (3, 4, 12), (5, 2, 10), (5, 4, 20)]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (array_comprehension
+      (generator
+        (range_expression
+          (range_start
+            (integer))
+          (range_end_operator)
+          (range_end
+            (integer)))
+        (identifier))
+      (generator
+        (range_expression
+          (range_start
+            (integer))
+          (range_end_operator)
+          (range_end
+            (integer)))
+        (identifier))
+      (comprehension_guard
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (identifier)))))
+      (comprehension_guard
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (identifier)))))
+      (result_expression
+        (tuple_literal
+          (tuple_value
+            (identifier))
+          (tuple_value
+            (identifier))
+          (tuple_value
+            (multiplication
+              (identifier)
+              (identifier)))))))
+  (comment))

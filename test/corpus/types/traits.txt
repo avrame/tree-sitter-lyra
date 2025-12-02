@@ -403,8 +403,7 @@ impl Eq<Array<t>> for Array<t> {
                       object: (identifier)
                       property: (identifier))
                     arguments: (argument_list))
-                  (equality_operator
-                    (not_equals))
+                  (equality_operator)
                   (call_expression
                     function: (member_expression
                       object: (identifier)
@@ -434,8 +433,7 @@ impl Eq<Array<t>> for Array<t> {
                           (index_expression
                             object: (identifier)
                             index: (identifier))
-                          (equality_operator
-                            (not_equals))
+                          (equality_operator)
                           (index_expression
                             object: (identifier)
                             index: (identifier))))
@@ -457,8 +455,7 @@ impl Eq<Array<t>> for Array<t> {
             (parenthesized_expression
               (boolean_expr
                 (identifier)
-                (equality_operator
-                  (equals))
+                (equality_operator)
                 (identifier)))))))))
 
 ============================================
@@ -783,8 +780,7 @@ impl Collection<Array, String> for StringList {
                         (identifier)))
                     (boolean_expr
                       (identifier)
-                      (equality_operator
-                        (not_equals))
+                      (equality_operator)
                       (identifier)))))))))
       (trait_method_implementation
         (method_name)
@@ -807,8 +803,7 @@ impl Collection<Array, String> for StringList {
                         (identifier)))
                     (boolean_expr
                       (identifier)
-                      (equality_operator
-                        (equals))
+                      (equality_operator)
                       (identifier)))))))))
       (trait_method_implementation
         (method_name)

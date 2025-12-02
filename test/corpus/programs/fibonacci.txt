@@ -30,16 +30,14 @@ def fib: (Int) -> Int = {
             (if_condition
               (boolean_expr
                 (identifier)
-                (equality_operator
-                  (equals))
+                (equality_operator)
                 (integer)))
             (integer)
             (else_if)
             (if_condition
               (boolean_expr
                 (identifier)
-                (equality_operator
-                  (equals))
+                (equality_operator)
                 (integer)))
             (integer)
             (else)

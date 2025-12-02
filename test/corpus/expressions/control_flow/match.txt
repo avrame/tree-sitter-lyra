@@ -197,14 +197,12 @@ match foo {
         (boolean_expr
           (boolean_expr
             (identifier)
-            (relational_operator
-              (greater_than))
+            (relational_operator)
             (integer))
           (and)
           (boolean_expr
             (identifier)
-            (relational_operator
-              (less_than))
+            (relational_operator)
             (integer))))
       (call_expression
         (identifier)
@@ -220,14 +218,12 @@ match foo {
         (boolean_expr
           (boolean_expr
             (identifier)
-            (relational_operator
-              (greater_than_or_equals))
+            (relational_operator)
             (integer))
           (and)
           (boolean_expr
             (identifier)
-            (relational_operator
-              (less_than))
+            (relational_operator)
             (integer))))
       (call_expression
         (identifier)

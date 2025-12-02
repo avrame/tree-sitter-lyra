@@ -9,8 +9,7 @@ x == 42
 (program
   (boolean_expr
     (identifier)
-    (equality_operator
-      (equals))
+    (equality_operator)
     (integer))) 
 
 ===================
@@ -24,8 +23,7 @@ x != 42
 (program
   (boolean_expr
     (identifier)
-    (equality_operator
-      (not_equals))
+    (equality_operator)
     (integer)))
 
 ==================
@@ -39,8 +37,7 @@ x < 42
 (program
   (boolean_expr
     (identifier)
-    (relational_operator
-      (less_than))
+    (relational_operator)
     (integer)))
 
 =====================
@@ -54,8 +51,7 @@ x > 42
 (program
   (boolean_expr
     (identifier)
-    (relational_operator
-      (greater_than))
+    (relational_operator)
     (integer)))
 
 ===========================
@@ -69,8 +65,7 @@ x <= 42
 (program
   (boolean_expr
     (identifier)
-    (relational_operator
-      (less_than_or_equals))
+    (relational_operator)
     (integer)))
 
 ==============================
@@ -84,8 +79,7 @@ x >= 42
 (program
   (boolean_expr
     (identifier)
-    (relational_operator
-      (greater_than_or_equals))
+    (relational_operator)
     (integer)))
 
 ============
@@ -100,14 +94,12 @@ And operator
   (boolean_expr
     (boolean_expr
       (integer)
-      (relational_operator
-        (less_than_or_equals))
+      (relational_operator)
       (identifier))
     (and)
     (boolean_expr
       (identifier)
-      (relational_operator
-        (less_than_or_equals))
+      (relational_operator)
       (integer))))
 
 ===========
@@ -122,14 +114,12 @@ x == 0 || x == 42
   (boolean_expr
     (boolean_expr
       (identifier)
-      (equality_operator
-        (equals))
+      (equality_operator)
       (integer))
     (or)
     (boolean_expr
       (identifier)
-      (equality_operator
-        (equals))
+      (equality_operator)
       (integer))))
 
 ============================
@@ -159,8 +149,7 @@ Not Operator with parenthesized expression
     (parenthesized_expression
       (boolean_expr
         (identifier)
-        (equality_operator
-          (equals))
+        (equality_operator)
         (integer)))))
 
 ============================================
@@ -175,8 +164,7 @@ x ==
 (program
   (identifier)
   (ERROR
-    (equality_operator
-      (equals))))
+    (equality_operator)))
 
 ==============================================
 Double negation without expression is an error

@@ -1805,12 +1805,12 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "equals"
+          "type": "STRING",
+          "value": "=="
         },
         {
-          "type": "SYMBOL",
-          "name": "not_equals"
+          "type": "STRING",
+          "value": "!="
         }
       ]
     },
@@ -1818,64 +1818,22 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "greater_than"
+          "type": "STRING",
+          "value": ">"
         },
         {
-          "type": "SYMBOL",
-          "name": "less_than"
+          "type": "STRING",
+          "value": "<"
         },
         {
-          "type": "SYMBOL",
-          "name": "greater_than_or_equals"
+          "type": "STRING",
+          "value": ">="
         },
         {
-          "type": "SYMBOL",
-          "name": "less_than_or_equals"
+          "type": "STRING",
+          "value": "<="
         }
       ]
-    },
-    "equals": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "=="
-      }
-    },
-    "not_equals": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "!="
-      }
-    },
-    "greater_than": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": ">"
-      }
-    },
-    "less_than": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "<"
-      }
-    },
-    "greater_than_or_equals": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": ">="
-      }
-    },
-    "less_than_or_equals": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "<="
-      }
     },
     "and": {
       "type": "TOKEN",

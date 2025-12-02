@@ -86,8 +86,6 @@ module.exports = {
     seq($._number_literal, '..', $._number_literal)                        // 0..9
   )),
 
-  range_end_operator: $ => choice('<', '='),
-
   // Wildcard pattern
   wildcard_pattern: $ => prec.left(20, '_'),
 

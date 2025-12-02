@@ -19,14 +19,6 @@ module.exports = {
     field('value', $.expression)
   )),
 
-  destructuring_declaration: $ => seq(
-    optional($.visibility),
-    field('keyword', choice('let', 'var')),
-    field('pattern', $.destructuring_pattern),
-    '=',
-    field('value', $.expression)
-  ),
-
   var_reassignment: $ => seq($.identifier, '=', field('value', $.expression)),
 
   var_destructuring_reassignment: $ => seq(

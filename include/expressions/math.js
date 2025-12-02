@@ -12,7 +12,7 @@ module.exports = {
         $.division_assignment,
     ),
 
-    // Primary math expression - base elements without arithmetic operators or negation to avoid circular dependency
+    // Primary math expression - base elements without arithmetic operators to avoid circular dependency
     _primary_math_expr: $ => prec.right(130, choice($._number_literal, $._postfix_expression, $.group, $.negation)),
 
     // Math expression for constraints that can include const_identifier without circular dependency

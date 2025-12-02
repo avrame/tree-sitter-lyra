@@ -23,8 +23,8 @@ module.exports = {
     $.block,
     optional(
       repeat(
-      seq(
-        $.else_if,
+        seq(
+          $.else_if,
           $.if_condition,
           $.block,
         )

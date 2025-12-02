@@ -801,7 +801,7 @@
           "named": true
         },
         {
-          "type": "equality_operator",
+          "type": "equals_operator",
           "named": true
         },
         {
@@ -809,15 +809,31 @@
           "named": true
         },
         {
+          "type": "greater_than_operator",
+          "named": true
+        },
+        {
+          "type": "greater_than_or_equal_operator",
+          "named": true
+        },
+        {
+          "type": "less_than_operator",
+          "named": true
+        },
+        {
+          "type": "less_than_or_equal_operator",
+          "named": true
+        },
+        {
           "type": "not",
           "named": true
         },
         {
-          "type": "or",
+          "type": "not_equals_operator",
           "named": true
         },
         {
-          "type": "relational_operator",
+          "type": "or",
           "named": true
         }
       ]
@@ -1798,7 +1814,7 @@
     }
   },
   {
-    "type": "equality_operator",
+    "type": "equals_operator",
     "named": true,
     "fields": {}
   },
@@ -1863,7 +1879,7 @@
           "named": true
         },
         {
-          "type": "equality_operator",
+          "type": "equals_operator",
           "named": true
         },
         {
@@ -1871,15 +1887,31 @@
           "named": true
         },
         {
+          "type": "greater_than_operator",
+          "named": true
+        },
+        {
+          "type": "greater_than_or_equal_operator",
+          "named": true
+        },
+        {
+          "type": "less_than_operator",
+          "named": true
+        },
+        {
+          "type": "less_than_or_equal_operator",
+          "named": true
+        },
+        {
           "type": "not",
           "named": true
         },
         {
-          "type": "or",
+          "type": "not_equals_operator",
           "named": true
         },
         {
-          "type": "relational_operator",
+          "type": "or",
           "named": true
         }
       ]
@@ -2311,6 +2343,16 @@
         }
       ]
     }
+  },
+  {
+    "type": "greater_than_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "greater_than_or_equal_operator",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "group",
@@ -2780,6 +2822,16 @@
         }
       ]
     }
+  },
+  {
+    "type": "less_than_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "less_than_or_equal_operator",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "literal_pattern",
@@ -3332,6 +3384,11 @@
     "fields": {}
   },
   {
+    "type": "not_equals_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "octal_int",
     "named": true,
     "fields": {}
@@ -3614,11 +3671,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "relational_operator",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "rest_pattern",

@@ -9,7 +9,7 @@ x == 42
 (program
   (boolean_expr
     (identifier)
-    (equality_operator)
+    (equals_operator)
     (integer))) 
 
 ===================
@@ -23,7 +23,7 @@ x != 42
 (program
   (boolean_expr
     (identifier)
-    (equality_operator)
+    (not_equals_operator)
     (integer)))
 
 ==================
@@ -37,7 +37,7 @@ x < 42
 (program
   (boolean_expr
     (identifier)
-    (relational_operator)
+    (less_than_operator)
     (integer)))
 
 =====================
@@ -51,7 +51,7 @@ x > 42
 (program
   (boolean_expr
     (identifier)
-    (relational_operator)
+    (greater_than_operator)
     (integer)))
 
 ===========================
@@ -65,7 +65,7 @@ x <= 42
 (program
   (boolean_expr
     (identifier)
-    (relational_operator)
+    (less_than_or_equal_operator)
     (integer)))
 
 ==============================
@@ -79,7 +79,7 @@ x >= 42
 (program
   (boolean_expr
     (identifier)
-    (relational_operator)
+    (greater_than_or_equal_operator)
     (integer)))
 
 ============
@@ -94,12 +94,12 @@ And operator
   (boolean_expr
     (boolean_expr
       (integer)
-      (relational_operator)
+      (less_than_or_equal_operator)
       (identifier))
     (and)
     (boolean_expr
       (identifier)
-      (relational_operator)
+      (less_than_or_equal_operator)
       (integer))))
 
 ===========
@@ -114,12 +114,12 @@ x == 0 || x == 42
   (boolean_expr
     (boolean_expr
       (identifier)
-      (equality_operator)
+      (equals_operator)
       (integer))
     (or)
     (boolean_expr
       (identifier)
-      (equality_operator)
+      (equals_operator)
       (integer))))
 
 ============================
@@ -149,7 +149,7 @@ Not Operator with parenthesized expression
     (parenthesized_expression
       (boolean_expr
         (identifier)
-        (equality_operator)
+        (equals_operator)
         (integer)))))
 
 ============================================

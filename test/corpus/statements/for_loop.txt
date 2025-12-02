@@ -37,7 +37,7 @@ for i < 10 {
     (for_condition
       (for_condition_expr
         (identifier)
-        (relational_operator)
+        (less_than_operator)
         (integer)))
     (for_body
       (call_expression
@@ -68,7 +68,7 @@ for var i = 0; i < 10 {
         (integer))
       (for_condition_expr
         (identifier)
-        (relational_operator)
+        (less_than_operator)
         (integer)))
     (for_body
       (call_expression
@@ -102,7 +102,7 @@ for i < 10; i += 1 {
     (for_condition
       (for_condition_expr
         (identifier)
-        (relational_operator)
+        (less_than_operator)
         (integer))
       (for_after_expr
         (addition_assignment
@@ -136,7 +136,7 @@ for var i = 0; i < 10; i += 1 {
         (integer))
       (for_condition_expr
         (identifier)
-        (relational_operator)
+        (less_than_operator)
         (integer))
       (for_after_expr
         (addition_assignment

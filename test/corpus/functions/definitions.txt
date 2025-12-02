@@ -299,7 +299,7 @@ def fib: (Int) -> Int = {
         (guard
           (boolean_expr
             (identifier)
-            (relational_operator)
+            (less_than_operator)
             (integer)))
         (identifier))
       (function_pattern

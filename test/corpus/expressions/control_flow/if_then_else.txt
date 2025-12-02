@@ -13,7 +13,7 @@ if x == 3 {
     (if_condition
       (boolean_expr
         (identifier)
-        (equality_operator)
+        (equals_operator)
         (integer)))
     (block
       (call_expression
@@ -40,7 +40,7 @@ if x == 3 {
     (if_condition
       (boolean_expr
         (identifier)
-        (equality_operator)
+        (equals_operator)
         (integer)))
     (block
       (call_expression
@@ -73,7 +73,7 @@ let foo = if x == 0 then "zero" else "not zero"
       (if_condition
         (boolean_expr
           (identifier)
-          (equality_operator)
+          (equals_operator)
           (integer)))
       (string_literal
         (string_content))
@@ -100,7 +100,7 @@ end
     (if_condition
       (boolean_expr
         (identifier)
-        (equality_operator)
+        (equals_operator)
         (integer)))
     (call_expression
       (identifier)
@@ -112,7 +112,7 @@ end
     (if_condition
       (boolean_expr
         (identifier)
-        (relational_operator)
+        (less_than_operator)
         (integer)))
     (call_expression
       (identifier)
@@ -153,14 +153,14 @@ if x == 0 {
     (if_condition
       (boolean_expr
         (identifier)
-        (equality_operator)
+        (equals_operator)
         (integer)))
     (block
       (if_block_expr
         (if_condition
           (boolean_expr
             (identifier)
-            (equality_operator)
+            (equals_operator)
             (integer)))
         (block
           (call_expression
@@ -183,7 +183,7 @@ if x == 0 {
         (if_condition
           (boolean_expr
             (identifier)
-            (equality_operator)
+            (equals_operator)
             (integer)))
         (block
           (call_expression

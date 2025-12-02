@@ -16,7 +16,7 @@ if x == 3 {
         (equality_operator
           (equals))
         (integer)))
-    (if_block
+    (block
       (call_expression
         (identifier)
         (argument_list
@@ -44,7 +44,7 @@ if x == 3 {
         (equality_operator
           (equals))
         (integer)))
-    (if_block
+    (block
       (call_expression
         (identifier)
         (argument_list
@@ -52,7 +52,7 @@ if x == 3 {
             (string_literal
               (string_content))))))
     (else)
-    (if_block
+    (block
       (call_expression
         (identifier)
         (argument_list
@@ -161,7 +161,7 @@ if x == 0 {
         (equality_operator
           (equals))
         (integer)))
-    (if_block
+    (block
       (if_block_expr
         (if_condition
           (boolean_expr
@@ -169,7 +169,7 @@ if x == 0 {
             (equality_operator
               (equals))
             (integer)))
-        (if_block
+        (block
           (call_expression
             (identifier)
             (argument_list
@@ -177,7 +177,7 @@ if x == 0 {
                 (string_literal
                   (string_content))))))
         (else)
-        (if_block
+        (block
           (call_expression
             (identifier)
             (argument_list
@@ -185,7 +185,7 @@ if x == 0 {
                 (string_literal
                   (string_content))))))))
     (else)
-    (if_block
+    (block
       (if_block_expr
         (if_condition
           (boolean_expr
@@ -193,7 +193,7 @@ if x == 0 {
             (equality_operator
               (equals))
             (integer)))
-        (if_block
+        (block
           (call_expression
             (identifier)
             (argument_list
@@ -201,7 +201,7 @@ if x == 0 {
                 (string_literal
                   (string_content))))))
         (else)
-        (if_block
+        (block
           (call_expression
             (identifier)
             (argument_list

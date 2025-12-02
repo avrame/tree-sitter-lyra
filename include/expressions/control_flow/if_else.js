@@ -20,20 +20,20 @@ module.exports = {
   if_block_expr: $ => prec.right(10, seq(
     'if',
     $.if_condition,
-    $.if_block,
+    $.block,
     optional(
       repeat(
       seq(
         $.else_if,
           $.if_condition,
-          $.if_block,
+          $.block,
         )
       )
     ),
     optional(
       seq(
         $.else,
-        $.if_block,
+        $.block,
       )
     )
   )),
@@ -46,6 +46,4 @@ module.exports = {
     $.boolean_expr, 
     $._postfix_expression,
   ),
-  
-  if_block: $ => seq('{', repeat($.statement), '}'),
 }

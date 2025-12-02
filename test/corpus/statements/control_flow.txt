@@ -87,6 +87,6 @@ for i in 0..=10 {
           (call_expression
             (identifier)
             (argument_list)))
-        (if_block
+        (block
           (continue_statement)))
       (comment))))

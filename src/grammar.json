@@ -1496,7 +1496,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "if_block"
+            "name": "block"
           },
           {
             "type": "CHOICE",
@@ -1516,7 +1516,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "if_block"
+                      "name": "block"
                     }
                   ]
                 }
@@ -1538,7 +1538,7 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "if_block"
+                    "name": "block"
                   }
                 ]
               },
@@ -1568,26 +1568,6 @@
         {
           "type": "SYMBOL",
           "name": "_postfix_expression"
-        }
-      ]
-    },
-    "if_block": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "{"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "statement"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "}"
         }
       ]
     },

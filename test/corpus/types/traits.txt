@@ -410,10 +410,10 @@ impl Eq<Array<t>> for Array<t> {
                       object: (identifier)
                       property: (identifier))
                     arguments: (argument_list))))
-              (if_block
+              (block
                 (boolean_literal))
               (else)
-              (if_block
+              (block
                 (for_in_loop
                   (for_in_condition
                     (for_variable_or_key)

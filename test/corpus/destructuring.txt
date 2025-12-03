@@ -233,14 +233,15 @@ if let Some(num) = get_num() {
         (identifier)
         (argument_list)))
     (block
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content)
-              (string_interpolation
-                (identifier)))))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)
+                (string_interpolation
+                  (identifier))))))))))
 
 ====================================
 If Let Else Destructuring Expression
@@ -265,21 +266,23 @@ if let Some(num) = get_num() {
         (identifier)
         (argument_list)))
     (block
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content)
-              (string_interpolation
-                (identifier)))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)
+                (string_interpolation
+                  (identifier))))))))
     (block
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content))))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)))))))))
 
 =================================
 Let Else Destructuring Expression
@@ -303,20 +306,22 @@ println("We got the number: #{num}")
         (identifier)
         (argument_list)))
     (block
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content)))))))
-  (call_expression
-    (identifier)
-    (argument_list
-      (value
-        (string_literal
-          (string_content)
-          (string_interpolation
-            (identifier)))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content))))))))
+  (expression_statement
+    (call_expression
+      (identifier)
+      (argument_list
+        (value
+          (string_literal
+            (string_content)
+            (string_interpolation
+              (identifier))))))))
 
 ===================================
 Array destructuring without value is an error

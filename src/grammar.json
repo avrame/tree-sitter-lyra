@@ -4758,11 +4758,15 @@
             },
             {
               "type": "SYMBOL",
-              "name": "expression"
+              "name": "expression_statement"
             }
           ]
         }
       ]
+    },
+    "expression_statement": {
+      "type": "SYMBOL",
+      "name": "expression"
     },
     "block": {
       "type": "PREC_LEFT",
@@ -6437,7 +6441,7 @@
     ],
     [
       "_field_value",
-      "statement"
+      "expression_statement"
     ],
     [
       "_primary_expression",

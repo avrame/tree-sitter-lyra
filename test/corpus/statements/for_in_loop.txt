@@ -19,14 +19,15 @@ for i in 1..=3 {
         (range_end
           (integer))))
     (for_in_body
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content)
-              (string_interpolation
-                (identifier)))))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)
+                (string_interpolation
+                  (identifier))))))))))
 
 ======================
 For in loop with array
@@ -47,14 +48,15 @@ for i in [1,2,3] {
         (integer)
         (integer)))
     (for_in_body
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content)
-              (string_interpolation
-                (identifier)))))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)
+                (string_interpolation
+                  (identifier))))))))))
 
 ======================
 For in loop with tuple
@@ -79,14 +81,15 @@ for i in (1, "2", 3) {
         (tuple_value
           (integer))))
     (for_in_body
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content)
-              (string_interpolation
-                (identifier)))))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)
+                (string_interpolation
+                  (identifier))))))))))
 
 ===========================
 For in loop with identifier
@@ -111,14 +114,15 @@ for i in nums {
       (for_variable_or_key)
       (identifier))
     (for_in_body
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content)
-              (string_interpolation
-                (identifier)))))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)
+                (string_interpolation
+                  (identifier))))))))))
 
 ===================================
 For in loop with postfix expression
@@ -148,14 +152,15 @@ for i in foo.bar {
         (identifier)
         (identifier)))
     (for_in_body
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content)
-              (string_interpolation
-                (identifier)))))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)
+                (string_interpolation
+                  (identifier))))))))))
 
 ===========================================
 For in loop without an iterable is an error

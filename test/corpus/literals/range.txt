@@ -7,12 +7,13 @@ Simple Range w/ Int literals, less than
 ---
 
 (program
-  (range_expression
-    (range_start
-      (integer))
-    (range_end_operator)
-    (range_end
-      (integer))))
+  (expression_statement
+    (range_expression
+      (range_start
+        (integer))
+      (range_end_operator)
+      (range_end
+        (integer)))))
 
 ====================================
 Simple Range w/ Int literals, equals
@@ -23,12 +24,13 @@ Simple Range w/ Int literals, equals
 ---
 
 (program
-  (range_expression
-    (range_start
-      (integer))
-    (range_end_operator)
-    (range_end
-      (integer))))
+  (expression_statement
+    (range_expression
+      (range_start
+        (integer))
+      (range_end_operator)
+      (range_end
+        (integer)))))
 
 ================================================================
 Don't allow more than 2 dots (that is a spread or rest operator)

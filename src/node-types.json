@@ -228,7 +228,7 @@
         "named": true
       },
       {
-        "type": "expression",
+        "type": "expression_statement",
         "named": true
       },
       {
@@ -1772,6 +1772,21 @@
     "type": "equals_operator",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "expression_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "float",

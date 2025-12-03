@@ -9,19 +9,21 @@ if x == 3 {
 ---
 
 (program
-  (if_block_expr
-    (if_condition
-      (boolean_expr
-        (identifier)
-        (equals_operator)
-        (integer)))
-    (block
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content))))))))
+  (expression_statement
+    (if_block_expr
+      (if_condition
+        (boolean_expr
+          (identifier)
+          (equals_operator)
+          (integer)))
+      (block
+        (expression_statement
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (string_literal
+                  (string_content))))))))))
 
 ==================
 If/else expression
@@ -36,27 +38,30 @@ if x == 3 {
 ---
 
 (program
-  (if_block_expr
-    (if_condition
-      (boolean_expr
-        (identifier)
-        (equals_operator)
-        (integer)))
-    (block
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content))))))
-    (else)
-    (block
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content))))))))
+  (expression_statement
+    (if_block_expr
+      (if_condition
+        (boolean_expr
+          (identifier)
+          (equals_operator)
+          (integer)))
+      (block
+        (expression_statement
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (string_literal
+                  (string_content)))))))
+      (else)
+      (block
+        (expression_statement
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (string_literal
+                  (string_content))))))))))
 
 =============================
 If one-liner in an assignment
@@ -96,37 +101,38 @@ end
 ---
 
 (program
-  (if_then_expr
-    (if_condition
-      (boolean_expr
+  (expression_statement
+    (if_then_expr
+      (if_condition
+        (boolean_expr
+          (identifier)
+          (equals_operator)
+          (integer)))
+      (call_expression
         (identifier)
-        (equals_operator)
-        (integer)))
-    (call_expression
-      (identifier)
-      (argument_list
-        (value
-          (string_literal
-            (string_content)))))
-    (else_if)
-    (if_condition
-      (boolean_expr
+        (argument_list
+          (value
+            (string_literal
+              (string_content)))))
+      (else_if)
+      (if_condition
+        (boolean_expr
+          (identifier)
+          (less_than_operator)
+          (integer)))
+      (call_expression
         (identifier)
-        (less_than_operator)
-        (integer)))
-    (call_expression
-      (identifier)
-      (argument_list
-        (value
-          (string_literal
-            (string_content)))))
-    (else)
-    (call_expression
-      (identifier)
-      (argument_list
-        (value
-          (string_literal
-            (string_content)))))))
+        (argument_list
+          (value
+            (string_literal
+              (string_content)))))
+      (else)
+      (call_expression
+        (identifier)
+        (argument_list
+          (value
+            (string_literal
+              (string_content))))))))
 
 =====================
 Nested If Expressions
@@ -149,62 +155,69 @@ if x == 0 {
 ---
 
 (program
-  (if_block_expr
-    (if_condition
-      (boolean_expr
-        (identifier)
-        (equals_operator)
-        (integer)))
-    (block
-      (if_block_expr
-        (if_condition
-          (boolean_expr
-            (identifier)
-            (equals_operator)
-            (integer)))
-        (block
-          (call_expression
-            (identifier)
-            (argument_list
-              (value
-                (string_literal
-                  (string_content))))))
-        (else)
-        (block
-          (call_expression
-            (identifier)
-            (argument_list
-              (value
-                (string_literal
-                  (string_content))))))))
-    (else)
-    (block
-      (if_block_expr
-        (if_condition
-          (boolean_expr
-            (identifier)
-            (equals_operator)
-            (integer)))
-        (block
-          (call_expression
-            (identifier)
-            (argument_list
-              (value
-                (string_literal
-                  (string_content))))))
-        (else)
-        (block
-          (call_expression
-            (identifier)
-            (argument_list
-              (value
-                (string_literal
-                  (string_content)
-                  (string_interpolation
-                    (identifier))
-                  (string_content)
-                  (string_interpolation
-                    (identifier)))))))))))
+  (expression_statement
+    (if_block_expr
+      (if_condition
+        (boolean_expr
+          (identifier)
+          (equals_operator)
+          (integer)))
+      (block
+        (expression_statement
+          (if_block_expr
+            (if_condition
+              (boolean_expr
+                (identifier)
+                (equals_operator)
+                (integer)))
+            (block
+              (expression_statement
+                (call_expression
+                  (identifier)
+                  (argument_list
+                    (value
+                      (string_literal
+                        (string_content)))))))
+            (else)
+            (block
+              (expression_statement
+                (call_expression
+                  (identifier)
+                  (argument_list
+                    (value
+                      (string_literal
+                        (string_content))))))))))
+      (else)
+      (block
+        (expression_statement
+          (if_block_expr
+            (if_condition
+              (boolean_expr
+                (identifier)
+                (equals_operator)
+                (integer)))
+            (block
+              (expression_statement
+                (call_expression
+                  (identifier)
+                  (argument_list
+                    (value
+                      (string_literal
+                        (string_content)))))))
+            (else)
+            (block
+              (expression_statement
+                (call_expression
+                  (identifier)
+                  (argument_list
+                    (value
+                      (string_literal
+                        (string_content)
+                        (string_interpolation
+                          (identifier))
+                        (string_content)
+                        (string_interpolation
+                          (identifier))))))))))))))
 
 ===================================
 If without condition is an error

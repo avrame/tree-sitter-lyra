@@ -7,10 +7,11 @@ x == 42
 ---
 
 (program
-  (boolean_expr
-    (identifier)
-    (equals_operator)
-    (integer))) 
+  (expression_statement
+    (boolean_expr
+      (identifier)
+      (equals_operator)
+      (integer))))
 
 ===================
 Not Equals operator
@@ -21,10 +22,11 @@ x != 42
 ---
 
 (program
-  (boolean_expr
-    (identifier)
-    (not_equals_operator)
-    (integer)))
+  (expression_statement
+    (boolean_expr
+      (identifier)
+      (not_equals_operator)
+      (integer))))
 
 ==================
 Less-than operator
@@ -35,10 +37,11 @@ x < 42
 ---
 
 (program
-  (boolean_expr
-    (identifier)
-    (less_than_operator)
-    (integer)))
+  (expression_statement
+    (boolean_expr
+      (identifier)
+      (less_than_operator)
+      (integer))))
 
 =====================
 Greater-than operator
@@ -49,10 +52,11 @@ x > 42
 ---
 
 (program
-  (boolean_expr
-    (identifier)
-    (greater_than_operator)
-    (integer)))
+  (expression_statement
+    (boolean_expr
+      (identifier)
+      (greater_than_operator)
+      (integer))))
 
 ===========================
 Less-than or equal operator
@@ -63,10 +67,11 @@ x <= 42
 ---
 
 (program
-  (boolean_expr
-    (identifier)
-    (less_than_or_equal_operator)
-    (integer)))
+  (expression_statement
+    (boolean_expr
+      (identifier)
+      (less_than_or_equal_operator)
+      (integer))))
 
 ==============================
 Greater-than or equal operator
@@ -77,10 +82,11 @@ x >= 42
 ---
 
 (program
-  (boolean_expr
-    (identifier)
-    (greater_than_or_equal_operator)
-    (integer)))
+  (expression_statement
+    (boolean_expr
+      (identifier)
+      (greater_than_or_equal_operator)
+      (integer))))
 
 ============
 And operator
@@ -91,16 +97,17 @@ And operator
 ---
 
 (program
-  (boolean_expr
+  (expression_statement
     (boolean_expr
-      (integer)
-      (less_than_or_equal_operator)
-      (identifier))
-    (and)
-    (boolean_expr
-      (identifier)
-      (less_than_or_equal_operator)
-      (integer))))
+      (boolean_expr
+        (integer)
+        (less_than_or_equal_operator)
+        (identifier))
+      (and)
+      (boolean_expr
+        (identifier)
+        (less_than_or_equal_operator)
+        (integer)))))
 
 ===========
 Or operator
@@ -111,16 +118,17 @@ x == 0 || x == 42
 ---
 
 (program
-  (boolean_expr
+  (expression_statement
     (boolean_expr
-      (identifier)
-      (equals_operator)
-      (integer))
-    (or)
-    (boolean_expr
-      (identifier)
-      (equals_operator)
-      (integer))))
+      (boolean_expr
+        (identifier)
+        (equals_operator)
+        (integer))
+      (or)
+      (boolean_expr
+        (identifier)
+        (equals_operator)
+        (integer)))))
 
 ============================
 Not Operator with identifier
@@ -131,9 +139,10 @@ Not Operator with identifier
 ---
 
 (program
-  (boolean_expr
-    (not)
-    (identifier)))
+  (expression_statement
+    (boolean_expr
+      (not)
+      (identifier))))
 
 ==========================================
 Not Operator with parenthesized expression
@@ -144,13 +153,14 @@ Not Operator with parenthesized expression
 ---
 
 (program
-  (boolean_expr
-    (not)
-    (parenthesized_expression
-      (boolean_expr
-        (identifier)
-        (equals_operator)
-        (integer)))))
+  (expression_statement
+    (boolean_expr
+      (not)
+      (parenthesized_expression
+        (boolean_expr
+          (identifier)
+          (equals_operator)
+          (integer))))))
 
 ============================================
 Comparison without right operand is an error

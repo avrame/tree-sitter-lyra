@@ -82,11 +82,12 @@ for i in 0..=10 {
         (range_end
           (integer))))
     (for_in_body
-      (if_block_expr
-        (if_condition
-          (call_expression
-            (identifier)
-            (argument_list)))
-        (block
-          (continue_statement)))
+      (expression_statement
+        (if_block_expr
+          (if_condition
+            (call_expression
+              (identifier)
+              (argument_list)))
+          (block
+            (continue_statement))))
       (comment))))

@@ -11,12 +11,13 @@ for {
 (program
   (for_loop
     (for_body
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content))))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)))))))))
 
 =======================
 For loop with condition
@@ -40,14 +41,15 @@ for i < 10 {
         (less_than_operator)
         (integer)))
     (for_body
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content)
-              (string_interpolation
-                (identifier)))))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)
+                (string_interpolation
+                  (identifier))))))))))
 
 =========================================================
 For loop with initial expression and condition expression
@@ -71,17 +73,19 @@ for var i = 0; i < 10 {
         (less_than_operator)
         (integer)))
     (for_body
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content)
-              (string_interpolation
-                (identifier))))))
-      (addition_assignment
-        (identifier)
-        (integer)))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)
+                (string_interpolation
+                  (identifier)))))))
+          (expression_statement
+            (addition_assignment
+              (identifier)
+              (integer))))))
 
 =======================================================
 For loop with condition expression and after expression
@@ -109,14 +113,15 @@ for i < 10; i += 1 {
           (identifier)
           (integer))))
     (for_body
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content)
-              (string_interpolation
-                (identifier)))))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)
+                (string_interpolation
+                  (identifier))))))))))
 
 ==========================================================================
 For loop with initial expression, boolean expression, and after expression
@@ -143,11 +148,12 @@ for var i = 0; i < 10; i += 1 {
           (identifier)
           (integer))))
     (for_body
-      (call_expression
-        (identifier)
-        (argument_list
-          (value
-            (string_literal
-              (string_content)
-              (string_interpolation
-                (identifier)))))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (string_literal
+                (string_content)
+                (string_interpolation
+                  (identifier))))))))))

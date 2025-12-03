@@ -40,7 +40,7 @@ module.exports = grammar({
     [$.struct_literal, $._tuple_name],
     [$.struct_literal, $._tuple_name, $.expression],
     [$.expression, $.data_pattern],
-    [$._field_value, $.statement],
+    [$._field_value, $.expression_statement],
     [$._primary_expression, $.result_expression],
   ],
 

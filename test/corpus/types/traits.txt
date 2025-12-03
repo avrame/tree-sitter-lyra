@@ -194,7 +194,8 @@ impl Functor for Maybe {
                       (argument_list
                         (value
                           (identifier))))))))
-            (identifier))))))
+            (expression_statement
+              (identifier)))))))
   (type_declaration
     (trait_implementation
       (trait_name)
@@ -349,7 +350,9 @@ impl Eq<Array<t>> for Array<t> {
       false
     } else {
       for i in 0..<a.length() {
-        if a[i] != b[i] then return false
+        if a[i] != b[i] {
+          return false
+        }
       }
       true
     }
@@ -362,19 +365,19 @@ impl Eq<Array<t>> for Array<t> {
 (program
   (type_declaration
     (trait_declaration
-      name: (trait_name)
-      generic_parameters: (generic_parameters
+      (trait_name)
+      (generic_parameters
         (generic_type))
-      method: (trait_method
+      (trait_method
         (method_name)
-        function_type: (function_type
+        (function_type
           (function_type_parameter_list
             (generic_type)
             (generic_type))
           (boolean_type)))
-      method: (trait_method
+      (trait_method
         (method_name)
-        function_type: (function_type
+        (function_type
           (function_type_parameter_list
             (generic_type)
             (generic_type))
@@ -386,71 +389,74 @@ impl Eq<Array<t>> for Array<t> {
         (generic_type))
       (array_type
         (generic_type))
-      method: (trait_method_implementation
+      (trait_method_implementation
         (method_name)
-        function_pattern: (function_pattern
-          parameters: (parameter_list
+        (function_pattern
+          (parameter_list
             (parameter
-              pattern: (identifier))
+              (identifier))
             (parameter
-              pattern: (identifier)))
-          body: (block
-            (if_block_expr
-              (if_condition
-                (boolean_expr
-                  (call_expression
-                    function: (member_expression
-                      object: (identifier)
-                      property: (identifier))
-                    arguments: (argument_list))
-                  (not_equals_operator)
-                  (call_expression
-                    function: (member_expression
-                      object: (identifier)
-                      property: (identifier))
-                    arguments: (argument_list))))
-              (block
-                (boolean_literal))
-              (else)
-              (block
-                (for_in_loop
-                  (for_in_condition
-                    (for_variable_or_key)
-                    (range_expression
-                      (range_start
-                        (integer))
-                      (range_end_operator)
-                      (range_end
-                        (call_expression
-                          function: (member_expression
-                            object: (identifier)
-                            property: (identifier))
-                          arguments: (argument_list)))))
-                  (for_in_body
-                    (if_then_expr
-                      (if_condition
-                        (boolean_expr
-                          (index_expression
-                            object: (identifier)
-                            index: (identifier))
-                          (not_equals_operator)
-                          (index_expression
-                            object: (identifier)
-                            index: (identifier))))
-                      (identifier)
-                      (else
-                        (MISSING "else"))
-                      (boolean_literal))))
-                (boolean_literal))))))
-      method: (trait_method_implementation
+              (identifier)))
+          (block
+            (expression_statement
+              (if_block_expr
+                (if_condition
+                  (boolean_expr
+                    (call_expression
+                      (member_expression
+                        (identifier)
+                        (identifier))
+                      (argument_list))
+                    (not_equals_operator)
+                    (call_expression
+                      (member_expression
+                        (identifier)
+                        (identifier))
+                      (argument_list))))
+                (block
+                  (expression_statement
+                    (boolean_literal)))
+                (else)
+                (block
+                  (for_in_loop
+                    (for_in_condition
+                      (for_variable_or_key)
+                      (range_expression
+                        (range_start
+                          (integer))
+                        (range_end_operator)
+                        (range_end
+                          (call_expression
+                            (member_expression
+                              (identifier)
+                              (identifier))
+                            (argument_list)))))
+                    (for_in_body
+                      (expression_statement
+                        (if_block_expr
+                          (if_condition
+                            (boolean_expr
+                              (index_expression
+                                (identifier)
+                                (identifier))
+                              (not_equals_operator)
+                              (index_expression
+                                (identifier)
+                                (identifier))))
+                          (block
+                            (return_statement
+                              (boolean_literal)))))))
+                  (expression_statement
+                    (boolean_literal))))))))
+      (trait_method_implementation
         (method_name)
-        function_pattern: (function_pattern
-          parameters: (parameter_list
+        (function_pattern
+          (parameter_list
             (parameter
-              pattern: (identifier))
+              (identifier))
             (parameter
-              pattern: (identifier)))
-          body: (boolean_expr
+              (identifier)))
+          (boolean_expr
             (not)
             (parenthesized_expression
               (boolean_expr

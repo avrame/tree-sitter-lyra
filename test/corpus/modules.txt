@@ -262,11 +262,12 @@ def helper = () => 42
             (argument_list
               (value
                 (identifier)))))
-        (call_expression
-          (identifier)
-          (argument_list
-            (value
-              (identifier)))))))
+        (expression_statement                
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (identifier))))))))
   (function_definition
     (function_signature
       (identifier))

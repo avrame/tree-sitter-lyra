@@ -58,10 +58,11 @@ String Literal with escaped hash char
 ---
 
 (program
-  (string_literal
-    (string_content)
-    (string_interpolation
-      (identifier))))
+  (expression_statement
+    (string_literal
+      (string_content)
+      (string_interpolation
+        (identifier)))))
 
 ========================================
 String Literal with nested interpolation

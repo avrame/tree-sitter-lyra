@@ -60,21 +60,23 @@ f ()
 ---
 
 (program
-  (call_expression
-    (identifier)
-    (argument_list)))
+  (expression_statement
+    (call_expression
+      (identifier)
+      (argument_list))))
 
-===
+=========================
 qualified call with space
-===
+=========================
 
 ns.f ()
 
 ---
 
 (program
-  (call_expression
-    (member_expression
-      (identifier)
-      (identifier))
-    (argument_list)))
+  (expression_statement
+    (call_expression
+      (member_expression
+        (identifier)
+        (identifier))
+      (argument_list))))

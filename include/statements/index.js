@@ -17,9 +17,11 @@ module.exports = {
       $.if_destructuring_declaration,
       $.for_loop,
       $.for_in_loop,
-      $.expression,
+      $.expression_statement,
     )
   ),
+
+  expression_statement: $ => $.expression,
 
   block: $ => prec.left(2, seq('{', repeat($.statement), '}')),
 

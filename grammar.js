@@ -59,7 +59,7 @@ module.exports = grammar({
       repeat(choice($.statement, $.type_declaration))
     ),
 
-    _comma: $ => prec.left(10, ','),
+    _comma: $ => ',',
 
     ...literals,
     ...numbers,

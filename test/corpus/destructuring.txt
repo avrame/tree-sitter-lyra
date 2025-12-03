@@ -20,6 +20,27 @@ let [a, b, c] = [1, 2, 3]
       (integer)))
   (comment))
 
+====================================
+Destructuring with public visibility
+====================================
+
+pub let [a, b, c] = [1, 2, 3]
+
+---
+
+(program
+  (destructuring_declaration
+    (visibility)
+    (destructuring_pattern
+      (array_pattern
+        (identifier)
+        (identifier)
+        (identifier)))
+    (array_literal
+      (integer)
+      (integer)
+      (integer))))
+
 =============================
 Array Destructuring with rest
 =============================

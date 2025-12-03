@@ -10,6 +10,7 @@ module.exports = {
 
   // Destructuring declarations
   destructuring_declaration: $ => seq(
+    optional($.visibility),
     field('keyword', choice('let', 'var')),
     field('pattern', $.destructuring_pattern),
     optional(field('type', $.type_annotation)),

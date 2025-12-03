@@ -2629,7 +2629,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "alias_type"
+          "name": "constrained_type"
         },
         {
           "type": "SYMBOL",
@@ -2790,7 +2790,7 @@
       "type": "STRING",
       "value": "Bool"
     },
-    "alias_type": {
+    "constrained_type": {
       "type": "SEQ",
       "members": [
         {
@@ -2807,7 +2807,7 @@
         },
         {
           "type": "STRING",
-          "value": "alias"
+          "value": "type"
         },
         {
           "type": "ALIAS",
@@ -2816,7 +2816,7 @@
             "name": "user_defined_type_name"
           },
           "named": true,
-          "value": "alias_type_name"
+          "value": "constrained_type_name"
         },
         {
           "type": "STRING",
@@ -2903,15 +2903,23 @@
         },
         {
           "type": "SYMBOL",
-          "name": "enum_constraint"
+          "name": "oneof_constraint"
         },
         {
           "type": "SYMBOL",
-          "name": "size_constraint"
+          "name": "length_constraint"
         },
         {
           "type": "SYMBOL",
-          "name": "regex_constraint"
+          "name": "pattern_constraint"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "precision_constraint"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "step_constraint"
         }
       ]
     },
@@ -2920,7 +2928,7 @@
       "members": [
         {
           "type": "STRING",
-          "value": "range="
+          "value": "range"
         },
         {
           "type": "SYMBOL",
@@ -2951,8 +2959,26 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "_constraint_math_expr"
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "<"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    }
+                  ]
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_constraint_math_expr"
+                }
+              ]
             },
             {
               "type": "BLANK"
@@ -2961,25 +2987,25 @@
         }
       ]
     },
-    "enum_constraint": {
+    "oneof_constraint": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "enum="
+          "value": "oneof"
         },
         {
           "type": "SYMBOL",
-          "name": "enum"
+          "name": "oneof"
         }
       ]
     },
-    "enum": {
+    "oneof": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "enum_value"
+          "name": "oneof_value"
         },
         {
           "type": "REPEAT",
@@ -2992,14 +3018,14 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "enum_value"
+                "name": "oneof_value"
               }
             ]
           }
         }
       ]
     },
-    "enum_value": {
+    "oneof_value": {
       "type": "CHOICE",
       "members": [
         {
@@ -3012,12 +3038,12 @@
         }
       ]
     },
-    "size_constraint": {
+    "length_constraint": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "size="
+          "value": "length "
         },
         {
           "type": "SYMBOL",
@@ -3025,12 +3051,12 @@
         }
       ]
     },
-    "regex_constraint": {
+    "pattern_constraint": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "regex="
+          "value": "pattern"
         },
         {
           "type": "CHOICE",
@@ -3041,9 +3067,120 @@
             },
             {
               "type": "SYMBOL",
-              "name": "identifier"
+              "name": "const_identifier"
             }
           ]
+        }
+      ]
+    },
+    "precision_constraint": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "precision"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_constraint_math_expr"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ":"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "reject"
+                    },
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": "round"
+                        },
+                        {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "rounding_mode"
+                            },
+                            {
+                              "type": "BLANK"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "rounding_mode": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "even"
+            },
+            {
+              "type": "STRING",
+              "value": "zero"
+            },
+            {
+              "type": "STRING",
+              "value": "up"
+            },
+            {
+              "type": "STRING",
+              "value": "down"
+            },
+            {
+              "type": "STRING",
+              "value": "truncate"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "step_constraint": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "step"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_constraint_math_expr"
         }
       ]
     },
@@ -3549,6 +3686,10 @@
     "float_type": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "STRING",
+          "value": "Float"
+        },
         {
           "type": "STRING",
           "value": "Float16"

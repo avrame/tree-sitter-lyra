@@ -1,0 +1,152 @@
+======================================
+Basic Type without constraints (alias)
+======================================
+
+type Turn = Float
+
+---
+
+(program
+  (type_declaration
+    (constrained_type
+      (constrained_type_name)
+      (float_type))))
+
+===============================
+Type with oneof constraint
+===============================
+
+type CSSColorName = String where(oneof "red" | "green" | "blue" | "rebeccapurple" | "aliceblue")
+
+---
+
+(program
+  (type_declaration
+    (constrained_type
+      (constrained_type_name)
+      (string_type)
+      (constraints
+        (constraint
+          (oneof_constraint
+            (oneof
+              (oneof_value
+                (string_literal
+                  (string_content)))
+              (oneof_value
+                (string_literal
+                  (string_content)))
+              (oneof_value
+                (string_literal
+                  (string_content)))
+              (oneof_value
+                (string_literal
+                  (string_content)))
+              (oneof_value
+                (string_literal
+                  (string_content))))))))))
+
+=================================
+Type with range constraints
+=================================
+
+type Angle = Float where(range 0..<360, precision 6:round(up))
+type Radian = Float64 where(range 0..=2*PI, precision 2:round(truncate))
+type Alpha = Float32 where(range 0..=1)
+
+---
+
+(program
+  (type_declaration
+    (constrained_type
+      (constrained_type_name)
+      (float_type)
+      (constraints
+        (constraint
+          (range_constraint
+            (range
+              (integer)
+              (integer))))
+        (constraint
+          (precision_constraint
+            (integer)
+            (rounding_mode))))))
+  (type_declaration
+    (constrained_type
+      (constrained_type_name)
+      (float_type)
+      (constraints
+        (constraint
+          (range_constraint
+            (range
+              (integer)
+              (constraint_multiplication
+                (integer)
+                (const_identifier)))))
+        (constraint
+          (precision_constraint
+            (integer)
+            (rounding_mode))))))
+  (type_declaration
+    (constrained_type
+      (constrained_type_name)
+      (float_type)
+      (constraints
+        (constraint
+          (range_constraint
+            (range
+              (integer)
+              (integer))))))))
+
+==================================
+Type with pattern constraint
+==================================
+
+type HexString = String where(pattern r/^#(?:[0-9a-fA-F]{3}){1,2}$/)
+
+---
+
+(program
+  (type_declaration
+    (constrained_type
+      (constrained_type_name)
+      (string_type)
+      (constraints
+        (constraint
+          (pattern_constraint
+            (regex_literal)))))))
+
+============================================
+Type with length constraint and const values
+============================================
+
+type Grid = Array<Int> where(length ROWS * COLUMNS)
+
+---
+
+(program
+  (type_declaration
+    (constrained_type
+      (constrained_type_name)
+      (array_type
+        (signed_integer_type))
+      (constraints
+        (constraint
+          (length_constraint
+            (constraint_multiplication
+              (const_identifier)
+              (const_identifier))))))))
+
+===================================
+Type without right side is an error
+===================================
+
+type Foo =
+
+---
+
+(program
+  (type_declaration
+    (constrained_type
+      (constrained_type_name)
+      (user_defined_type_name
+        (MISSING "user_defined_type_name_token1")))))            

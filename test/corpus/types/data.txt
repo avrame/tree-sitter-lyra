@@ -113,10 +113,10 @@ data Hue = HueDeg(Angle) | HueRadian(Radian) | HueTurn(Turn)
             (user_defined_type_name))
           (field_name)
           (field_type
-            (user_defined_type_name))
+            (float_type))
           (field_name)
           (field_type
-            (user_defined_type_name))
+            (float_type))
           (field_name)
           (field_type
             (user_defined_type_name))))))

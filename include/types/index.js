@@ -1,4 +1,4 @@
-const alias_type = require('./alias_type');
+const constrained_type = require('./constrained_type');
 const array_type = require('./array_type');
 const data_type = require('./data_type');
 const function_type = require('./function_type');
@@ -15,7 +15,7 @@ module.exports = {
 
     return_type_notation: $ => seq('->', $.type),
 
-    type_declaration: $ => choice($.struct_type, $.data_type, $.alias_type, $.trait_declaration, $.trait_implementation),
+    type_declaration: $ => choice($.struct_type, $.data_type, $.constrained_type, $.trait_declaration, $.trait_implementation),
     
     type: $ => prec(2, choice(
         $._primitive_type,
@@ -50,7 +50,7 @@ module.exports = {
 
     boolean_type: $ => 'Bool',
 
-    ...alias_type,
+    ...constrained_type,
     ...array_type,
     ...data_type,
     ...function_type,

@@ -22,7 +22,7 @@ const PI: Float32 = 3.141592
 (program
   (const_declaration
     (const_identifier)
-    (type_notation
+    (type_annotation
       (float_type))
     (float)))
 
@@ -50,7 +50,7 @@ let answer: Int = 42
 (program
   (declaration
     (identifier)
-    (type_notation
+    (type_annotation
       (signed_integer_type))
     (integer)))
 
@@ -83,7 +83,7 @@ pi = 3.141592
 (program
   (declaration
     (identifier)
-    (type_notation
+    (type_annotation
       (float_type))
     (float))
   (var_reassignment

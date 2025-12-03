@@ -12,7 +12,7 @@ module.exports = {
   destructuring_declaration: $ => seq(
     field('keyword', choice('let', 'var')),
     field('pattern', $.destructuring_pattern),
-    optional(field('type', $.type_notation)),
+    optional(field('type', $.type_annotation)),
     '=',
     field('value', $.expression),
   ),

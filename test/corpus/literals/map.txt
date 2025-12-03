@@ -9,7 +9,7 @@ let map: Map<Int, String> = {}
 (program
   (declaration
     (identifier)
-    (type_notation
+    (type_annotation
       (map_type
         (key_type
           (signed_integer_type))
@@ -28,7 +28,7 @@ let map: Map<Int, String> = { 1 => "one", 2 => "two" }
 (program
   (declaration
     (identifier)
-    (type_notation
+    (type_annotation
       (map_type
         (key_type
           (signed_integer_type))

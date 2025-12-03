@@ -2578,7 +2578,7 @@
         }
       ]
     },
-    "type_notation": {
+    "type_annotation": {
       "type": "SEQ",
       "members": [
         {
@@ -2591,7 +2591,7 @@
         }
       ]
     },
-    "return_type_notation": {
+    "return_type_annotation": {
       "type": "SEQ",
       "members": [
         {
@@ -4888,7 +4888,7 @@
                 "name": "type",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "type_notation"
+                  "name": "type_annotation"
                 }
               },
               {
@@ -4962,7 +4962,7 @@
                 "name": "type",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "type_notation"
+                  "name": "type_annotation"
                 }
               },
               {
@@ -5877,7 +5877,7 @@
               "name": "type",
               "content": {
                 "type": "SYMBOL",
-                "name": "type_notation"
+                "name": "type_annotation"
               }
             },
             {

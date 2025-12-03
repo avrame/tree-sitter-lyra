@@ -9,7 +9,7 @@ var fibs: Array<Int8> = [1, 1, 2, 3]
 (program
   (declaration
     (identifier)
-    (type_notation
+    (type_annotation
       (array_type
         (signed_integer_type)))
     (array_literal

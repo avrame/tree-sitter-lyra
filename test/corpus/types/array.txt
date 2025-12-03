@@ -28,7 +28,7 @@ let foo: Array<String> = ["one", "two", "three"]
 (program
   (declaration
     (identifier)
-    (type_notation
+    (type_annotation
       (array_type
         (string_type)))
     (array_literal

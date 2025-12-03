@@ -281,7 +281,7 @@ let inverted: Point = -my_point // uses the overloaded prefix -
                   (identifier)))))))))
   (declaration
     (identifier)
-    (type_notation
+    (type_annotation
       (user_defined_type_name))
     (negation
       (identifier)))
@@ -330,7 +330,7 @@ let result: Int = my_num++
             (integer))))))
   (declaration
     (identifier)
-    (type_notation
+    (type_annotation
       (signed_integer_type))
     (suffix_expression
       (identifier))))

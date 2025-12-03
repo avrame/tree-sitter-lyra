@@ -950,7 +950,7 @@
         "required": false,
         "types": [
           {
-            "type": "type_notation",
+            "type": "type_annotation",
             "named": true
           }
         ]
@@ -1424,7 +1424,7 @@
         "required": false,
         "types": [
           {
-            "type": "type_notation",
+            "type": "type_annotation",
             "named": true
           }
         ]
@@ -1514,7 +1514,7 @@
         "required": false,
         "types": [
           {
-            "type": "type_notation",
+            "type": "type_annotation",
             "named": true
           }
         ]
@@ -2025,7 +2025,7 @@
         "required": false,
         "types": [
           {
-            "type": "type_notation",
+            "type": "type_annotation",
             "named": true
           }
         ]
@@ -4714,6 +4714,21 @@
     }
   },
   {
+    "type": "type_annotation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "type_declaration",
     "named": true,
     "fields": {},
@@ -4739,21 +4754,6 @@
         },
         {
           "type": "trait_implementation",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "type_notation",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type",
           "named": true
         }
       ]

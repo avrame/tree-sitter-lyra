@@ -9,7 +9,7 @@ let sum: (Int, Int) -> Int = (a, b) => a + b
 (program
   (declaration
     (identifier)
-    (type_notation
+    (type_annotation
       (function_type
         (function_type_parameter_list
           (signed_integer_type)

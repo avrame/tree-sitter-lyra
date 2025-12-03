@@ -67,7 +67,7 @@ if x == 3 {
 If one-liner in an assignment
 =============================
 
-let foo = if x == 0 then "zero" else "not zero"
+let foo = if x == 0 then "zero" else "not zero" end
 
 ---
 

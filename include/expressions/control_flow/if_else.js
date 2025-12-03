@@ -14,7 +14,7 @@ module.exports = {
     ),
     $.else,
     $.expression,
-    optional('end'), // Only needed if on multiple lines
+    'end',
   )),
 
   if_block_expr: $ => prec.right(10, seq(

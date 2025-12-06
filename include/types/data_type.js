@@ -1,6 +1,7 @@
 module.exports = {
   data_type: $ => seq(
     optional($.visibility),
+    optional(field('allocation', $.allocation_modifier)),
     'data',
     alias($.user_defined_type_name, $.data_type_name),
     optional($.generic_parameters),

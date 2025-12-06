@@ -1,0 +1,317 @@
+================
+Stack struct type
+================
+
+stack struct Vec3 {
+  x: Float32,
+  y: Float32,
+  z: Float32,
+}
+
+---
+
+(program
+  (type_declaration
+    (struct_type
+      (allocation_modifier)
+      (struct_name)
+      (struct_type_body
+        (field_name)
+        (field_type
+          (float_type))
+        (field_name)
+        (field_type
+          (float_type))
+        (field_name)
+        (field_type
+          (float_type))))))
+
+===============
+Heap struct type
+===============
+
+heap struct Player {
+  name: String,
+  health: Int,
+}
+
+---
+
+(program
+  (type_declaration
+    (struct_type
+      (allocation_modifier)
+      (struct_name)
+      (struct_type_body
+        (field_name)
+        (field_type
+          (string_type))
+        (field_name)
+        (field_type
+          (signed_integer_type))))))
+
+==============
+Stack data type
+==============
+
+stack data Direction = North | South | East | West
+
+---
+
+(program
+  (type_declaration
+    (data_type
+      (allocation_modifier)
+      (data_type_name)
+      (data_type_constructor
+        (data_type_constructor_name))
+      (data_type_constructor
+        (data_type_constructor_name))
+      (data_type_constructor
+        (data_type_constructor_name))
+      (data_type_constructor
+        (data_type_constructor_name)))))
+
+=============
+Heap data type
+=============
+
+heap data List<t> = Nil | Cons { head: t, tail: List<t> }
+
+---
+
+(program
+  (type_declaration
+    (data_type
+      (allocation_modifier)
+      (data_type_name)
+      (generic_parameters
+        (generic_type))
+      (data_type_constructor
+        (data_type_constructor_name))
+      (data_type_constructor
+        (data_type_constructor_name)
+        (struct_type_body
+          (field_name)
+          (field_type
+            (generic_type))
+          (field_name)
+          (field_type
+            (parameterized_type
+              (user_defined_type_name)
+              (generic_type))))))))
+
+======================
+Fixed-size array type
+======================
+
+let buffer: [16]UInt8 = [0, 0, 0, 0]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (type_annotation
+      (fixed_array_type
+        (array_size
+          (integer))
+        (unsigned_integer_type)))
+    (array_literal
+      (integer)
+      (integer)
+      (integer)
+      (integer))))
+
+===============================
+Fixed-size array with stack modifier
+===============================
+
+let matrix: stack [4]Float32 = [0.0, 0.0, 0.0, 0.0]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (type_annotation
+      (allocated_type
+        (allocation_modifier)
+        (fixed_array_type
+          (array_size
+            (integer))
+          (float_type))))
+    (array_literal
+      (float)
+      (float)
+      (float)
+      (float))))
+
+===================
+Dynamic array type
+===================
+
+let items: [Int] = [1, 2, 3]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (type_annotation
+      (dynamic_array_type
+        (signed_integer_type)))
+    (array_literal
+      (integer)
+      (integer)
+      (integer))))
+
+================================
+Dynamic array with heap modifier
+================================
+
+let particles: heap [Particle] = []
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (type_annotation
+      (allocated_type
+        (allocation_modifier)
+        (dynamic_array_type
+          (user_defined_type_name))))
+    (array_literal)))
+
+============================
+Allocated type in annotation
+============================
+
+let pos: stack Vec3 = Vec3 { x: 0, y: 0, z: 0 }
+let boxed: heap Vec3 = Vec3 { x: 1, y: 2, z: 3 }
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (type_annotation
+      (allocated_type
+        (allocation_modifier)
+        (user_defined_type_name)))
+    (struct_literal
+      (struct_name)
+      (field_name)
+      (field_value
+        (integer))
+      (field_name)
+      (field_value
+        (integer))
+      (field_name)
+      (field_value
+        (integer))))
+  (declaration
+    (identifier)
+    (type_annotation
+      (allocated_type
+        (allocation_modifier)
+        (user_defined_type_name)))
+    (struct_literal
+      (struct_name)
+      (field_name)
+      (field_value
+        (integer))
+      (field_name)
+      (field_value
+        (integer))
+      (field_name)
+      (field_value
+        (integer)))))
+
+===========================================
+Fixed-size array with const size expression
+===========================================
+
+const MAX_VERTICES = 1024
+let vertices: [MAX_VERTICES]Vec3 = []
+
+---
+
+(program
+  (const_declaration
+    (const_identifier)
+    (integer))
+  (declaration
+    (identifier)
+    (type_annotation
+      (fixed_array_type
+        (array_size
+          (const_identifier))
+        (user_defined_type_name)))
+    (array_literal)))
+
+======================================
+Public stack struct with generic type
+======================================
+
+pub stack struct Transform<t> {
+  position: t,
+  rotation: Quat,
+  scale: t,
+}
+
+---
+
+(program
+  (type_declaration
+    (struct_type
+      (visibility)
+      (allocation_modifier)
+      (struct_name)
+      (generic_parameters
+        (generic_type))
+      (struct_type_body
+        (field_name)
+        (field_type
+          (generic_type))
+        (field_name)
+        (field_type
+          (user_defined_type_name))
+        (field_name)
+        (field_type
+          (generic_type))))))
+
+=====================================
+Heap field inside stack struct
+=====================================
+
+stack struct Entity {
+  id: UInt64,
+  name: heap String,
+  components: heap [Component],
+}
+
+---
+
+(program
+  (type_declaration
+    (struct_type
+      (allocation_modifier)
+      (struct_name)
+      (struct_type_body
+        (field_name)
+        (field_type
+          (unsigned_integer_type))
+        (field_name)
+        (field_type
+          (allocated_type
+            (allocation_modifier)
+            (string_type)))
+        (field_name)
+        (field_type
+          (allocated_type
+            (allocation_modifier)
+            (dynamic_array_type
+              (user_defined_type_name))))))))
+

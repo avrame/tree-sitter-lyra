@@ -1,5 +1,5 @@
+const allocation = require('./allocation');
 const constrained_type = require('./constrained_type');
-const array_type = require('./array_type');
 const data_type = require('./data_type');
 const function_type = require('./function_type');
 const generic_type = require('./generic_type');
@@ -22,10 +22,12 @@ module.exports = {
         $.parameterized_type,
         $.self_type,
         $.user_defined_type_name,
-        $.array_type,
+        $.fixed_array_type,
+        $.dynamic_array_type,
         $.generic_type,
         $.function_type,
         $.map_type,
+        $.allocated_type,
     )),
     
     user_defined_type_name: $ => /[A-Z][a-zA-Z0-9]*/,
@@ -50,8 +52,8 @@ module.exports = {
 
     boolean_type: $ => 'Bool',
 
+    ...allocation,
     ...constrained_type,
-    ...array_type,
     ...data_type,
     ...function_type,
     ...generic_type,

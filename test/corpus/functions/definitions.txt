@@ -129,7 +129,7 @@ def product: (Int, Int) -> Int = (a, b = 10) => a * b
 Function with patterns for parameters
 =====================================
 
-def foo: (String, Int, Point, Array<String>, SomeTuple) -> void =
+def foo: (String, Int, Point, [String], SomeTuple) -> void =
 (bar, 42, { x, y }, [one, two, three, ...rest], (alpha, beta)) => {
   // do stuff
 }
@@ -145,7 +145,7 @@ def foo: (String, Int, Point, Array<String>, SomeTuple) -> void =
           (string_type)
           (signed_integer_type)
           (user_defined_type_name)
-          (array_type
+          (dynamic_array_type
             (string_type))
           (user_defined_type_name))
         (generic_type)))
@@ -178,9 +178,9 @@ def foo: (String, Int, Point, Array<String>, SomeTuple) -> void =
 Higher order function
 =====================
 
-def map<t,u>: (Array<t>, (t) -> u) -> Array<u> =
+def map<t,u>: ([t], (t) -> u) -> [u] =
 (array, func) => {
-  //  new_array: Array<u,array.len()> = []
+  //  new_array = []
   //  for item in array {
   //    new_array.push(func(item))
   //  }
@@ -198,13 +198,13 @@ def map<t,u>: (Array<t>, (t) -> u) -> Array<u> =
         (generic_type))
       (function_type
         (function_type_parameter_list
-          (array_type
+          (dynamic_array_type
             (generic_type))
           (function_type
             (function_type_parameter_list
               (generic_type))
             (generic_type)))
-        (array_type
+        (dynamic_array_type
           (generic_type))))
         (function_pattern
           (parameter_list

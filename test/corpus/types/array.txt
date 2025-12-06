@@ -21,7 +21,7 @@ let foo = ["one", "two", "three"]
 Simple Array Literal with type notation
 =======================================
 
-let foo: Array<String> = ["one", "two", "three"]
+let foo: [3]String = ["one", "two", "three"]
 
 ---
 
@@ -29,7 +29,9 @@ let foo: Array<String> = ["one", "two", "three"]
   (declaration
     (identifier)
     (type_annotation
-      (array_type
+      (fixed_array_type
+        (array_size
+          (integer))
         (string_type)))
     (array_literal
       (string_literal

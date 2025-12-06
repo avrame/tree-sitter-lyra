@@ -2,7 +2,7 @@
 Array declaration
 =================
 
-var fibs: Array<Int8> = [1, 1, 2, 3]
+var fibs: [4]Int8 = [1, 1, 2, 3]
 
 ------------------------------
 
@@ -10,7 +10,9 @@ var fibs: Array<Int8> = [1, 1, 2, 3]
   (declaration
     (identifier)
     (type_annotation
-      (array_type
+      (fixed_array_type
+        (array_size
+          (integer))
         (signed_integer_type)))
     (array_literal
       (integer)

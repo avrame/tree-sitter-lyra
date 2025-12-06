@@ -50,3 +50,85 @@ let arr = [1, 2, 3
       (integer)
       (integer)
       (MISSING "]"))))
+
+=======================================
+Array repeat initialization with number
+=======================================
+
+let zeros = [0; 16]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (array_literal
+      (array_repeat
+        (integer)
+        (array_repeat_count
+          (integer))))))
+
+==============================================
+Array repeat initialization with const count
+==============================================
+
+const SIZE = 1024
+let buffer = [0; SIZE]
+
+---
+
+(program
+  (const_declaration
+    (const_identifier)
+    (integer))
+  (declaration
+    (identifier)
+    (array_literal
+      (array_repeat
+        (integer)
+        (array_repeat_count
+          (const_identifier))))))
+
+=============================================
+Array repeat initialization with struct value
+=============================================
+
+let points = [Vec3 { x: 0, y: 0, z: 0 }; 100]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (array_literal
+      (array_repeat
+        (struct_literal
+          (struct_name)
+          (field_name)
+          (field_value
+            (integer))
+          (field_name)
+          (field_value
+            (integer))
+          (field_name)
+          (field_value
+            (integer)))
+        (array_repeat_count
+          (integer))))))
+
+============================================
+Array repeat initialization with float value
+============================================
+
+let matrix = [1.0; 16]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (array_literal
+      (array_repeat
+        (float)
+        (array_repeat_count
+          (integer))))))

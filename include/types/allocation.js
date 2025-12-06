@@ -5,11 +5,19 @@
  *   - On type declarations: `stack struct Vec3 { ... }`, `heap data Tree<t> = ...`
  *   - On type annotations: `let pos: stack Vec3 = ...`, `let boxed: heap Vec3 = ...`
  *   - On array types: `stack [16]Float32` (fixed-size), `heap [Float32]` (dynamic)
+ *   - Weak references: `weak Parent` (for breaking cycles in shared types)
  */
 
 module.exports = {
   // Allocation modifier - stack or heap
-  allocation_modifier: $ => choice('stack', 'heap'),
+  allocation_modifier: $ => choice('stack', 'heap', 'shared'),
+
+  // Weak reference type - for breaking cycles in shared types
+  // Usage: `parent: weak Parent`, `prev: weak Maybe<Node>`
+  weak_type: $ => prec(4, seq(
+    'weak',
+    field('inner_type', $._non_allocated_type)
+  )),
 
   // Fixed-size array type: [N]T
   // The size must be a compile-time constant (number literal or const identifier)

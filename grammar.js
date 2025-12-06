@@ -37,9 +37,8 @@ module.exports = grammar({
   inline: $ => [$._comma],
 
   conflicts: $ => [
-    [$.struct_literal, $._tuple_name],
-    [$.struct_literal, $._tuple_name, $.expression],
-    [$.expression, $.data_pattern],
+    [$.struct_literal, $._tuple_name, $._primary_expression],
+    [$._primary_expression, $.data_pattern],
     [$._field_value, $.expression_statement],
     [$._primary_expression, $.result_expression],
   ],
@@ -47,7 +46,8 @@ module.exports = grammar({
   reserved: {
     identifier: () => [
       'for', 'if', 'else', 'match', 'let', 'var', 'const', 'def', 'true', 'false', 'import',
-      'module', 'as', 'pub', 'async', 'await', 'Self', 'stack', 'heap'
+      'module', 'as', 'pub', 'async', 'await', 'Self', 'stack', 'heap', 'shared', 'weak',
+      'with'
     ],
   },
 

@@ -1,0 +1,197 @@
+===============
+Weak Type Basic
+===============
+
+heap struct Child {
+  parent: weak Parent
+}
+
+---
+
+(program
+  (type_declaration
+    (struct_type
+      (allocation_modifier)
+      (struct_name)
+      (struct_type_body
+        (field_name)
+        (field_type
+          (weak_type
+            (user_defined_type_name)))))))
+
+==========================
+Weak Type with Maybe
+==========================
+
+shared struct Node {
+  next: Maybe<Node>,
+  prev: weak Maybe<Node>
+}
+
+---
+
+(program
+  (type_declaration
+    (struct_type
+      (allocation_modifier)
+      (struct_name)
+      (struct_type_body
+        (field_name)
+        (field_type
+          (parameterized_type
+            (user_defined_type_name)
+            (user_defined_type_name)))
+        (field_name)
+        (field_type
+          (weak_type
+            (parameterized_type
+              (user_defined_type_name)
+              (user_defined_type_name))))))))
+
+==============================
+With Statement - Anonymous Arena
+==============================
+
+with Arena.new(megabytes(4)) {
+  let x = allocate(100)
+}
+
+---
+
+(program
+  (with_statement
+    (call_expression
+      (member_expression
+        (user_defined_type_name)
+        (identifier))
+      (argument_list
+        (value
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (integer)))))))
+    (block
+      (declaration
+        (identifier)
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (integer))))))))
+
+=============================
+With Statement - Named Binding
+=============================
+
+with frame = Arena.new(megabytes(4)) {
+  let ptr = frame.alloc(1024)
+}
+
+---
+
+(program
+  (with_statement
+    (identifier)
+    (call_expression
+      (member_expression
+        (user_defined_type_name)
+        (identifier))
+      (argument_list
+        (value
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (integer)))))))
+    (block
+      (declaration
+        (identifier)
+        (call_expression
+          (member_expression
+            (identifier)
+            (identifier))
+          (argument_list
+            (value
+              (integer))))))))
+
+===================================
+With Statement - Multiple Statements
+===================================
+
+with Arena.new(kilobytes(64)) {
+  let buffer = allocate(1024)
+  process(buffer)
+}
+
+---
+
+(program
+  (with_statement
+    (call_expression
+      (member_expression
+        (user_defined_type_name)
+        (identifier))
+      (argument_list
+        (value
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (integer)))))))
+    (block
+      (declaration
+        (identifier)
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (integer)))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (identifier))))))))
+
+======================================
+With Statement - Named with Game Logic
+======================================
+
+with level = Arena.new(megabytes(64)) {
+  let enemies = spawn_enemies(100)
+  let items = spawn_items(50)
+}
+
+---
+
+(program
+  (with_statement
+    (identifier)
+    (call_expression
+      (member_expression
+        (user_defined_type_name)
+        (identifier))
+      (argument_list
+        (value
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (integer)))))))
+    (block
+      (declaration
+        (identifier)
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (integer)))))
+      (declaration
+        (identifier)
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (integer))))))))
+

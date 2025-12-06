@@ -54,8 +54,10 @@ def sum: (Int, Int) -> Int = (a, b) => a + b
       (identifier)
       (function_type
         (function_type_parameter_list
-          (signed_integer_type)
-          (signed_integer_type))
+          (parameter_type
+            (signed_integer_type))
+          (parameter_type
+            (signed_integer_type)))
         (signed_integer_type)))
         (function_pattern
           (parameter_list
@@ -83,8 +85,10 @@ def sum<n>: (n, n) -> n = (a, b) => a + b
         (generic_type))
       (function_type
         (function_type_parameter_list
-          (generic_type)
-          (generic_type))
+          (parameter_type
+            (generic_type))
+          (parameter_type
+            (generic_type)))
         (generic_type)))
         (function_pattern
           (parameter_list
@@ -110,8 +114,10 @@ def product: (Int, Int) -> Int = (a, b = 10) => a * b
       (identifier)
       (function_type
         (function_type_parameter_list
-          (signed_integer_type)
-          (signed_integer_type))
+          (parameter_type
+            (signed_integer_type))
+          (parameter_type
+            (signed_integer_type)))
         (signed_integer_type)))
       (function_pattern
         (parameter_list
@@ -142,12 +148,17 @@ def foo: (String, Int, Point, [String], SomeTuple) -> void =
       (identifier)
       (function_type
         (function_type_parameter_list
-          (string_type)
-          (signed_integer_type)
-          (user_defined_type_name)
-          (dynamic_array_type
+          (parameter_type
             (string_type))
-          (user_defined_type_name))
+          (parameter_type
+            (signed_integer_type))
+          (parameter_type
+            (user_defined_type_name))
+          (parameter_type
+            (dynamic_array_type
+              (string_type)))
+          (parameter_type
+            (user_defined_type_name)))
         (generic_type)))
       (function_pattern
         (parameter_list
@@ -198,12 +209,15 @@ def map<t,u>: ([t], (t) -> u) -> [u] =
         (generic_type))
       (function_type
         (function_type_parameter_list
-          (dynamic_array_type
-            (generic_type))
-          (function_type
-            (function_type_parameter_list
-              (generic_type))
-            (generic_type)))
+          (parameter_type
+            (dynamic_array_type
+              (generic_type)))
+          (parameter_type
+            (function_type
+              (function_type_parameter_list
+                (parameter_type
+                  (generic_type)))
+              (generic_type))))
         (dynamic_array_type
           (generic_type))))
         (function_pattern
@@ -237,7 +251,8 @@ def fib: (Int) -> Int = {
       (identifier)
       (function_type
         (function_type_parameter_list
-          (signed_integer_type))
+          (parameter_type
+            (signed_integer_type)))
         (signed_integer_type)))
     (function_pattern_list
       (function_pattern
@@ -289,7 +304,8 @@ def fib: (Int) -> Int = {
       (identifier)
       (function_type
         (function_type_parameter_list
-          (signed_integer_type))
+          (parameter_type
+            (signed_integer_type)))
         (signed_integer_type)))
     (function_pattern_list
       (function_pattern

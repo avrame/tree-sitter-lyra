@@ -1169,10 +1169,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "user_defined_type_name"
-        },
-        {
-          "type": "SYMBOL",
           "name": "array_comprehension"
         }
       ]
@@ -1233,6 +1229,10 @@
         {
           "type": "SYMBOL",
           "name": "const_identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "user_defined_type_name"
         },
         {
           "type": "SYMBOL",
@@ -2721,6 +2721,10 @@
           {
             "type": "SYMBOL",
             "name": "allocated_type"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "weak_type"
           }
         ]
       }
@@ -2843,8 +2847,33 @@
         {
           "type": "STRING",
           "value": "heap"
+        },
+        {
+          "type": "STRING",
+          "value": "shared"
         }
       ]
+    },
+    "weak_type": {
+      "type": "PREC",
+      "value": 4,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "weak"
+          },
+          {
+            "type": "FIELD",
+            "name": "inner_type",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_non_allocated_type"
+            }
+          }
+        ]
+      }
     },
     "fixed_array_type": {
       "type": "PREC",
@@ -3576,7 +3605,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "type"
+          "name": "parameter_type"
         },
         {
           "type": "REPEAT",
@@ -3589,7 +3618,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "type"
+                "name": "parameter_type"
               }
             ]
           }
@@ -3605,6 +3634,40 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "parameter_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "ref"
+                },
+                {
+                  "type": "STRING",
+                  "value": "mut"
+                },
+                {
+                  "type": "STRING",
+                  "value": "own"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type"
         }
       ]
     },
@@ -4932,6 +4995,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "with_statement"
+            },
+            {
+              "type": "SYMBOL",
               "name": "expression_statement"
             }
           ]
@@ -5456,6 +5523,60 @@
                 "name": "_postfix_expression"
               }
             ]
+          }
+        ]
+      }
+    },
+    "with_statement": {
+      "type": "PREC_RIGHT",
+      "value": 200,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "with"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "name",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "identifier"
+                    }
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "="
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "FIELD",
+            "name": "arena",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "body",
+            "content": {
+              "type": "SYMBOL",
+              "name": "block"
+            }
           }
         ]
       }
@@ -6614,15 +6735,11 @@
   "conflicts": [
     [
       "struct_literal",
-      "_tuple_name"
-    ],
-    [
-      "struct_literal",
       "_tuple_name",
-      "expression"
+      "_primary_expression"
     ],
     [
-      "expression",
+      "_primary_expression",
       "data_pattern"
     ],
     [
@@ -6747,6 +6864,18 @@
       {
         "type": "STRING",
         "value": "heap"
+      },
+      {
+        "type": "STRING",
+        "value": "shared"
+      },
+      {
+        "type": "STRING",
+        "value": "weak"
+      },
+      {
+        "type": "STRING",
+        "value": "with"
       }
     ]
   }

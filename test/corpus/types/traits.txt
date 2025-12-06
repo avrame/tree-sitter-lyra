@@ -24,7 +24,8 @@ impl Show<String> for String {
         (method_name)
         (function_type
           (function_type_parameter_list
-            (self_type))
+            (parameter_type
+              (self_type)))
           (string_type)))))
   (type_declaration
     (trait_implementation
@@ -83,7 +84,8 @@ impl Converter<Int, String> for IntFormatter {
         (method_name)
         (function_type
           (function_type_parameter_list
-            (generic_type))
+            (parameter_type
+              (generic_type)))
           (generic_type)))))
   (type_declaration
     (trait_implementation
@@ -155,12 +157,15 @@ impl Functor for Maybe {
         (method_name)
         (function_type
           (function_type_parameter_list
-            (parameterized_type
-              (generic_type))
-            (function_type
-              (function_type_parameter_list
-                (generic_type))
-              (generic_type)))
+            (parameter_type
+              (parameterized_type
+                (generic_type)))
+            (parameter_type
+              (function_type
+                (function_type_parameter_list
+                  (parameter_type
+                    (generic_type)))
+                (generic_type))))
           (parameterized_type
             (generic_type))))))
   (type_declaration
@@ -252,7 +257,8 @@ let inverted: Point = -my_point // uses the overloaded prefix -
           (prefix_operator))
         (function_type
           (function_type_parameter_list
-            (self_type))
+            (parameter_type
+              (self_type)))
           (self_type)))))
   (type_declaration
     (trait_implementation
@@ -312,7 +318,8 @@ let result: Int = my_num++
           (suffix_operator))
         (function_type
           (function_type_parameter_list
-            (self_type))
+            (parameter_type
+              (self_type)))
           (self_type)))))
   (type_declaration
     (trait_implementation
@@ -372,15 +379,19 @@ impl Eq<[t]> for [t] {
         (method_name)
         (function_type
           (function_type_parameter_list
-            (generic_type)
-            (generic_type))
+            (parameter_type
+              (generic_type))
+            (parameter_type
+              (generic_type)))
           (boolean_type)))
       (trait_method
         (method_name)
         (function_type
           (function_type_parameter_list
-            (generic_type)
-            (generic_type))
+            (parameter_type
+              (generic_type))
+            (parameter_type
+              (generic_type)))
           (boolean_type)))))
   (type_declaration
     (trait_implementation
@@ -493,12 +504,15 @@ impl Mappable<Array, String> for StringArrayMapper {
         (method_name)
         (function_type
           (function_type_parameter_list
-            (generic_type
-              (generic_type_parameter))
-            (function_type
-              (function_type_parameter_list
-                (generic_type))
-              (generic_type)))
+            (parameter_type
+              (generic_type
+                (generic_type_parameter)))
+            (parameter_type
+              (function_type
+                (function_type_parameter_list
+                  (parameter_type
+                    (generic_type)))
+                (generic_type))))
           (generic_type
             (generic_type_parameter))))))
   (type_declaration
@@ -572,15 +586,18 @@ impl Applicable<(Int, Int) -> Int> for BinaryOp {
         (method_name)
         (function_type
           (function_type_parameter_list
-            (generic_type)
-            (signed_integer_type))
+            (parameter_type
+              (generic_type))
+            (parameter_type
+              (signed_integer_type)))
           (signed_integer_type)))))
   (type_declaration
     (trait_implementation
       (trait_name)
       (function_type
         (function_type_parameter_list
-          (signed_integer_type))
+          (parameter_type
+            (signed_integer_type)))
         (signed_integer_type))
       (user_defined_type_name)
       (trait_method_implementation
@@ -601,8 +618,10 @@ impl Applicable<(Int, Int) -> Int> for BinaryOp {
       (trait_name)
       (function_type
         (function_type_parameter_list
-          (signed_integer_type)
-          (signed_integer_type))
+          (parameter_type
+            (signed_integer_type))
+          (parameter_type
+            (signed_integer_type)))
         (signed_integer_type))
       (user_defined_type_name)
       (trait_method_implementation
@@ -647,13 +666,15 @@ impl Serializable<Map<String, Int>> for ConfigSerializer {
         (method_name)
         (function_type
           (function_type_parameter_list
-            (generic_type))
+            (parameter_type
+              (generic_type)))
           (string_type)))
       (trait_method
         (method_name)
         (function_type
           (function_type_parameter_list
-            (string_type))
+            (parameter_type
+              (string_type)))
           (generic_type)))))
   (type_declaration
     (trait_implementation
@@ -718,34 +739,41 @@ impl Collection<Array, String> for StringList {
         (method_name)
         (function_type
           (function_type_parameter_list
-            (generic_type
-              (generic_type_parameter))
-            (generic_type))
+            (parameter_type
+              (generic_type
+                (generic_type_parameter)))
+            (parameter_type
+              (generic_type)))
           (generic_type
             (generic_type_parameter))))
       (trait_method
         (method_name)
         (function_type
           (function_type_parameter_list
-            (generic_type
-              (generic_type_parameter))
-            (generic_type))
+            (parameter_type
+              (generic_type
+                (generic_type_parameter)))
+            (parameter_type
+              (generic_type)))
           (generic_type
             (generic_type_parameter))))
       (trait_method
         (method_name)
         (function_type
           (function_type_parameter_list
-            (generic_type
-              (generic_type_parameter))
-            (generic_type))
+            (parameter_type
+              (generic_type
+                (generic_type_parameter)))
+            (parameter_type
+              (generic_type)))
           (boolean_type)))
       (trait_method
         (method_name)
         (function_type
           (function_type_parameter_list
-            (generic_type
-              (generic_type_parameter)))
+            (parameter_type
+              (generic_type
+                (generic_type_parameter))))
           (signed_integer_type)))))
   (type_declaration
     (trait_implementation

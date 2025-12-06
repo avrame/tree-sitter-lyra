@@ -18,8 +18,8 @@ module.exports = {
     $._literal,
     $.spread_expr,
     $.lambda_expression,
-    $.user_defined_type_name,
     $.array_comprehension,
+    // Note: user_defined_type_name is accessed via _postfix_expression -> _primary_expression
   ),
 
   // Await expression for async operations
@@ -37,6 +37,7 @@ module.exports = {
   _primary_expression: $ => choice(
     $.identifier,
     $.const_identifier,
+    $.user_defined_type_name,  // For static method calls like Arena.new()
     $.parenthesized_expression,
     // $.lambda_expression, // TODO: add lambda expression
   ),

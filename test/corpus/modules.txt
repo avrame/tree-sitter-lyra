@@ -154,7 +154,8 @@ pub def greet: (String) -> String =
       (identifier)
       (function_type
         (function_type_parameter_list
-          (string_type))
+          (parameter_type
+            (string_type)))
         (string_type)))
         (function_pattern
           (parameter_list
@@ -246,7 +247,8 @@ def helper = () => 42
       (identifier)
       (function_type
         (function_type_parameter_list
-          (string_type))
+          (parameter_type
+            (string_type)))
         (user_defined_type_name)))
     (function_pattern
       (parameter_list

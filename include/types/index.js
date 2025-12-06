@@ -28,6 +28,7 @@ module.exports = {
         $.function_type,
         $.map_type,
         $.allocated_type,
+        $.weak_type,
     )),
     
     user_defined_type_name: $ => /[A-Z][a-zA-Z0-9]*/,

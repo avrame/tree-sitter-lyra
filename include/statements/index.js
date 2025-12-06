@@ -1,6 +1,7 @@
 const assignments = require('./assignments');
 const for_loop = require('./control_flow/for_loop');
 const for_in_loop = require('./control_flow/for_in_loop');
+const arena = require('./arena');
 
 module.exports = {
   statement: $ => seq(
@@ -17,6 +18,7 @@ module.exports = {
       $.if_destructuring_declaration,
       $.for_loop,
       $.for_in_loop,
+      $.with_statement,
       $.expression_statement,
     )
   ),
@@ -34,4 +36,5 @@ module.exports = {
   ...assignments,
   ...for_loop,
   ...for_in_loop,
+  ...arena,
 }

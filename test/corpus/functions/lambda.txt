@@ -12,8 +12,10 @@ let sum: (Int, Int) -> Int = (a, b) => a + b
     (type_annotation
       (function_type
         (function_type_parameter_list
-          (signed_integer_type)
-          (signed_integer_type))
+          (parameter_type
+            (signed_integer_type))
+          (parameter_type
+            (signed_integer_type)))
         (signed_integer_type)))
     (lambda_expression
       (function_pattern
@@ -41,10 +43,12 @@ def make_sum_fn: (Int) -> (Int) -> Int =
       (identifier)
       (function_type
         (function_type_parameter_list
-          (signed_integer_type))
+          (parameter_type
+            (signed_integer_type)))
         (function_type
           (function_type_parameter_list
-            (signed_integer_type))
+            (parameter_type
+              (signed_integer_type)))
           (signed_integer_type))))
     (function_pattern
       (parameter_list

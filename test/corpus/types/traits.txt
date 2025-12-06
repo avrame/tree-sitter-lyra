@@ -293,55 +293,6 @@ let inverted: Point = -my_point // uses the overloaded prefix -
       (identifier)))
   (comment))
 
-=====================
-Unary Suffix Operator
-=====================
-
-trait Inc {
-  (_++): (Self) -> Self 
-}
-
-impl Inc for Int {
-  (_++) = (n) => n + 1
-}
-
-let result: Int = my_num++
-
----
-
-(program
-  (type_declaration
-    (trait_declaration
-      (trait_name)
-      (trait_method
-        (method_name
-          (suffix_operator))
-        (function_type
-          (function_type_parameter_list
-            (parameter_type
-              (self_type)))
-          (self_type)))))
-  (type_declaration
-    (trait_implementation
-      (trait_name)
-      (signed_integer_type)
-      (trait_method_implementation
-        (method_name
-          (suffix_operator))
-        (function_pattern
-          (parameter_list
-            (parameter
-              (identifier)))
-          (addition
-            (identifier)
-            (integer))))))
-  (declaration
-    (identifier)
-    (type_annotation
-      (signed_integer_type))
-    (suffix_expression
-      (identifier))))
-
 ================================================================
 Generic Trait Implemented for Generic Type with binary operators
 ================================================================

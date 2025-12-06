@@ -68,11 +68,11 @@ let file = open_file("foo.txt")?
             (string_literal
               (string_content))))))))
 
-==============================
-Try Operator with Property Access
-==============================
+=======================================
+Try Operator with regular Property Access
+=======================================
 
-let name = get_user(id)?.profile.name
+let name = get_user(id)? .profile.name
 
 ---
 
@@ -90,11 +90,32 @@ let name = get_user(id)?.profile.name
         (identifier))
       (identifier))))
 
-=========================
-Chained Try Operators
-=========================
+============================================
+Try Operator followed by Optional Chaining
+============================================
 
-let data = open_file(path)?.read()?.parse()?
+let name = get_user(id)?.profile.name
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (member_expression
+      (optional_member_expression
+        (call_expression
+          (identifier)
+          (argument_list
+            (value
+              (identifier))))
+        (identifier))
+      (identifier))))
+
+=================================
+Chained Try Operators (with space)
+=================================
+
+let data = open_file(path)? .read()? .parse()?
 
 ---
 
@@ -117,6 +138,177 @@ let data = open_file(path)?.read()?.parse()?
               (argument_list)))
           (identifier))
         (argument_list)))))
+
+==========================================
+Chained Optional Member Calls (no space)
+==========================================
+
+let data = open_file(path)?.read()?.parse()?
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (try_expression
+      (call_expression
+        (optional_member_expression
+          (call_expression
+            (optional_member_expression
+              (call_expression
+                (identifier)
+                (argument_list
+                  (value
+                    (identifier))))
+              (identifier))
+            (argument_list))
+          (identifier))
+        (argument_list)))))
+
+===========================
+Optional Member Access (?.)
+===========================
+
+let name = player?.name
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (optional_member_expression
+      (identifier)
+      (identifier))))
+
+=================================
+Chained Optional Member Access
+=================================
+
+let damage = player?.weapon?.stats?.damage
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (optional_member_expression
+      (optional_member_expression
+        (optional_member_expression
+          (identifier)
+          (identifier))
+        (identifier))
+      (identifier))))
+
+==========================
+Optional Index Access (?[)
+==========================
+
+let first = items?[0]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (optional_index_expression
+      (identifier)
+      (integer))))
+
+================================
+Chained Optional Index Access
+================================
+
+let value = matrix?[0]?[1]
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (optional_index_expression
+      (optional_index_expression
+        (identifier)
+        (integer))
+      (integer))))
+
+===========================================
+Mixed Optional Member and Index Access
+===========================================
+
+let item = player?.inventory?[0]?.name
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (optional_member_expression
+      (optional_index_expression
+        (optional_member_expression
+          (identifier)
+          (identifier))
+        (integer))
+      (identifier))))
+
+======================
+Null Coalescing (??)
+======================
+
+let name = player?.name ?? "Unknown"
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (null_coalescing_expression
+      (optional_member_expression
+        (identifier)
+        (identifier))
+      (string_literal
+        (string_content)))))
+
+==============================
+Chained Null Coalescing
+==============================
+
+let value = a ?? b ?? c ?? default_value
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (null_coalescing_expression
+      (identifier)
+      (null_coalescing_expression
+        (identifier)
+        (null_coalescing_expression
+          (identifier)
+          (identifier))))))
+
+============================================
+Null Coalescing with Complex Default
+============================================
+
+let health = player?.stats?.health ?? calculate_default_health(level)
+
+---
+
+(program
+  (declaration
+    (identifier)
+    (null_coalescing_expression
+      (optional_member_expression
+        (optional_member_expression
+          (identifier)
+          (identifier))
+        (identifier))
+      (call_expression
+        (identifier)
+        (argument_list
+          (value
+            (identifier)))))))
 
 =================================================
 Property access without property name is an error

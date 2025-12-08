@@ -2901,7 +2901,7 @@
     },
     "string_type": {
       "type": "STRING",
-      "value": "String"
+      "value": "Str"
     },
     "boolean_type": {
       "type": "STRING",
@@ -4241,11 +4241,11 @@
       "members": [
         {
           "type": "STRING",
-          "value": "Map"
+          "value": "map"
         },
         {
           "type": "STRING",
-          "value": "<"
+          "value": "["
         },
         {
           "type": "FIELD",
@@ -4262,7 +4262,7 @@
         },
         {
           "type": "STRING",
-          "value": ","
+          "value": "]"
         },
         {
           "type": "FIELD",
@@ -4276,10 +4276,6 @@
             "named": true,
             "value": "value_type"
           }
-        },
-        {
-          "type": "STRING",
-          "value": ">"
         }
       ]
     },

@@ -2,7 +2,7 @@
 Simple Empty Map
 ================
 
-let map: Map<Int, String> = {}
+let my_map: map[Int]Str = {}
 
 ---
 
@@ -21,7 +21,7 @@ let map: Map<Int, String> = {}
 Simple Map with initial keys/values
 ===================================
 
-let map: Map<Int, String> = { 1 => "one", 2 => "two" }
+let my_map: map[Int]Str = { 1 => "one", 2 => "two" }
 
 ---
 

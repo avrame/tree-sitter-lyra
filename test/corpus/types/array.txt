@@ -21,7 +21,7 @@ let foo = ["one", "two", "three"]
 Simple Array Literal with type notation
 =======================================
 
-let foo: [3]String = ["one", "two", "three"]
+let foo: [3]Str = ["one", "two", "three"]
 
 ---
 

@@ -142,7 +142,7 @@ import math.{ sin, cos, PI }
 Public Function Definition
 ==========================
 
-pub def greet: (String) -> String =
+pub def greet: (Str) -> Str =
 (name) => "Hello, ${name}!"
 
 ---
@@ -169,7 +169,7 @@ Public Struct
 =============
 
 pub struct Config {
-  name: String,
+  name: Str,
   debug: Bool
 }
 
@@ -198,10 +198,10 @@ import std.io as io
 import std.json.{ parse, stringify }
 
 pub struct Config {
-  path: String
+  path: Str
 }
 
-pub def loadConfig: (String) -> Config =
+pub def loadConfig: (Str) -> Config =
 (path) => {
   let contents = io.readFile(path)
   parse(contents)

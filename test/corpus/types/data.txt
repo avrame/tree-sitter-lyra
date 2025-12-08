@@ -75,7 +75,7 @@ Complex Data type with various types
 
 data CSSColor =
   | ColorName(CSSColorName)
-  | Hex(HexString)
+  | Hex(HexStr)
   | RGB { r: Int8, g: Int8, b: Int8 }
   | HSL { hue: Hue, sat: Float, light: Float, alpha: Alpha }
 

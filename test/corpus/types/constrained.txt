@@ -16,7 +16,7 @@ type Turn = Float
 Type with oneof constraint
 ===============================
 
-type CSSColorName = String where(oneof "red" | "green" | "blue" | "rebeccapurple" | "aliceblue")
+type CSSColorName = Str where(oneof "red" | "green" | "blue" | "rebeccapurple" | "aliceblue")
 
 ---
 
@@ -101,7 +101,7 @@ type Alpha = Float32 where(range 0..=1)
 Type with pattern constraint
 ==================================
 
-type HexString = String where(pattern r/^#(?:[0-9a-fA-F]{3}){1,2}$/)
+type HexStr = Str where(pattern r/^#(?:[0-9a-fA-F]{3}){1,2}$/)
 
 ---
 

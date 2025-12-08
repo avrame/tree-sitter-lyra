@@ -135,7 +135,7 @@ def product: (Int, Int) -> Int = (a, b = 10) => a * b
 Function with patterns for parameters
 =====================================
 
-def foo: (String, Int, Point, []String, SomeTuple) -> void =
+def foo: (Str, Int, Point, []Str, SomeTuple) -> void =
 (bar, 42, { x, y }, [one, two, three, ...rest], (alpha, beta)) => {
   // do stuff
 }

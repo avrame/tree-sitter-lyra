@@ -3,14 +3,14 @@ Simple Generic Trait with Implementation
 ========================================
 
 trait Show {
-  show: (Self) -> String
+  show: (Self) -> Str
 }
 
 impl Show for Int {
   show = (n) => int_to_string(n)
 }
 
-impl Show<String> for String {
+impl Show<Str> for Str {
   show = (s) => s
 }
 
@@ -63,11 +63,11 @@ trait Converter<from, to> {
   convert: (from) -> to
 }
 
-impl Converter<String, Int> for StringParser {
+impl Converter<Str, Int> for StringParser {
   convert = (s) => parse_int(s)
 }
 
-impl Converter<Int, String> for IntFormatter {
+impl Converter<Int, Str> for IntFormatter {
   convert = (n) => int_to_string(n)
 }
 
@@ -438,7 +438,7 @@ impl Mappable<Array, Int> for IntArrayMapper {
   map_elements = (arr, fn) => map(arr, fn)
 }
 
-impl Mappable<Array, String> for StringArrayMapper {
+impl Mappable<Array, Str> for StringArrayMapper {
   map_elements = (arr, fn) => map(arr, fn)
 }
 
@@ -596,11 +596,11 @@ Trait with Map Type Generic Parameter
 ==========================================
 
 trait Serializable<t> {
-  serialize: (t) -> String,
-  deserialize: (String) -> t
+  serialize: (t) -> Str,
+  deserialize: (Str) -> t
 }
 
-impl Serializable<Map<String, Int>> for ConfigSerializer {
+impl Serializable<map[Str]Int> for ConfigSerializer {
   serialize = (map) => json_encode(map),
   deserialize = (json) => json_decode(json)
 }
@@ -670,7 +670,7 @@ trait Collection<c, e> {
   size: (c<e>) -> Int
 }
 
-impl Collection<Array, String> for StringList {
+impl Collection<Array, Str> for StringList {
   add = (arr, item) => [...arr, item],
   remove = (arr, item) => filter(arr, (x) => x != item),
   contains = (arr, item) => any(arr, (x) => x == item),
@@ -814,7 +814,7 @@ impl Default<Int> for Int {
   default = () => 0
 }
 
-impl Default<String> for String {
+impl Default<Str> for Str {
   default = () => ""
 }
 

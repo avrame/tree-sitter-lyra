@@ -64,7 +64,7 @@ Struct Default Values
 =====================
 
 struct Person {
-  name: String,
+  name: Str,
   age: Int8 = 0,
   hitpoints: Int8 = 100
 }
@@ -142,10 +142,10 @@ Struct with mutable fields
 ==========================
 
 struct Person {
-  name: String,
+  name: Str,
 [mut]:
   age: Int8,
-  title: String,
+  title: Str,
 }
 
 ---

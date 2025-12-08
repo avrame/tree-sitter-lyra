@@ -5538,10 +5538,6 @@
     "named": false
   },
   {
-    "type": "Map",
-    "named": false
-  },
-  {
     "type": "Self",
     "named": false
   },
@@ -5707,6 +5703,10 @@
   },
   {
     "type": "let",
+    "named": false
+  },
+  {
+    "type": "map",
     "named": false
   },
   {

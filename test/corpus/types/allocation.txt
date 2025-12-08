@@ -31,7 +31,7 @@ Heap struct type
 ===============
 
 heap struct Player {
-  name: String,
+  name: Str,
   health: Int,
 }
 
@@ -288,7 +288,7 @@ Heap field inside stack struct
 
 stack struct Entity {
   id: UInt64,
-  name: heap String,
+  name: heap Str,
   components: heap []Component,
 }
 

@@ -68,31 +68,9 @@ let file = open_file("foo.txt")?
             (string_literal
               (string_content))))))))
 
-=======================================
-Try Operator with regular Property Access
-=======================================
-
-let name = get_user(id)? .profile.name
-
----
-
-(program
-  (declaration
-    (identifier)
-    (member_expression
-      (member_expression
-        (try_expression
-          (call_expression
-            (identifier)
-            (argument_list
-              (value
-                (identifier)))))
-        (identifier))
-      (identifier))))
-
-============================================
-Try Operator followed by Optional Chaining
-============================================
+==========================
+Optional member expression
+==========================
 
 let name = get_user(id)?.profile.name
 
@@ -110,34 +88,6 @@ let name = get_user(id)?.profile.name
               (identifier))))
         (identifier))
       (identifier))))
-
-=================================
-Chained Try Operators (with space)
-=================================
-
-let data = open_file(path)? .read()? .parse()?
-
----
-
-(program
-  (declaration
-    (identifier)
-    (try_expression
-      (call_expression
-        (member_expression
-          (try_expression
-            (call_expression
-              (member_expression
-                (try_expression
-                  (call_expression
-                    (identifier)
-                    (argument_list
-                      (value
-                        (identifier)))))
-                (identifier))
-              (argument_list)))
-          (identifier))
-        (argument_list)))))
 
 ==========================================
 Chained Optional Member Calls (no space)

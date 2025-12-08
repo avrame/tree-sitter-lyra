@@ -3170,10 +3170,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "length_constraint"
-        },
-        {
-          "type": "SYMBOL",
           "name": "pattern_constraint"
         },
         {
@@ -3298,19 +3294,6 @@
         {
           "type": "SYMBOL",
           "name": "_number_literal"
-        }
-      ]
-    },
-    "length_constraint": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "length "
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_constraint_math_expr"
         }
       ]
     },

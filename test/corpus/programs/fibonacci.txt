@@ -2,12 +2,11 @@
 Recursive Fibonacci
 ===================
 
-def fib: (Int) -> Int = {
-  (x) => {
-    if x == 0 then 0
-    else if x == 1 then 1
-    else fib(x - 1) + fib(x - 2) end
-  }
+def fib: (Int) -> Int =
+(x) => {
+  if x == 0 then 0
+  else if x == 1 then 1
+  else fib(x - 1) + fib(x - 2) end
 }
 
 ---
@@ -21,40 +20,39 @@ def fib: (Int) -> Int = {
           (parameter_type
             (signed_integer_type)))
         (signed_integer_type)))
-    (function_pattern_list
-      (function_pattern
-        (parameter_list
-          (parameter
-            (identifier)))
-        (block
-          (expression_statement
-            (if_then_expr
-              (if_condition
-                (boolean_expr
-                  (identifier)
-                  (equals_operator)
-                  (integer)))
-              (integer)
-              (else_if)
-              (if_condition
-                (boolean_expr
-                  (identifier)
-                  (equals_operator)
-                  (integer)))
-              (integer)
-              (else)
-              (addition
-                (call_expression
-                  (identifier)
-                  (argument_list
-                    (value
-                      (subtraction
-                        (identifier)
-                        (integer)))))
-                (call_expression
-                  (identifier)
-                  (argument_list
-                    (value
-                      (subtraction
-                        (identifier)
-                        (integer)))))))))))))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier)))
+      (struct_literal
+        (field_value
+          (if_then_expr
+            (if_condition
+              (boolean_expr
+                (identifier)
+                (equals_operator)
+                (integer)))
+            (integer)
+            (else_if)
+            (if_condition
+              (boolean_expr
+                (identifier)
+                (equals_operator)
+                (integer)))
+            (integer)
+            (else)
+            (addition
+              (call_expression
+                (identifier)
+                (argument_list
+                  (value
+                    (subtraction
+                      (identifier)
+                      (integer)))))
+              (call_expression
+                (identifier)
+                (argument_list
+                  (value
+                    (subtraction
+                      (identifier)
+                      (integer))))))))))))

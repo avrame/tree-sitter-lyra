@@ -19,7 +19,6 @@ module.exports = {
   constraint: $ => choice(
     $.range_constraint,
     $.oneof_constraint,
-    $.length_constraint, // for arrays
     $.pattern_constraint, // for strings
     $.precision_constraint, // for floats
     $.step_constraint, // for floats
@@ -40,9 +39,6 @@ module.exports = {
   oneof_constraint: $ => seq('oneof', $.oneof),
   oneof: $ => seq($.oneof_value, repeat(seq('|', $.oneof_value))),
   oneof_value: $ => choice($.string_literal, $._number_literal),
-
-  // Size constraint (Array)
-  length_constraint: $ => seq('length ', $._constraint_math_expr),
 
   // Regex constraint (String)
   pattern_constraint: $ => seq('pattern', choice($.regex_literal, $.const_identifier)),

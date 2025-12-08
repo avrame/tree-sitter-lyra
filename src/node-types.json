@@ -1166,10 +1166,6 @@
       "required": true,
       "types": [
         {
-          "type": "length_constraint",
-          "named": true
-        },
-        {
           "type": "oneof_constraint",
           "named": true
         },
@@ -3005,53 +3001,6 @@
       "types": [
         {
           "type": "function_pattern",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "length_constraint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "const_identifier",
-          "named": true
-        },
-        {
-          "type": "constraint_addition",
-          "named": true
-        },
-        {
-          "type": "constraint_division",
-          "named": true
-        },
-        {
-          "type": "constraint_multiplication",
-          "named": true
-        },
-        {
-          "type": "constraint_negation",
-          "named": true
-        },
-        {
-          "type": "constraint_subtraction",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "integer",
           "named": true
         }
       ]
@@ -5696,10 +5645,6 @@
   {
     "type": "label",
     "named": true
-  },
-  {
-    "type": "length ",
-    "named": false
   },
   {
     "type": "let",

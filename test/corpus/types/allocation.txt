@@ -113,7 +113,7 @@ let buffer: [16]UInt8 = [0, 0, 0, 0]
   (declaration
     (identifier)
     (type_annotation
-      (fixed_array_type
+      (array_type
         (array_size
           (integer))
         (unsigned_integer_type)))
@@ -137,7 +137,7 @@ let matrix: stack [4]Float32 = [0.0, 0.0, 0.0, 0.0]
     (type_annotation
       (allocated_type
         (allocation_modifier)
-        (fixed_array_type
+        (array_type
           (array_size
             (integer))
           (float_type))))
@@ -151,7 +151,7 @@ let matrix: stack [4]Float32 = [0.0, 0.0, 0.0, 0.0]
 Dynamic array type
 ===================
 
-let items: [Int] = [1, 2, 3]
+let items: []Int = [1, 2, 3]
 
 ---
 
@@ -159,7 +159,7 @@ let items: [Int] = [1, 2, 3]
   (declaration
     (identifier)
     (type_annotation
-      (dynamic_array_type
+      (array_type
         (signed_integer_type)))
     (array_literal
       (integer)
@@ -170,7 +170,7 @@ let items: [Int] = [1, 2, 3]
 Dynamic array with heap modifier
 ================================
 
-let particles: heap [Particle] = []
+let particles: heap []Particle = []
 
 ---
 
@@ -180,7 +180,7 @@ let particles: heap [Particle] = []
     (type_annotation
       (allocated_type
         (allocation_modifier)
-        (dynamic_array_type
+        (array_type
           (user_defined_type_name))))
     (array_literal)))
 
@@ -245,7 +245,7 @@ let vertices: [MAX_VERTICES]Vec3 = []
   (declaration
     (identifier)
     (type_annotation
-      (fixed_array_type
+      (array_type
         (array_size
           (const_identifier))
         (user_defined_type_name)))
@@ -289,7 +289,7 @@ Heap field inside stack struct
 stack struct Entity {
   id: UInt64,
   name: heap String,
-  components: heap [Component],
+  components: heap []Component,
 }
 
 ---
@@ -312,6 +312,6 @@ stack struct Entity {
         (field_type
           (allocated_type
             (allocation_modifier)
-            (dynamic_array_type
+            (array_type
               (user_defined_type_name))))))))
 

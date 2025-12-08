@@ -119,7 +119,7 @@ type HexString = String where(pattern r/^#(?:[0-9a-fA-F]{3}){1,2}$/)
 Type with length constraint and const values
 ============================================
 
-type Grid = [Int] where(length ROWS * COLUMNS)
+type Grid = []Int where(length ROWS * COLUMNS)
 
 ---
 
@@ -127,7 +127,7 @@ type Grid = [Int] where(length ROWS * COLUMNS)
   (type_declaration
     (constrained_type
       (constrained_type_name)
-      (dynamic_array_type
+      (array_type
         (signed_integer_type))
       (constraints
         (constraint

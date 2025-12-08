@@ -19,12 +19,13 @@ module.exports = {
     field('inner_type', $._non_allocated_type)
   )),
 
-  // Fixed-size array type: [N]T
+  // Array type: [N]T
   // The size must be a compile-time constant (number literal or const identifier)
   // Use `stack [N]T` via allocated_type for explicit stack allocation
-  fixed_array_type: $ => prec(3, seq(
+  // If the size is not provided, it is a dynamic array
+  array_type: $ => prec(3, seq(
     '[',
-    field('size', $.array_size),
+    optional(field('size', $.array_size)),
     ']',
     field('element_type', $._non_allocated_type)
   )),
@@ -32,22 +33,13 @@ module.exports = {
   // Array size - compile-time constant expression
   array_size: $ => choice($._number_literal, $.const_identifier),
 
-  // Dynamic array type: [T]
-  // Use `heap [T]` via allocated_type for explicit heap allocation
-  dynamic_array_type: $ => prec(2, seq(
-    '[',
-    field('element_type', $._non_allocated_type),
-    ']'
-  )),
-
   // Non-allocated types (used to prevent recursion in array types)
   _non_allocated_type: $ => choice(
     $._primitive_type,
     $.parameterized_type,
     $.self_type,
     $.user_defined_type_name,
-    $.fixed_array_type,
-    $.dynamic_array_type,
+    $.array_type,
     $.generic_type,
     $.function_type,
     $.map_type,

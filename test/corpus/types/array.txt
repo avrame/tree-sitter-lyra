@@ -29,7 +29,7 @@ let foo: [3]String = ["one", "two", "three"]
   (declaration
     (identifier)
     (type_annotation
-      (fixed_array_type
+      (array_type
         (array_size
           (integer))
         (string_type)))

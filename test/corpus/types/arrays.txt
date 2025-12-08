@@ -10,7 +10,7 @@ var fibs: [4]Int8 = [1, 1, 2, 3]
   (declaration
     (identifier)
     (type_annotation
-      (fixed_array_type
+      (array_type
         (array_size
           (integer))
         (signed_integer_type)))

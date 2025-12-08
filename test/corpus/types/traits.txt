@@ -302,7 +302,7 @@ trait Eq<t> {
   (_!=_): (t, t) -> Bool
 }
 
-impl Eq<[t]> for [t] {
+impl Eq<[]t> for []t {
   (_==_) = (a, b) => {
     if a.length() != b.length() {
       false
@@ -347,9 +347,9 @@ impl Eq<[t]> for [t] {
   (type_declaration
     (trait_implementation
       (trait_name)
-      (dynamic_array_type
+      (array_type
         (generic_type))
-      (dynamic_array_type
+      (array_type
         (generic_type))
       (trait_method_implementation
         (method_name)
@@ -818,7 +818,7 @@ impl Default<String> for String {
   default = () => ""
 }
 
-impl Default<[t]> for [t] {
+impl Default<[]t> for []t {
   default = () => []
 }
 
@@ -861,9 +861,9 @@ impl Default<Person> for Person {
   (type_declaration
     (trait_implementation
       (trait_name)
-      (dynamic_array_type
+      (array_type
         (generic_type))
-      (dynamic_array_type
+      (array_type
         (generic_type))
       (trait_method_implementation
         (method_name)

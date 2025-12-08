@@ -7,10 +7,11 @@
       "title": "The Lyra Programming Language Parser",
       "scope": "source.lyra_parser",
       "file-types": [
-        ".lyra"
+        "lyra"
       ],
       "injection-regex": "^lyra_parser$",
-      "class-name": "TreeSitterLyraParser"
+      "class-name": "TreeSitterLyraParser",
+      "highlights": "queries/highlights.scm"
     }
   ],
   "metadata": {

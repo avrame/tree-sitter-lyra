@@ -5695,6 +5695,10 @@
     "named": false
   },
   {
+    "type": "pure",
+    "named": false
+  },
+  {
     "type": "range",
     "named": false
   },

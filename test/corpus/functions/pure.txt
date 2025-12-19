@@ -1,0 +1,164 @@
+================================
+Pure function declaration
+================================
+
+pure def add: (Int, Int) -> Int = (a, b) => a + b
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (parameter_type
+            (signed_integer_type))
+          (parameter_type
+            (signed_integer_type)))
+        (signed_integer_type)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier))
+        (parameter
+          (identifier)))
+      (addition
+        (identifier)
+        (identifier)))))
+
+================================
+Public pure function
+================================
+
+pub pure def multiply: (Int, Int) -> Int = (a, b) => a * b
+
+---
+
+(program
+  (function_definition
+    (visibility)
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (parameter_type
+            (signed_integer_type))
+          (parameter_type
+            (signed_integer_type)))
+        (signed_integer_type)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier))
+        (parameter
+          (identifier)))
+      (multiplication
+        (identifier)
+        (identifier)))))
+
+================================
+Pure async function
+================================
+
+pure async def compute: (Int) -> Int = (n) => n * 2
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (parameter_type
+            (signed_integer_type)))
+        (signed_integer_type)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier)))
+      (multiplication
+        (identifier)
+        (integer)))))
+
+================================
+Pure with pattern matching
+================================
+
+pure def fib: (Int) -> Int = {
+  (0) => 0,
+  (1) => 1,
+  (n) => fib(n-1) + fib(n-2),
+}
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (parameter_type
+            (signed_integer_type)))
+        (signed_integer_type)))
+    (function_pattern_list
+      (function_pattern
+        (parameter_list
+          (parameter
+            (literal_pattern
+              (integer))))
+        (integer))
+      (function_pattern
+        (parameter_list
+          (parameter
+            (literal_pattern
+              (integer))))
+        (integer))
+      (function_pattern
+        (parameter_list
+          (parameter
+            (identifier)))
+        (addition
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (subtraction
+                  (identifier)
+                  (integer)))))
+          (call_expression
+            (identifier)
+            (argument_list
+              (value
+                (subtraction
+                  (identifier)
+                  (integer))))))))))
+
+===========================
+Pure keyword in wrong order
+:error
+===========================
+
+async pure def compute: (Int) -> Int = (n) => n * 2
+
+---
+
+(program
+  (function_definition
+    (function_signature
+      (ERROR)
+      (identifier)
+      (function_type
+        (function_type_parameter_list
+          (parameter_type
+            (signed_integer_type)))
+        (signed_integer_type)))
+    (function_pattern
+      (parameter_list
+        (parameter
+          (identifier)))
+      (multiplication
+        (identifier)
+        (integer)))))
